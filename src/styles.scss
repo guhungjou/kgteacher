@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+
+nz-input-group.ant-input-group-wrapper {
+  width: auto;
+
+  nz-select {
+    nz-select-top-control {
+      border-top-left-radius: 0px !important;
+      border-bottom-left-radius: 0px !important;
+    }
+  }
+
+  nz-input-number.ant-input-number {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+}
+
+div.content {
+  >div.actionbar {
+    margin-bottom: 6px;
+  }
+
+  >div.table {
+    margin-top: 6px;
+  }
+}

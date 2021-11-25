@@ -5,7 +5,7 @@
         <li nz-submenu nzTitle="幼儿园" nzIcon="home">
           <ul>
             <li nz-menu-item nzMatchRouter *ngIf="self.role==='manager'">
-              <a>班级</a>
+              <a routerLink="/classes">班级</a>
             </li>
             <li nz-menu-item nzMatchRouter *ngIf="self.role==='manager'">
               <a>老师</a>
