@@ -51,11 +51,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconsProviderModule } from './icons.module';
 import { ApiInterceptor } from './services/api.interceptor';
+import { MainPageComponent } from './pages/main-page/main-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 registerLocaleData(zh);
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MainPageComponent, LoginPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

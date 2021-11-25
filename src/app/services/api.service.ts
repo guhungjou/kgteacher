@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   buildurl(path: string, queryMap: any = null) {
     let query = '';
@@ -46,5 +46,42 @@ export class ApiService {
 
   delete(url: string) {
     return lastValueFrom<any>(this.http.delete(url, { withCredentials: true }));
+  }
+
+
+  fetchMap: any = {};
+  reset() {
+    this.fetchMap = {};
+  }
+  async fetch(name: string, func: () => Promise<any>) {
+    try {
+      let doing = this.fetchMap[name];
+      if (!doing) {
+        doing = func();
+        this.fetchMap[name] = doing;
+      }
+      const r = await doing;
+      return r;
+    } catch (error) {
+      throw error;
+    } finally {
+      delete this.fetchMap[name];
+    }
+  }
+
+  async fget(url: string) {
+    return this.fetch(url, () => this.get(url));
+  }
+
+
+  getSelf() {
+    const url = this.buildurl('/self');
+    return this.fget(url);
+  }
+
+  login(username: string, password: string) {
+    const url = this.buildurl('/login');
+    const body = { username, password };
+    return this.put(url, body);
   }
 }
