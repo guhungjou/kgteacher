@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UpdateSelfModalComponent } from './update-self-modal.component';
+import { DatetimeLabelComponent } from './datetime-label.component';
 
-describe('UpdateSelfModalComponent', () => {
-  let component: UpdateSelfModalComponent;
-  let fixture: ComponentFixture<UpdateSelfModalComponent>;
+describe('DatetimeLabelComponent', () => {
+  let component: DatetimeLabelComponent;
+  let fixture: ComponentFixture<DatetimeLabelComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [UpdateSelfModalComponent],
+      declarations: [DatetimeLabelComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UpdateSelfModalComponent);
+    fixture = TestBed.createComponent(DatetimeLabelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

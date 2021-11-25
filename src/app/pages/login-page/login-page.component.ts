@@ -16,7 +16,7 @@ export class LoginPageComponent implements OnInit {
     private message: NzMessageService,
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({

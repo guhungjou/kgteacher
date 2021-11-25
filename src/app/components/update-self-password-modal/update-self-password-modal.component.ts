@@ -1,21 +1,29 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-update-self-password-modal',
   templateUrl: './update-self-password-modal.component.html',
-  styleUrls: ['./update-self-password-modal.component.scss']
+  styleUrls: ['./update-self-password-modal.component.scss'],
 })
 export class UpdateSelfPasswordModalComponent implements OnInit {
-
   @Input() isVisible = false;
   @Output() isVisibleChange = new EventEmitter<boolean>();
   loading = false;
   formGroup!: FormGroup;
 
-  constructor(private api: ApiService, private message: NzMessageService, private formBuilder: FormBuilder) { }
+  constructor(
+    private api: ApiService,
+    private message: NzMessageService,
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
@@ -32,7 +40,6 @@ export class UpdateSelfPasswordModalComponent implements OnInit {
     }
     return true;
   }
-
 
   close() {
     this.isVisible = false;
@@ -75,5 +82,4 @@ export class UpdateSelfPasswordModalComponent implements OnInit {
       this.loading = false;
     }
   }
-
 }

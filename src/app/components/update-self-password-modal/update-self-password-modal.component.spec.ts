@@ -8,9 +8,8 @@ describe('UpdateSelfPasswordModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UpdateSelfPasswordModalComponent ]
-    })
-    .compileComponents();
+      declarations: [UpdateSelfPasswordModalComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

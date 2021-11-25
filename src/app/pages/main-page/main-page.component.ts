@@ -16,7 +16,7 @@ export class MainPageComponent implements OnInit {
     private api: ApiService,
     private message: NzMessageService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.api.reset();
@@ -27,7 +27,7 @@ export class MainPageComponent implements OnInit {
     try {
       const r = await this.api.getSelf();
       this.self = r.data;
-    } catch (error) { }
+    } catch (error) {}
   }
 
   clickLogo() {

@@ -1,28 +1,20 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
-  selector: 'app-update-self-modal',
-  templateUrl: './update-self-modal.component.html',
-  styleUrls: ['./update-self-modal.component.scss'],
+  selector: 'app-new-class-modal',
+  templateUrl: './new-class-modal.component.html',
+  styleUrls: ['./new-class-modal.component.scss'],
 })
-export class UpdateSelfModalComponent implements OnInit, OnChanges {
+export class NewClassModalComponent implements OnInit {
   @Input() isVisible = false;
   @Output() isVisibleChange = new EventEmitter<boolean>();
   @Output() update = new EventEmitter<any>();
-  loading = false;
 
   formGroup!: FormGroup;
-
+  loading = false;
   constructor(
     private api: ApiService,
     private message: NzMessageService,
@@ -31,37 +23,14 @@ export class UpdateSelfModalComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
-      username: [{ value: '', disabled: true }, [Validators.required]],
       name: [null, [Validators.required]],
-      phone: [null, []],
-      gender: [null, [Validators.required]],
+      remark: [null, []],
     });
-  }
-
-  ngOnChanges() {
-    if (this.isVisible) {
-      this.getSelf();
-    }
   }
 
   close() {
     this.isVisible = false;
     this.isVisibleChange.emit(false);
-  }
-
-  self: any = {};
-  async getSelf() {
-    try {
-      const r = await this.api.getSelf();
-      this.self = r.data;
-      this.formGroup.setValue({
-        username: this.self.username,
-        name: this.self.name,
-        phone: this.self.phone,
-        gender: this.self.gender,
-      });
-      this.formGroup.updateValueAndValidity();
-    } catch (error) {}
   }
 
   onOk() {
@@ -75,27 +44,28 @@ export class UpdateSelfModalComponent implements OnInit, OnChanges {
         return;
       }
     }
-
     const value = this.formGroup.value;
     const name = value.name;
-    const gender = value.gender;
-    const phone = value.phone;
-    this.updateSelf(name, phone, gender);
+    const remark = value.remark;
+    this.createClass(name, remark);
   }
 
-  async updateSelf(name: string, phone: string, gender: string) {
+  async createClass(name: string, remark: string) {
     try {
       this.loading = true;
-      const r = await this.api.updateSelf(name, phone, gender);
-      if (r.status !== 0) {
+      const r = await this.api.createClass(name, remark);
+      if (r.status === 20003) {
+        this.message.warning('您没有创建班级的权限，只有园长才能创建班级');
+      } else if (r.status !== 0) {
         this.message.warning('未知错误');
       } else {
-        this.message.success('更新成功');
+        this.message.success('创建成功');
         this.close();
+        this.formGroup.reset();
         this.update.emit(r.data);
       }
     } catch (error) {
-      this.message.error('网络错误');
+      this.message.success('网络错误');
     } finally {
       this.loading = false;
     }

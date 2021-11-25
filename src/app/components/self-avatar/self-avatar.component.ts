@@ -7,12 +7,15 @@ import { ApiService } from 'src/app/services/api.service';
 @Component({
   selector: 'app-self-avatar',
   templateUrl: './self-avatar.component.html',
-  styleUrls: ['./self-avatar.component.scss']
+  styleUrls: ['./self-avatar.component.scss'],
 })
 export class SelfAvatarComponent implements OnInit {
-
-  constructor(private api: ApiService, private message: NzMessageService,
-    private router: Router, private modal: NzModalService) { }
+  constructor(
+    private api: ApiService,
+    private message: NzMessageService,
+    private router: Router,
+    private modal: NzModalService
+  ) {}
 
   ngOnInit(): void {
     this.getSelf();
@@ -23,9 +26,7 @@ export class SelfAvatarComponent implements OnInit {
     try {
       const r = await this.api.getSelf();
       this.self = r.data;
-    } catch (error) {
-
-    }
+    } catch (error) {}
   }
 
   logout() {

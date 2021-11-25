@@ -1,0 +1,9 @@
+<nz-input-group [nzAddOnBefore]="label">
+  <input
+    nz-input
+    [(ngModel)]="value"
+    (ngModelChange)="onChange()"
+    (keyup.enter)="enter_()"
+    [placeholder]="placeholder"
+  />
+</nz-input-group>

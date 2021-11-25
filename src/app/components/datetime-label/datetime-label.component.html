@@ -1,0 +1,10 @@
+<span *ngIf="dt && dt.getTime() > 0"
+  >{{ dt.getFullYear() }}/{{ dt.getMonth() + 1 | number: "2.0-2" }}/{{
+    dt.getDate() | number: "2.0-2"
+  }}
+  <span
+    >{{ dt.getHours() | number: "2.0-2" }}:{{
+      dt.getMinutes() | number: "2.0-2"
+    }}:{{ dt.getSeconds() | number: "2.0-2" }}</span
+  >
+</span>

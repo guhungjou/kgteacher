@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   buildurl(path: string, queryMap: any = null) {
     let query = '';
@@ -48,7 +48,6 @@ export class ApiService {
     return lastValueFrom<any>(this.http.delete(url, { withCredentials: true }));
   }
 
-
   fetchMap: any = {};
   reset() {
     this.fetchMap = {};
@@ -72,7 +71,6 @@ export class ApiService {
   async fget(url: string) {
     return this.fetch(url, () => this.get(url));
   }
-
 
   getSelf() {
     const url = this.buildurl('/self');
@@ -99,6 +97,24 @@ export class ApiService {
   updateSelfPassword(old: string, n: string) {
     const url = this.buildurl('/password');
     const body = { old, new: n };
+    return this.put(url, body);
+  }
+
+  findClasses(query: string, page: number, pageSize: number) {
+    const q = { query, page, page_size: pageSize };
+    const url = this.buildurl('/classes', q);
+    return this.get(url);
+  }
+
+  createClass(name: string, remark: string) {
+    const url = this.buildurl('/class');
+    const body = { name, remark };
+    return this.post(url, body);
+  }
+
+  updateClass(id: number, name: string, remark: string) {
+    const url = this.buildurl('/class/' + id);
+    const body = { name, remark };
     return this.put(url, body);
   }
 }

@@ -1,0 +1,38 @@
+<nz-modal
+  nzTitle="新建班级"
+  [(nzVisible)]="isVisible"
+  (nzOnCancel)="close()"
+  (nzOnOk)="onOk()"
+  [nzOkLoading]="loading"
+  [nzCancelLoading]="loading"
+  [nzMaskClosable]="false"
+>
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="formGroup">
+      <nz-form-item style="margin-bottom: 12px">
+        <nz-form-control nzErrorTip="班级名不能为空">
+          <nz-input-group nzAddOnBefore="班级名">
+            <input
+              type="text"
+              nz-input
+              formControlName="name"
+              placeholder="如 A班"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item style="margin-bottom: 12px">
+        <nz-form-control nzErrorTip="">
+          <nz-input-group nzAddOnBefore="备 注">
+            <input
+              type="text"
+              nz-input
+              formControlName="remark"
+              placeholder=""
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </ng-container>
+</nz-modal>

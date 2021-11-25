@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UpdateSelfModalComponent } from './update-self-modal.component';
+import { SearchButtonComponent } from './search-button.component';
 
-describe('UpdateSelfModalComponent', () => {
-  let component: UpdateSelfModalComponent;
-  let fixture: ComponentFixture<UpdateSelfModalComponent>;
+describe('SearchButtonComponent', () => {
+  let component: SearchButtonComponent;
+  let fixture: ComponentFixture<SearchButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [UpdateSelfModalComponent],
+      declarations: [SearchButtonComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UpdateSelfModalComponent);
+    fixture = TestBed.createComponent(SearchButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

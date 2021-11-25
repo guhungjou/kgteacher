@@ -59,11 +59,31 @@ import { ClassListPageComponent } from './pages/class-list-page/class-list-page.
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { UpdateSelfModalComponent } from './components/update-self-modal/update-self-modal.component';
 import { UpdateSelfPasswordModalComponent } from './components/update-self-password-modal/update-self-password-modal.component';
+import { SearchButtonComponent } from './components/search-button/search-button.component';
+import { InputComponent } from './components/input/input.component';
+import { DatetimeLabelComponent } from './components/datetime-label/datetime-label.component';
+import { NewClassModalComponent } from './components/new-class-modal/new-class-modal.component';
+import { UpdateClassModalComponent } from './components/update-class-modal/update-class-modal.component';
 
 registerLocaleData(zh);
 
 @NgModule({
-  declarations: [AppComponent, MainPageComponent, LoginPageComponent, SelfAvatarComponent, SelfHeaderComponent, ClassListPageComponent, DashboardPageComponent, UpdateSelfModalComponent, UpdateSelfPasswordModalComponent],
+  declarations: [
+    AppComponent,
+    MainPageComponent,
+    LoginPageComponent,
+    SelfAvatarComponent,
+    SelfHeaderComponent,
+    ClassListPageComponent,
+    DashboardPageComponent,
+    UpdateSelfModalComponent,
+    UpdateSelfPasswordModalComponent,
+    SearchButtonComponent,
+    InputComponent,
+    DatetimeLabelComponent,
+    NewClassModalComponent,
+    UpdateClassModalComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

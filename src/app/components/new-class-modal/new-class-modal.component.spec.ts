@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UpdateSelfModalComponent } from './update-self-modal.component';
+import { NewClassModalComponent } from './new-class-modal.component';
 
-describe('UpdateSelfModalComponent', () => {
-  let component: UpdateSelfModalComponent;
-  let fixture: ComponentFixture<UpdateSelfModalComponent>;
+describe('NewClassModalComponent', () => {
+  let component: NewClassModalComponent;
+  let fixture: ComponentFixture<NewClassModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [UpdateSelfModalComponent],
+      declarations: [NewClassModalComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UpdateSelfModalComponent);
+    fixture = TestBed.createComponent(NewClassModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

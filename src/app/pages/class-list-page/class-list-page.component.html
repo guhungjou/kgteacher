@@ -1,8 +1,82 @@
 <nz-breadcrumb>
-    <nz-breadcrumb-item>幼儿园</nz-breadcrumb-item>
-    <nz-breadcrumb-item>班级</nz-breadcrumb-item>
+  <nz-breadcrumb-item>幼儿园</nz-breadcrumb-item>
+  <nz-breadcrumb-item>班级</nz-breadcrumb-item>
 </nz-breadcrumb>
 <div class="content">
-    
+  <div class="actionbar">
+    <app-input label="关键字" [(value)]="query" (enter)="search()"></app-input>
+    <app-search-button
+      style="margin-left: 10px"
+      [loading]="loading"
+      (search)="search()"
+    ></app-search-button>
+
+    <div style="float: right" *ngIf="self.role === 'manager'">
+      <button nz-button (click)="new()">新建</button>
+    </div>
+  </div>
+  <div class="table">
+    <nz-table
+      #basicTable
+      nzSize="middle"
+      nzShowPagination
+      nzShowSizeChanger
+      [nzFrontPagination]="false"
+      [nzShowTotal]="totalTemplate"
+      [(nzPageIndex)]="page"
+      [(nzPageSize)]="pageSize"
+      [nzTotal]="total"
+      [nzLoading]="loading"
+      (nzPageIndexChange)="onPageChange()"
+      (nzPageSizeChange)="onPageChange()"
+      [nzData]="classes"
+    >
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>班级名</th>
+          <th>备注信息</th>
+          <th>创建时间</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data">
+          <td>{{ data.id }}</td>
+          <td>{{ data.name }}</td>
+          <td>{{ data.remark }}</td>
+          <td>
+            <app-datetime-label [text]="data.created_at"></app-datetime-label>
+          </td>
+          <td>
+            <a
+              nz-dropdown
+              [nzDropdownMenu]="menu"
+              *ngIf="self.role === 'manager'"
+            >
+              <i nz-icon nzType="menu"></i>
+            </a>
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+              <ul nz-menu nzSelectable>
+                <li nz-menu-item (click)="showUpdateClassModal(data)">编辑</li>
+              </ul>
+            </nz-dropdown-menu>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+    <ng-template #totalTemplate let-range="range" let-total>
+      总计：{{ total }}
+    </ng-template>
+  </div>
 </div>
-  
+
+<app-new-class-modal
+  [(isVisible)]="isNewClassModalVisible"
+  (update)="search()"
+></app-new-class-modal>
+<app-update-class-modal
+  [(isVisible)]="isUpdateClassModalVisible"
+  [data]="updateClassData"
+  (update)="findClasses()"
+></app-update-class-modal>
