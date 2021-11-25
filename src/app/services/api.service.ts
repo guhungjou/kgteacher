@@ -89,4 +89,10 @@ export class ApiService {
     const url = this.buildurl('/logout');
     return this.put(url, null);
   }
+
+  updateSelf(name: string, phone: string, gender: string) {
+    const url = this.buildurl('/self');
+    const body = { name, phone, gender };
+    return this.put(url, body);
+  }
 }

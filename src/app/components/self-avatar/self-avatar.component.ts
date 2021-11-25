@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -10,7 +11,8 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class SelfAvatarComponent implements OnInit {
 
-  constructor(private api: ApiService, private message: NzMessageService, private router: Router) { }
+  constructor(private api: ApiService, private message: NzMessageService,
+    private router: Router, private modal: NzModalService) { }
 
   ngOnInit(): void {
     this.getSelf();
@@ -26,7 +28,15 @@ export class SelfAvatarComponent implements OnInit {
     }
   }
 
-  async logout() {
+  logout() {
+    this.modal.confirm({
+      nzTitle: '注销',
+      nzContent: '是否确认注销当前登录',
+      nzOnOk: () => this.logout_(),
+    });
+  }
+
+  async logout_() {
     try {
       const r = await this.api.logout();
       if (r.status !== 0) {
@@ -38,5 +48,14 @@ export class SelfAvatarComponent implements OnInit {
     } catch (error) {
       this.message.success('网络错误');
     }
+  }
+
+  isUpdateSelfModalVisible = false;
+  showUpdateSelfModal() {
+    this.isUpdateSelfModalVisible = true;
+  }
+
+  onUpdateSelf(data: any) {
+    this.self = Object.assign(this.self, data);
   }
 }
