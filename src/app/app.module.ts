@@ -58,11 +58,12 @@ import { SelfHeaderComponent } from './components/self-header/self-header.compon
 import { ClassListPageComponent } from './pages/class-list-page/class-list-page.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { UpdateSelfModalComponent } from './components/update-self-modal/update-self-modal.component';
+import { UpdateSelfPasswordModalComponent } from './components/update-self-password-modal/update-self-password-modal.component';
 
 registerLocaleData(zh);
 
 @NgModule({
-  declarations: [AppComponent, MainPageComponent, LoginPageComponent, SelfAvatarComponent, SelfHeaderComponent, ClassListPageComponent, DashboardPageComponent, UpdateSelfModalComponent],
+  declarations: [AppComponent, MainPageComponent, LoginPageComponent, SelfAvatarComponent, SelfHeaderComponent, ClassListPageComponent, DashboardPageComponent, UpdateSelfModalComponent, UpdateSelfPasswordModalComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

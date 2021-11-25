@@ -95,4 +95,10 @@ export class ApiService {
     const body = { name, phone, gender };
     return this.put(url, body);
   }
+
+  updateSelfPassword(old: string, n: string) {
+    const url = this.buildurl('/password');
+    const body = { old, new: n };
+    return this.put(url, body);
+  }
 }

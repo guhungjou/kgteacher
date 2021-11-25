@@ -55,6 +55,11 @@ export class SelfAvatarComponent implements OnInit {
     this.isUpdateSelfModalVisible = true;
   }
 
+  isUpdateSelfPasswordModalVisible = false;
+  showUpdateSelfPasswordModal() {
+    this.isUpdateSelfPasswordModalVisible = true;
+  }
+
   onUpdateSelf(data: any) {
     this.self = Object.assign(this.self, data);
   }

@@ -3,10 +3,11 @@
 <nz-dropdown-menu #menu="nzDropdownMenu">
     <ul nz-menu nzSelectable>
       <li nz-menu-item (click)="showUpdateSelfModal()">个人信息</li>
-      <li nz-menu-item>修改密码</li>
+      <li nz-menu-item (click)="showUpdateSelfPasswordModal()">修改密码</li>
       <li nz-menu-divider></li>
       <li nz-menu-item nzDanger (click)="logout()">注销</li>
     </ul>
 </nz-dropdown-menu>
 
 <app-update-self-modal [(isVisible)]="isUpdateSelfModalVisible" (update)="onUpdateSelf($event)"></app-update-self-modal>
+<app-update-self-password-modal [(isVisible)]="isUpdateSelfPasswordModalVisible"></app-update-self-password-modal>
