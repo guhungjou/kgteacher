@@ -36,6 +36,8 @@
           <th>ID</th>
           <th>班级名</th>
           <th>备注信息</th>
+          <th>学生数量</th>
+          <th>老师数量</th>
           <th>创建时间</th>
           <th>操作</th>
         </tr>
@@ -45,6 +47,8 @@
           <td>{{ data.id }}</td>
           <td>{{ data.name }}</td>
           <td>{{ data.remark }}</td>
+          <td>{{ data.number_of_student | number}}</td>
+          <td>{{ data.number_of_teacher | number}}</td>
           <td>
             <app-datetime-label [text]="data.created_at"></app-datetime-label>
           </td>
