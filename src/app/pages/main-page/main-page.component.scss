@@ -30,6 +30,20 @@
   nz-header {
     background: #fff;
     padding: 0;
+    padding-right: 20px;
+    text-align: center;
+
+    div.left {
+      float: left;
+    }
+
+    div.center {
+      display: inline-block;
+    }
+
+    div.right {
+      float: right;
+    }
   }
 
   nz-content {

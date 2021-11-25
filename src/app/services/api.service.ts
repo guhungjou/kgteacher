@@ -84,4 +84,9 @@ export class ApiService {
     const body = { username, password };
     return this.put(url, body);
   }
+
+  logout() {
+    const url = this.buildurl('/logout');
+    return this.put(url, null);
+  }
 }

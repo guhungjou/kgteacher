@@ -1,0 +1,9 @@
+<nz-avatar [nzText]="self.name" style="background-color:#87d068;" nz-dropdown [nzDropdownMenu]="menu" nzPlacement="bottomRight"></nz-avatar>
+
+<nz-dropdown-menu #menu="nzDropdownMenu">
+    <ul nz-menu nzSelectable>
+      <li nz-menu-item>设置</li>
+      <li nz-menu-divider></li>
+      <li nz-menu-item nzDanger (click)="logout()">注销</li>
+    </ul>
+</nz-dropdown-menu>

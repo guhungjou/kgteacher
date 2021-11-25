@@ -53,11 +53,13 @@ import { IconsProviderModule } from './icons.module';
 import { ApiInterceptor } from './services/api.interceptor';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { SelfAvatarComponent } from './components/self-avatar/self-avatar.component';
+import { SelfHeaderComponent } from './components/self-header/self-header.component';
 
 registerLocaleData(zh);
 
 @NgModule({
-  declarations: [AppComponent, MainPageComponent, LoginPageComponent],
+  declarations: [AppComponent, MainPageComponent, LoginPageComponent, SelfAvatarComponent, SelfHeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

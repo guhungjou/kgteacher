@@ -10,6 +10,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class MainPageComponent implements OnInit {
   isCollapsed = false;
+  self: any = {};
 
   constructor(
     private api: ApiService,
@@ -25,6 +26,7 @@ export class MainPageComponent implements OnInit {
   async getSelf() {
     try {
       const r = await this.api.getSelf();
+      this.self = r.data;
     } catch (error) { }
   }
 
