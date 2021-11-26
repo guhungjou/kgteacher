@@ -24,11 +24,12 @@ export class UpdateTeacherModalComponent implements OnInit, OnChanges {
 
   loading = false;
   formGroup!: FormGroup;
+  classID = 0;
   constructor(
     private api: ApiService,
     private message: NzMessageService,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
@@ -47,6 +48,7 @@ export class UpdateTeacherModalComponent implements OnInit, OnChanges {
         phone: this.data.phone,
         gender: this.data.gender,
       });
+      this.classID = this.data.class_id;
     }
   }
 
@@ -70,13 +72,13 @@ export class UpdateTeacherModalComponent implements OnInit, OnChanges {
     const name = value.name;
     const phone = value.phone;
     const gender = value.gender;
-    this.updateTeacher(this.data.id, name, phone, gender);
+    this.updateTeacher(this.data.id, name, phone, gender, this.classID);
   }
 
-  async updateTeacher(id: number, name: string, phone: string, gender: string) {
+  async updateTeacher(id: number, name: string, phone: string, gender: string, classID: number) {
     try {
       this.loading = true;
-      const r = await this.api.updateTeacher(id, name, gender, phone);
+      const r = await this.api.updateTeacher(id, name, gender, phone, classID);
       if (r.status === 20003) {
         this.message.warning('您没有编辑老师的权限，只有园长才能编辑老师');
       } else if (r.status !== 0) {

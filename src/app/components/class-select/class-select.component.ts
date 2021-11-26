@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -7,15 +7,36 @@ import { ApiService } from 'src/app/services/api.service';
   templateUrl: './class-select.component.html',
   styleUrls: ['./class-select.component.scss'],
 })
-export class ClassSelectComponent implements OnInit {
+export class ClassSelectComponent implements OnInit, OnChanges {
   @Input() value = 0;
   @Output() valueChange = new EventEmitter<number>();
   options: any[] = [];
   loading = false;
 
-  constructor(private api: ApiService, private message: NzMessageService) {}
+  constructor(private api: ApiService, private message: NzMessageService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+
+  ngOnChanges() {
+
+    if (this.value) {
+      for (const o of this.options) {
+        if (o.id === this.value) {
+          return;
+        }
+      }
+      this.getClass(this.value);
+    }
+  }
+
+  async getClass(id: number) {
+    try {
+      const r = await this.api.getClass(id);
+      this.options = [r.data];
+    } catch (error) {
+
+    }
+  }
 
   onChange() {
     this.value = this.value || 0;

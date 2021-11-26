@@ -19,12 +19,13 @@ export class NewTeacherModalComponent implements OnInit {
   @Output() update = new EventEmitter<any>();
 
   formGroup!: FormGroup;
+  classID = 0;
   loading = false;
   constructor(
     private api: ApiService,
     private message: NzMessageService,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
@@ -69,7 +70,7 @@ export class NewTeacherModalComponent implements OnInit {
     const name = value.name;
     const phone = value.phone;
     const gender = value.gender;
-    this.createTeacher(username, password, name, phone, gender);
+    this.createTeacher(username, password, name, phone, gender, this.classID);
   }
 
   async createTeacher(
@@ -77,7 +78,8 @@ export class NewTeacherModalComponent implements OnInit {
     password: string,
     name: string,
     phone: string,
-    gender: string
+    gender: string,
+    classID: number,
   ) {
     try {
       this.loading = true;
@@ -86,7 +88,8 @@ export class NewTeacherModalComponent implements OnInit {
         password,
         name,
         gender,
-        phone
+        phone,
+        classID,
       );
       if (r.status === 20004) {
         this.message.warning('用户名已存在，请重新输入');
@@ -99,6 +102,7 @@ export class NewTeacherModalComponent implements OnInit {
         this.formGroup.reset();
         this.close();
         this.update.emit(r.data);
+        this.classID = 0;
       }
     } catch (error) {
       this.message.error('网络错误');
