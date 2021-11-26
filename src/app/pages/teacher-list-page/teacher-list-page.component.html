@@ -15,7 +15,7 @@
       (search)="search()"
     ></app-search-button>
 
-    <div style="float: right" *ngIf="self.role === 'manager'">
+    <div style="float: right">
       <button nz-button (click)="new()">新建</button>
     </div>
   </div>
@@ -65,16 +65,14 @@
             <app-datetime-label [text]="data.created_at"></app-datetime-label>
           </td>
           <td>
-            <a
-              nz-dropdown
-              [nzDropdownMenu]="menu"
-              *ngIf="self.role === 'manager'"
-            >
+            <a nz-dropdown [nzDropdownMenu]="menu">
               <i nz-icon nzType="menu"></i>
             </a>
             <nz-dropdown-menu #menu="nzDropdownMenu">
               <ul nz-menu nzSelectable>
-                <li nz-menu-item>编辑</li>
+                <li nz-menu-item (click)="showUpdateTeacherModal(data)">
+                  编辑
+                </li>
               </ul>
             </nz-dropdown-menu>
           </td>
@@ -86,3 +84,13 @@
     </ng-template>
   </div>
 </div>
+
+<app-new-teacher-modal
+  [(isVisible)]="isNewTeacherModalVisible"
+  (update)="search()"
+></app-new-teacher-modal>
+<app-update-teacher-modal
+  [(isVisible)]="isUpdateTeacherModalVisible"
+  [data]="updateTeacherData"
+  (update)="findTeachers()"
+></app-update-teacher-modal>

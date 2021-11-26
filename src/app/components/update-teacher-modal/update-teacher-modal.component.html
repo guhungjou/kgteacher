@@ -1,0 +1,64 @@
+<nz-modal
+  nzTitle="编辑老师"
+  [(nzVisible)]="isVisible"
+  (nzOnCancel)="close()"
+  (nzOnOk)="onOk()"
+  [nzOkLoading]="loading"
+  [nzCancelLoading]="loading"
+  [nzMaskClosable]="false"
+>
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="formGroup">
+      <nz-form-item style="margin-bottom: 12px">
+        <nz-form-control nzErrorTip="用户名至少六位，由英文字母和数字组成">
+          <nz-input-group nzAddOnBefore="用户名">
+            <input
+              type="text"
+              nz-input
+              formControlName="username"
+              placeholder="用户名/登录名"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item style="margin-bottom: 12px">
+        <nz-form-control nzErrorTip="请输入老师姓名">
+          <nz-input-group nzAddOnBefore="姓 名">
+            <input
+              type="text"
+              nz-input
+              formControlName="name"
+              placeholder="老师姓名"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item style="margin-bottom: 12px">
+        <nz-form-control>
+          <nz-input-group nzAddOnBefore="电 话">
+            <input
+              type="text"
+              nz-input
+              formControlName="phone"
+              placeholder="联系方式"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item style="margin-bottom: 12px">
+        <nz-form-control nzErrorTip="请选择老师性别">
+          <nz-input-group nzAddOnBefore="性 别">
+            <nz-select
+              id="gender"
+              formControlName="gender"
+              nzPlaceHolder="性别"
+            >
+              <nz-option nzValue="male" nzLabel="男"></nz-option>
+              <nz-option nzValue="female" nzLabel="女"></nz-option>
+            </nz-select>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </ng-container>
+</nz-modal>

@@ -128,4 +128,28 @@ export class ApiService {
     const url = this.buildurl('/teachers', q);
     return this.get(url);
   }
+
+  createTeacher(
+    username: string,
+    password: string,
+    name: string,
+    gender: string,
+    phone: string
+  ) {
+    const url = this.buildurl('/teacher');
+    const body = {
+      username,
+      password,
+      name,
+      gender,
+      phone,
+    };
+    return this.post(url, body);
+  }
+
+  updateTeacher(id: number, name: string, gender: string, phone: string) {
+    const url = this.buildurl('/teacher/' + id);
+    const body = { name, phone, gender };
+    return this.put(url, body);
+  }
 }

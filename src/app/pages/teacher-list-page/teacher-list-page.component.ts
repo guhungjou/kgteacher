@@ -25,9 +25,7 @@ export class TeacherListPageComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  self: any = {};
   ngOnInit(): void {
-    this.getSelf();
     this.route.queryParams.subscribe(() => {
       this.loadRouter();
       this.findTeachers();
@@ -55,13 +53,6 @@ export class TeacherListPageComponent implements OnInit {
     this.pageSize = parseIntQuery(this.route, 'page_size', 10);
   }
 
-  async getSelf() {
-    try {
-      const r = await this.api.getSelf();
-      this.self = r.data;
-    } catch (error) {}
-  }
-
   onPageChange() {
     this.mergeRouter();
   }
@@ -87,5 +78,15 @@ export class TeacherListPageComponent implements OnInit {
     }
   }
 
-  new() {}
+  isNewTeacherModalVisible = false;
+  new() {
+    this.isNewTeacherModalVisible = true;
+  }
+
+  isUpdateTeacherModalVisible = false;
+  updateTeacherData: any = {};
+  showUpdateTeacherModal(data: any) {
+    this.isUpdateTeacherModalVisible = true;
+    this.updateTeacherData = Object.assign({}, data);
+  }
 }

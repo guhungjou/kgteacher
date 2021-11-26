@@ -11,7 +11,7 @@
       (search)="search()"
     ></app-search-button>
 
-    <div style="float: right" *ngIf="self.role === 'manager'">
+    <div style="float: right">
       <button nz-button (click)="new()">新建</button>
     </div>
   </div>
@@ -53,11 +53,7 @@
             <app-datetime-label [text]="data.created_at"></app-datetime-label>
           </td>
           <td>
-            <a
-              nz-dropdown
-              [nzDropdownMenu]="menu"
-              *ngIf="self.role === 'manager'"
-            >
+            <a nz-dropdown [nzDropdownMenu]="menu">
               <i nz-icon nzType="menu"></i>
             </a>
             <nz-dropdown-menu #menu="nzDropdownMenu">

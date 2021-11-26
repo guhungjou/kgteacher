@@ -68,6 +68,8 @@ import { TeacherListPageComponent } from './pages/teacher-list-page/teacher-list
 import { TeacherRoleLabelComponent } from './components/teacher-role-label/teacher-role-label.component';
 import { GenderComponent } from './components/gender/gender.component';
 import { ClassSelectComponent } from './components/class-select/class-select.component';
+import { NewTeacherModalComponent } from './components/new-teacher-modal/new-teacher-modal.component';
+import { UpdateTeacherModalComponent } from './components/update-teacher-modal/update-teacher-modal.component';
 
 registerLocaleData(zh);
 
@@ -91,6 +93,8 @@ registerLocaleData(zh);
     TeacherRoleLabelComponent,
     GenderComponent,
     ClassSelectComponent,
+    NewTeacherModalComponent,
+    UpdateTeacherModalComponent,
   ],
   imports: [
     BrowserModule,

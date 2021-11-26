@@ -17,8 +17,6 @@ export class ClassListPageComponent implements OnInit {
   classes: any[] = [];
   loading = false;
 
-  self: any = {};
-
   constructor(
     private api: ApiService,
     private message: NzMessageService,
@@ -27,7 +25,6 @@ export class ClassListPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getSelf();
     this.route.queryParams.subscribe(() => {
       this.loadRouter();
       this.findClasses();
@@ -55,13 +52,6 @@ export class ClassListPageComponent implements OnInit {
     this.query = parseRouterQuery(this.route, 'query');
     this.page = parseIntQuery(this.route, 'page', 1);
     this.pageSize = parseIntQuery(this.route, 'page_size', 10);
-  }
-
-  async getSelf() {
-    try {
-      const r = await this.api.getSelf();
-      this.self = r.data;
-    } catch (error) {}
   }
 
   async findClasses() {
