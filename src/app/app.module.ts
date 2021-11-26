@@ -64,6 +64,10 @@ import { InputComponent } from './components/input/input.component';
 import { DatetimeLabelComponent } from './components/datetime-label/datetime-label.component';
 import { NewClassModalComponent } from './components/new-class-modal/new-class-modal.component';
 import { UpdateClassModalComponent } from './components/update-class-modal/update-class-modal.component';
+import { TeacherListPageComponent } from './pages/teacher-list-page/teacher-list-page.component';
+import { TeacherRoleLabelComponent } from './components/teacher-role-label/teacher-role-label.component';
+import { GenderComponent } from './components/gender/gender.component';
+import { ClassSelectComponent } from './components/class-select/class-select.component';
 
 registerLocaleData(zh);
 
@@ -83,6 +87,10 @@ registerLocaleData(zh);
     DatetimeLabelComponent,
     NewClassModalComponent,
     UpdateClassModalComponent,
+    TeacherListPageComponent,
+    TeacherRoleLabelComponent,
+    GenderComponent,
+    ClassSelectComponent,
   ],
   imports: [
     BrowserModule,

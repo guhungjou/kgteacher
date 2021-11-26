@@ -4,6 +4,7 @@ import { ClassListPageComponent } from './pages/class-list-page/class-list-page.
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
+import { TeacherListPageComponent } from './pages/teacher-list-page/teacher-list-page.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path: 'classes',
         component: ClassListPageComponent,
+      },
+      {
+        path: 'teachers',
+        component: TeacherListPageComponent,
       },
     ],
   },

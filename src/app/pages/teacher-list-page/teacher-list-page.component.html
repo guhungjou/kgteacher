@@ -1,10 +1,14 @@
 <nz-breadcrumb>
   <nz-breadcrumb-item>幼儿园</nz-breadcrumb-item>
-  <nz-breadcrumb-item>班级</nz-breadcrumb-item>
+  <nz-breadcrumb-item>老师</nz-breadcrumb-item>
 </nz-breadcrumb>
 <div class="content">
   <div class="actionbar">
     <app-input label="关键字" [(value)]="query" (enter)="search()"></app-input>
+    <app-class-select
+      [(value)]="queryClassID"
+      style="margin-left: 5px"
+    ></app-class-select>
     <app-search-button
       style="margin-left: 10px"
       [loading]="loading"
@@ -29,15 +33,17 @@
       [nzLoading]="loading"
       (nzPageIndexChange)="onPageChange()"
       (nzPageSizeChange)="onPageChange()"
-      [nzData]="classes"
+      [nzData]="teachers"
     >
       <thead>
         <tr>
           <th>ID</th>
-          <th>班级名</th>
-          <th>备注信息</th>
-          <th>学生数量</th>
-          <th>老师数量</th>
+          <th>姓名</th>
+          <th>性别</th>
+          <th>联系方式</th>
+          <th>角色</th>
+          <th>班级</th>
+          <th>用户名</th>
           <th>创建时间</th>
           <th>操作</th>
         </tr>
@@ -46,9 +52,15 @@
         <tr *ngFor="let data of basicTable.data">
           <td>{{ data.id }}</td>
           <td>{{ data.name }}</td>
-          <td>{{ data.remark }}</td>
-          <td>{{ data.number_of_student | number }}</td>
-          <td>{{ data.number_of_teacher | number }}</td>
+          <td>
+            <app-gender [gender]="data.gender"></app-gender>
+          </td>
+          <td>{{ data.phone }}</td>
+          <td>
+            <app-teacher-role-label [role]="data.role"></app-teacher-role-label>
+          </td>
+          <td>{{ data.class?.name }}</td>
+          <td>{{ data.username }}</td>
           <td>
             <app-datetime-label [text]="data.created_at"></app-datetime-label>
           </td>
@@ -62,7 +74,7 @@
             </a>
             <nz-dropdown-menu #menu="nzDropdownMenu">
               <ul nz-menu nzSelectable>
-                <li nz-menu-item (click)="showUpdateClassModal(data)">编辑</li>
+                <li nz-menu-item>编辑</li>
               </ul>
             </nz-dropdown-menu>
           </td>
@@ -74,13 +86,3 @@
     </ng-template>
   </div>
 </div>
-
-<app-new-class-modal
-  [(isVisible)]="isNewClassModalVisible"
-  (update)="search()"
-></app-new-class-modal>
-<app-update-class-modal
-  [(isVisible)]="isUpdateClassModalVisible"
-  [data]="updateClassData"
-  (update)="findClasses()"
-></app-update-class-modal>

@@ -117,4 +117,15 @@ export class ApiService {
     const body = { name, remark };
     return this.put(url, body);
   }
+
+  findTeachers(query: string, classID: number, page: number, pageSize: number) {
+    const q = {
+      query,
+      class_id: classID,
+      page,
+      page_size: pageSize,
+    };
+    const url = this.buildurl('/teachers', q);
+    return this.get(url);
+  }
 }
