@@ -6,45 +6,37 @@ import { ApiService } from 'src/app/services/api.service';
 import { mergeRouter, parseIntQuery, parseStringQuery } from 'src/app/x/router';
 
 @Component({
-  selector: 'app-teacher-list-page',
-  templateUrl: './teacher-list-page.component.html',
-  styleUrls: ['./teacher-list-page.component.scss'],
+  selector: 'app-student-list-page',
+  templateUrl: './student-list-page.component.html',
+  styleUrls: ['./student-list-page.component.scss']
 })
-export class TeacherListPageComponent implements OnInit {
+export class StudentListPageComponent implements OnInit {
+
   query = '';
   queryClassID = 0;
+  queryGender = '';
   loading = false;
   page = 1;
   pageSize = 10;
   total = 0;
-  teachers: any[] = [];
-
-  constructor(
-    private api: ApiService,
-    private message: NzMessageService,
-    private router: Router,
-    private route: ActivatedRoute,
-    private title: Title,
-  ) {
-    this.title.setTitle('幼儿园 - 老师');
+  students: any[] = [];
+  constructor(private title: Title, private api: ApiService, private message: NzMessageService,
+    private route: ActivatedRoute, private router: Router) {
+    this.title.setTitle('幼儿园 - 学生');
   }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(() => {
       this.loadRouter();
-      this.findTeachers();
+      this.findStudents();
     });
-  }
-
-  search() {
-    this.page = 1;
-    this.mergeRouter();
   }
 
   mergeRouter() {
     mergeRouter(this.router, this.route, {
       query: this.query,
       class_id: this.queryClassID,
+      gender: this.queryGender,
       page: this.page,
       page_size: this.pageSize,
     });
@@ -55,26 +47,27 @@ export class TeacherListPageComponent implements OnInit {
     this.queryClassID = parseIntQuery(this.route, 'class_id', 0);
     this.page = parseIntQuery(this.route, 'page', 1);
     this.pageSize = parseIntQuery(this.route, 'page_size', 10);
+    this.queryGender = parseStringQuery(this.route, 'gender', '');
+  }
+
+  search() {
+    this.page = 1;
+    this.mergeRouter();
   }
 
   onPageChange() {
     this.mergeRouter();
   }
 
-  async findTeachers() {
+  async findStudents() {
     try {
       this.loading = true;
-      const r = await this.api.findTeachers(
-        this.query,
-        this.queryClassID,
-        this.page,
-        this.pageSize
-      );
+      const r = await this.api.findStudents(this.query, this.queryClassID, this.queryGender, this.page, this.pageSize);
       const data = r.data;
       this.page = data.page;
       this.pageSize = data.page_size;
       this.total = data.total;
-      this.teachers = data.list;
+      this.students = data.list;
     } catch (error) {
       this.message.error('网络错误');
     } finally {
@@ -82,15 +75,16 @@ export class TeacherListPageComponent implements OnInit {
     }
   }
 
-  isNewTeacherModalVisible = false;
+  isNewStudentModalVisible = false;
   new() {
-    this.isNewTeacherModalVisible = true;
+    this.isNewStudentModalVisible = true;
   }
 
-  isUpdateTeacherModalVisible = false;
-  updateTeacherData: any = {};
-  showUpdateTeacherModal(data: any) {
-    this.isUpdateTeacherModalVisible = true;
-    this.updateTeacherData = Object.assign({}, data);
+  isUpdateStudentModalVisible = false;
+  updateStudentData: any = {};
+  showUpdateStudentModal(data: any) {
+    this.isUpdateStudentModalVisible = true;
+    this.updateStudentData = Object.assign({}, data);
   }
+
 }

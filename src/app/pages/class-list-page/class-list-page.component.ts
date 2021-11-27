@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ApiService } from 'src/app/services/api.service';
@@ -21,8 +22,11 @@ export class ClassListPageComponent implements OnInit {
     private api: ApiService,
     private message: NzMessageService,
     private route: ActivatedRoute,
-    private router: Router
-  ) {}
+    private router: Router,
+    private title: Title,
+  ) {
+    this.title.setTitle('幼儿园 - 班级');
+  }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(() => {

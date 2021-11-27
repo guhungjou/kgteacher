@@ -1,0 +1,11 @@
+<nz-input-group nzAddOnBefore="性别">
+    <nz-select
+        style="min-width: 112px;"
+        [(ngModel)]="value"
+        (ngModelChange)="onChange()"
+        nzAllowClear
+      nzPlaceHolder="请选择">
+      <nz-option nzValue="male" nzLabel="男"></nz-option>
+      <nz-option nzValue="female" nzLabel="女"></nz-option>
+    </nz-select>
+  </nz-input-group>

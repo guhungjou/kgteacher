@@ -1,0 +1,67 @@
+<nz-modal
+  nzTitle="新建学生"
+  [(nzVisible)]="isVisible"
+  (nzOnCancel)="close()"
+  (nzOnOk)="onOk()"
+  [nzOkLoading]="loading"
+  [nzCancelLoading]="loading"
+  [nzMaskClosable]="false"
+>
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="formGroup">
+      <nz-form-item style="margin-bottom: 12px">
+        <nz-form-control nzErrorTip="请输入学生姓名">
+          <nz-input-group nzAddOnBefore="姓 名">
+            <input
+              type="text"
+              nz-input
+              formControlName="name"
+              placeholder="学生姓名"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item style="margin-bottom: 12px">
+        <nz-form-control>
+          <nz-input-group nzAddOnBefore="备 注">
+            <input
+              type="text"
+              nz-input
+              formControlName="remark"
+              placeholder=""
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item style="margin-bottom: 12px">
+        <nz-form-control nzErrorTip="请选择学生性别">
+          <nz-input-group nzAddOnBefore="性 别">
+            <nz-select
+              id="gender"
+              formControlName="gender"
+              nzPlaceHolder="性别"
+            >
+              <nz-option nzValue="male" nzLabel="男"></nz-option>
+              <nz-option nzValue="female" nzLabel="女"></nz-option>
+            </nz-select>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item style="margin-bottom: 12px">
+        <nz-form-control>
+          <nz-input-group nzAddOnBefore="设 备">
+            <input
+              type="text"
+              nz-input
+              formControlName="device"
+              placeholder="手环的MAC地址"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item style="margin-bottom: 12px">
+        <app-class-select [(value)]="classID"></app-class-select>
+      </nz-form-item>
+    </form>
+  </ng-container>
+</nz-modal>

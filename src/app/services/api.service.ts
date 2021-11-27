@@ -159,4 +159,22 @@ export class ApiService {
     const url = this.buildurl('/class/' + id);
     return this.fget(url);
   }
+
+  findStudents(query: string, classID: number, gender: string, page: number, pageSize: number) {
+    const q = { query, class_id: classID, gender, page, page_size: pageSize };
+    const url = this.buildurl('/students', q);
+    return this.get(url);
+  }
+
+  createStudent(name: string, gender: string, remark: string, device: string, classID: number) {
+    const url = this.buildurl('/student');
+    const body = { name, gender, remark, device, class_id: classID };
+    return this.post(url, body);
+  }
+
+  updateStudent(id: number, name: string, gender: string, remark: string, device: string, classID: number) {
+    const url = this.buildurl('/student/' + id);
+    const body = { name, gender, remark, device, class_id: classID };
+    return this.put(url, body);
+  }
 }
