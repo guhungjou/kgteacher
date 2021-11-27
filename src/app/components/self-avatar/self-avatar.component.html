@@ -8,10 +8,24 @@
 
 <nz-dropdown-menu #menu="nzDropdownMenu">
   <ul nz-menu nzSelectable>
-    <li nz-menu-item (click)="showUpdateSelfModal()"><i nz-icon nzType="user" nzTheme="outline" style="margin-right: 5px;"></i> 个人信息</li>
-    <li nz-menu-item (click)="showUpdateSelfPasswordModal()"><i nz-icon nzType="lock" nzTheme="outline" style="margin-right: 5px;"></i> 修改密码</li>
+    <li nz-menu-item (click)="showUpdateSelfModal()">
+      <i nz-icon nzType="user" nzTheme="outline" style="margin-right: 5px"></i>
+      个人信息
+    </li>
+    <li nz-menu-item (click)="showUpdateSelfPasswordModal()">
+      <i nz-icon nzType="lock" nzTheme="outline" style="margin-right: 5px"></i>
+      修改密码
+    </li>
     <li nz-menu-divider></li>
-    <li nz-menu-item nzDanger (click)="logout()"><i nz-icon nzType="logout" nzTheme="outline" style="margin-right: 5px;"></i> 注销</li>
+    <li nz-menu-item nzDanger (click)="logout()">
+      <i
+        nz-icon
+        nzType="logout"
+        nzTheme="outline"
+        style="margin-right: 5px"
+      ></i>
+      注销
+    </li>
   </ul>
 </nz-dropdown-menu>
 

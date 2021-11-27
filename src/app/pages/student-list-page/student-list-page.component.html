@@ -1,87 +1,97 @@
 <nz-breadcrumb>
-    <nz-breadcrumb-item>幼儿园</nz-breadcrumb-item>
-    <nz-breadcrumb-item>学生</nz-breadcrumb-item>
-  </nz-breadcrumb>
-  <div class="content">
-    <div class="actionbar">
-      <app-input label="关键字" [(value)]="query" (enter)="search()"></app-input>
-      <app-class-select
+  <nz-breadcrumb-item>幼儿园</nz-breadcrumb-item>
+  <nz-breadcrumb-item>学生</nz-breadcrumb-item>
+</nz-breadcrumb>
+<div class="content">
+  <div class="actionbar">
+    <app-input label="关键字" [(value)]="query" (enter)="search()"></app-input>
+    <app-self-class-select
       [(value)]="queryClassID"
       style="margin-left: 5px"
-    ></app-class-select>
-    <app-gender-select [(value)]="queryGender" style="margin-left: 5px;"></app-gender-select>
-      <app-search-button
-        style="margin-left: 10px"
-        [loading]="loading"
-        (search)="search()"
-      ></app-search-button>
-  
-      <div style="float: right">
-        <button nz-button (click)="new()">新建</button>
-      </div>
-    </div>
+    ></app-self-class-select>
+    <app-gender-select
+      [(value)]="queryGender"
+      style="margin-left: 5px"
+    ></app-gender-select>
+    <app-search-button
+      style="margin-left: 10px"
+      [loading]="loading"
+      (search)="search()"
+    ></app-search-button>
 
-    <div class="table">
-        <nz-table
-          #basicTable
-          nzSize="middle"
-          nzShowPagination
-          nzShowSizeChanger
-          [nzFrontPagination]="false"
-          [nzShowTotal]="totalTemplate"
-          [(nzPageIndex)]="page"
-          [(nzPageSize)]="pageSize"
-          [nzTotal]="total"
-          [nzLoading]="loading"
-          (nzPageIndexChange)="onPageChange()"
-          (nzPageSizeChange)="onPageChange()"
-          [nzData]="students"
-        >
-          <thead>
-            <tr>
-              <th>序号</th>
-              <th>姓名</th>
-              <th>性别</th>
-              <th>班级</th>
-              <th>设备</th>
-              <th>备注</th>
-              <th>创建时间</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let data of basicTable.data;let i = index">
-              <td>{{ i + 1 + (page-1)*pageSize }}</td>
-              <td>{{ data.name }}</td>
-              <td>
-                <app-gender [gender]="data.gender"></app-gender>
-              </td>
-              <td>{{ data.class?.name }}</td>
-              <td>{{data.device}}</td>
-              <td>{{data.remark}}</td>
-              <td>
-                <app-datetime-label [text]="data.created_at"></app-datetime-label>
-              </td>
-              <td>
-                <a nz-dropdown [nzDropdownMenu]="menu">
-                  <i nz-icon nzType="menu"></i>
-                </a>
-                <nz-dropdown-menu #menu="nzDropdownMenu">
-                  <ul nz-menu nzSelectable>
-                    <li nz-menu-item (click)="showUpdateStudentModal(data)">
-                      编辑
-                    </li>
-                  </ul>
-                </nz-dropdown-menu>
-              </td>
-            </tr>
-          </tbody>
-        </nz-table>
-        <ng-template #totalTemplate let-range="range" let-total>
-          总计：{{ total }}
-        </ng-template>
-      </div>
+    <div style="float: right">
+      <button nz-button (click)="new()">新建</button>
+    </div>
   </div>
 
-<app-new-student-modal [(isVisible)]="isNewStudentModalVisible" (update)="search()"></app-new-student-modal>
-<app-update-student-modal [(isVisible)]="isUpdateStudentModalVisible" [data]="updateStudentData" (update)="findStudents()"></app-update-student-modal>
+  <div class="table">
+    <nz-table
+      #basicTable
+      nzSize="middle"
+      nzShowPagination
+      nzShowSizeChanger
+      [nzFrontPagination]="false"
+      [nzShowTotal]="totalTemplate"
+      [(nzPageIndex)]="page"
+      [(nzPageSize)]="pageSize"
+      [nzTotal]="total"
+      [nzLoading]="loading"
+      (nzPageIndexChange)="onPageChange()"
+      (nzPageSizeChange)="onPageChange()"
+      [nzData]="students"
+    >
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>姓名</th>
+          <th>性别</th>
+          <th>班级</th>
+          <th>设备</th>
+          <th>备注</th>
+          <th>创建时间</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data; let i = index">
+          <td>{{ i + 1 + (page - 1) * pageSize }}</td>
+          <td>{{ data.name }}</td>
+          <td>
+            <app-gender [gender]="data.gender"></app-gender>
+          </td>
+          <td>{{ data.class?.name }}</td>
+          <td>{{ data.device }}</td>
+          <td>{{ data.remark }}</td>
+          <td>
+            <app-datetime-label [text]="data.created_at"></app-datetime-label>
+          </td>
+          <td>
+            <a nz-dropdown [nzDropdownMenu]="menu">
+              <i nz-icon nzType="menu"></i>
+            </a>
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+              <ul nz-menu nzSelectable>
+                <li nz-menu-item (click)="showUpdateStudentModal(data)">
+                  编辑
+                </li>
+              </ul>
+            </nz-dropdown-menu>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+    <ng-template #totalTemplate let-range="range" let-total>
+      总计：{{ total }}
+    </ng-template>
+  </div>
+</div>
+
+<app-new-student-modal
+  [(isVisible)]="isNewStudentModalVisible"
+  (update)="search()"
+></app-new-student-modal>
+<app-update-student-modal
+  [(isVisible)]="isUpdateStudentModalVisible"
+  [data]="updateStudentData"
+  (update)="findStudents()"
+></app-update-student-modal>

@@ -25,7 +25,7 @@ export class NewTeacherModalComponent implements OnInit {
     private api: ApiService,
     private message: NzMessageService,
     private formBuilder: FormBuilder
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
@@ -79,7 +79,7 @@ export class NewTeacherModalComponent implements OnInit {
     name: string,
     phone: string,
     gender: string,
-    classID: number,
+    classID: number
   ) {
     try {
       this.loading = true;
@@ -89,7 +89,7 @@ export class NewTeacherModalComponent implements OnInit {
         name,
         gender,
         phone,
-        classID,
+        classID
       );
       if (r.status === 20004) {
         this.message.warning('用户名已存在，请重新输入');

@@ -4,10 +4,10 @@
     <ul nz-menu nzTheme="dark" nzMode="inline">
       <li nz-submenu nzTitle="幼儿园" nzIcon="home">
         <ul>
-          <li nz-menu-item nzMatchRouter>
+          <li nz-menu-item nzMatchRouter *ngIf="self.role === 'manager'">
             <a routerLink="/classes">班级</a>
           </li>
-          <li nz-menu-item nzMatchRouter>
+          <li nz-menu-item nzMatchRouter *ngIf="self.role === 'manager'">
             <a routerLink="/teachers">老师</a>
           </li>
           <li nz-menu-item nzMatchRouter>

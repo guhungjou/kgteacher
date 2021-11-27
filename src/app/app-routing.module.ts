@@ -28,10 +28,11 @@ const routes: Routes = [
       {
         path: 'teachers',
         component: TeacherListPageComponent,
-      }, {
+      },
+      {
         path: 'students',
         component: StudentListPageComponent,
-      }
+      },
     ],
   },
 ];
@@ -40,4 +41,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

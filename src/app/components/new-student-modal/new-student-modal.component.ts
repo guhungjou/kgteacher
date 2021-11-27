@@ -6,10 +6,9 @@ import { ApiService } from 'src/app/services/api.service';
 @Component({
   selector: 'app-new-student-modal',
   templateUrl: './new-student-modal.component.html',
-  styleUrls: ['./new-student-modal.component.scss']
+  styleUrls: ['./new-student-modal.component.scss'],
 })
 export class NewStudentModalComponent implements OnInit {
-
   @Input() isVisible = false;
   @Output() isVisibleChange = new EventEmitter<boolean>();
   @Output() update = new EventEmitter<any>();
@@ -17,9 +16,14 @@ export class NewStudentModalComponent implements OnInit {
 
   formGroup!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private api: ApiService, private message: NzMessageService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private api: ApiService,
+    private message: NzMessageService
+  ) {}
 
   ngOnInit(): void {
+    this.getSelf();
     this.formGroup = this.formBuilder.group({
       name: [null, [Validators.required]],
       remark: [null, []],
@@ -29,6 +33,16 @@ export class NewStudentModalComponent implements OnInit {
   }
 
   classID = 0;
+
+  async getSelf() {
+    try {
+      const r = await this.api.getSelf();
+      const self = r.data;
+      if (self?.class_id) {
+        this.classID = self?.class_id;
+      }
+    } catch (error) {}
+  }
 
   close() {
     this.isVisible = false;
@@ -46,6 +60,11 @@ export class NewStudentModalComponent implements OnInit {
       }
     }
 
+    if (!this.classID) {
+      this.message.warning('请选择班级');
+      return;
+    }
+
     const value = this.formGroup.value;
     const name = value.name;
     const gender = value.gender;
@@ -54,10 +73,22 @@ export class NewStudentModalComponent implements OnInit {
     this.createStudent(name, gender, remark, device, this.classID);
   }
 
-  async createStudent(name: string, gender: string, remark: string, device: string, classID: number) {
+  async createStudent(
+    name: string,
+    gender: string,
+    remark: string,
+    device: string,
+    classID: number
+  ) {
     try {
       this.loading = true;
-      const r = await this.api.createStudent(name, gender, remark, device, classID);
+      const r = await this.api.createStudent(
+        name,
+        gender,
+        remark,
+        device,
+        classID
+      );
       if (r.status === 21001) {
         this.message.warning('设备已使用');
       } else if (r.status !== 0) {
@@ -74,5 +105,4 @@ export class NewStudentModalComponent implements OnInit {
       this.loading = false;
     }
   }
-
 }

@@ -23,7 +23,7 @@ export class ClassListPageComponent implements OnInit {
     private message: NzMessageService,
     private route: ActivatedRoute,
     private router: Router,
-    private title: Title,
+    private title: Title
   ) {
     this.title.setTitle('幼儿园 - 班级');
   }

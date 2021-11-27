@@ -8,10 +8,9 @@ import { mergeRouter, parseIntQuery, parseStringQuery } from 'src/app/x/router';
 @Component({
   selector: 'app-student-list-page',
   templateUrl: './student-list-page.component.html',
-  styleUrls: ['./student-list-page.component.scss']
+  styleUrls: ['./student-list-page.component.scss'],
 })
 export class StudentListPageComponent implements OnInit {
-
   query = '';
   queryClassID = 0;
   queryGender = '';
@@ -20,8 +19,13 @@ export class StudentListPageComponent implements OnInit {
   pageSize = 10;
   total = 0;
   students: any[] = [];
-  constructor(private title: Title, private api: ApiService, private message: NzMessageService,
-    private route: ActivatedRoute, private router: Router) {
+  constructor(
+    private title: Title,
+    private api: ApiService,
+    private message: NzMessageService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     this.title.setTitle('幼儿园 - 学生');
   }
 
@@ -62,7 +66,13 @@ export class StudentListPageComponent implements OnInit {
   async findStudents() {
     try {
       this.loading = true;
-      const r = await this.api.findStudents(this.query, this.queryClassID, this.queryGender, this.page, this.pageSize);
+      const r = await this.api.findStudents(
+        this.query,
+        this.queryClassID,
+        this.queryGender,
+        this.page,
+        this.pageSize
+      );
       const data = r.data;
       this.page = data.page;
       this.pageSize = data.page_size;
@@ -86,5 +96,4 @@ export class StudentListPageComponent implements OnInit {
     this.isUpdateStudentModalVisible = true;
     this.updateStudentData = Object.assign({}, data);
   }
-
 }

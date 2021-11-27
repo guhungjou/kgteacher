@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GenderSelectComponent } from './gender-select.component';
+import { SelfClassSelectComponent } from './self-class-select.component';
 
-describe('GenderSelectComponent', () => {
-  let component: GenderSelectComponent;
-  let fixture: ComponentFixture<GenderSelectComponent>;
+describe('SelfClassSelectComponent', () => {
+  let component: SelfClassSelectComponent;
+  let fixture: ComponentFixture<SelfClassSelectComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [GenderSelectComponent],
+      declarations: [SelfClassSelectComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GenderSelectComponent);
+    fixture = TestBed.createComponent(SelfClassSelectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

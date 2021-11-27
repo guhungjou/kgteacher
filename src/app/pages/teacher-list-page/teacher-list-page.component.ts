@@ -24,7 +24,7 @@ export class TeacherListPageComponent implements OnInit {
     private message: NzMessageService,
     private router: Router,
     private route: ActivatedRoute,
-    private title: Title,
+    private title: Title
   ) {
     this.title.setTitle('幼儿园 - 老师');
   }

@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   buildurl(path: string, queryMap: any = null) {
     let query = '';
@@ -106,6 +106,12 @@ export class ApiService {
     return this.get(url);
   }
 
+  findSelfClasses(query: string, page: number, pageSize: number) {
+    const q = { query, page, page_size: pageSize };
+    const url = this.buildurl('/self/classes', q);
+    return this.get(url);
+  }
+
   createClass(name: string, remark: string) {
     const url = this.buildurl('/class');
     const body = { name, remark };
@@ -135,7 +141,7 @@ export class ApiService {
     name: string,
     gender: string,
     phone: string,
-    classID: number,
+    classID: number
   ) {
     const url = this.buildurl('/teacher');
     const body = {
@@ -149,7 +155,13 @@ export class ApiService {
     return this.post(url, body);
   }
 
-  updateTeacher(id: number, name: string, gender: string, phone: string, classID: number) {
+  updateTeacher(
+    id: number,
+    name: string,
+    gender: string,
+    phone: string,
+    classID: number
+  ) {
     const url = this.buildurl('/teacher/' + id);
     const body = { name, phone, gender, class_id: classID };
     return this.put(url, body);
@@ -160,19 +172,38 @@ export class ApiService {
     return this.fget(url);
   }
 
-  findStudents(query: string, classID: number, gender: string, page: number, pageSize: number) {
+  findStudents(
+    query: string,
+    classID: number,
+    gender: string,
+    page: number,
+    pageSize: number
+  ) {
     const q = { query, class_id: classID, gender, page, page_size: pageSize };
     const url = this.buildurl('/students', q);
     return this.get(url);
   }
 
-  createStudent(name: string, gender: string, remark: string, device: string, classID: number) {
+  createStudent(
+    name: string,
+    gender: string,
+    remark: string,
+    device: string,
+    classID: number
+  ) {
     const url = this.buildurl('/student');
     const body = { name, gender, remark, device, class_id: classID };
     return this.post(url, body);
   }
 
-  updateStudent(id: number, name: string, gender: string, remark: string, device: string, classID: number) {
+  updateStudent(
+    id: number,
+    name: string,
+    gender: string,
+    remark: string,
+    device: string,
+    classID: number
+  ) {
     const url = this.buildurl('/student/' + id);
     const body = { name, gender, remark, device, class_id: classID };
     return this.put(url, body);

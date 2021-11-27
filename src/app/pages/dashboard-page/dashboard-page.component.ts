@@ -7,9 +7,8 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./dashboard-page.component.scss'],
 })
 export class DashboardPageComponent implements OnInit {
-
   self: any = {};
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService) {}
 
   ngOnInit(): void {
     this.getSelf();
@@ -19,8 +18,6 @@ export class DashboardPageComponent implements OnInit {
     try {
       const r = await this.api.getSelf();
       this.self = r.data;
-    } catch (error) {
-
-    }
+    } catch (error) {}
   }
 }

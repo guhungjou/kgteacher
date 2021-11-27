@@ -10,11 +10,11 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
-  selector: 'app-class-select',
-  templateUrl: './class-select.component.html',
-  styleUrls: ['./class-select.component.scss'],
+  selector: 'app-self-class-select',
+  templateUrl: './self-class-select.component.html',
+  styleUrls: ['./self-class-select.component.scss'],
 })
-export class ClassSelectComponent implements OnInit, OnChanges {
+export class SelfClassSelectComponent implements OnInit, OnChanges {
   @Input() value = 0;
   @Output() valueChange = new EventEmitter<number>();
   options: any[] = [];
@@ -50,7 +50,7 @@ export class ClassSelectComponent implements OnInit, OnChanges {
   async search(q: string) {
     try {
       this.loading = true;
-      const r = await this.api.findClasses(q || '', 1, 20);
+      const r = await this.api.findSelfClasses(q || '', 1, 20);
       this.options = r.data.list;
     } catch (error) {
       this.message.error('网络错误');

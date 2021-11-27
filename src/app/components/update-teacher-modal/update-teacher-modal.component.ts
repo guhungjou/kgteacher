@@ -29,7 +29,7 @@ export class UpdateTeacherModalComponent implements OnInit, OnChanges {
     private api: ApiService,
     private message: NzMessageService,
     private formBuilder: FormBuilder
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
@@ -75,7 +75,13 @@ export class UpdateTeacherModalComponent implements OnInit, OnChanges {
     this.updateTeacher(this.data.id, name, phone, gender, this.classID);
   }
 
-  async updateTeacher(id: number, name: string, phone: string, gender: string, classID: number) {
+  async updateTeacher(
+    id: number,
+    name: string,
+    phone: string,
+    gender: string,
+    classID: number
+  ) {
     try {
       this.loading = true;
       const r = await this.api.updateTeacher(id, name, gender, phone, classID);

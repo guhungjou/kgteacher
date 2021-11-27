@@ -1,0 +1,19 @@
+<nz-input-group nzAddOnBefore="班级">
+  <nz-select
+    nzShowSearch
+    nzServerSearch
+    nzPlaceHolder="搜索"
+    [(ngModel)]="value"
+    nzAllowClear
+    (nzOnSearch)="search($event)"
+    [nzLoading]="loading"
+    (ngModelChange)="onChange()"
+    style="min-width: 112px"
+  >
+    <nz-option
+      *ngFor="let o of options"
+      [nzLabel]="o.name"
+      [nzValue]="o.id"
+    ></nz-option>
+  </nz-select>
+</nz-input-group>

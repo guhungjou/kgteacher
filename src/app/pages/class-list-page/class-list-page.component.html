@@ -43,8 +43,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let data of basicTable.data;let i=index">
-          <td>{{ i + 1 + (page-1)*pageSize }}</td>
+        <tr *ngFor="let data of basicTable.data; let i = index">
+          <td>{{ i + 1 + (page - 1) * pageSize }}</td>
           <td>{{ data.name }}</td>
           <td>{{ data.remark }}</td>
           <td>{{ data.number_of_teacher | number }}</td>
