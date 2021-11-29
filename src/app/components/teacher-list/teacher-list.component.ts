@@ -5,10 +5,9 @@ import { ApiService } from 'src/app/services/api.service';
 @Component({
   selector: 'app-teacher-list',
   templateUrl: './teacher-list.component.html',
-  styleUrls: ['./teacher-list.component.scss']
+  styleUrls: ['./teacher-list.component.scss'],
 })
 export class TeacherListComponent implements OnInit, OnChanges {
-
   loading = false;
   query = '';
   page = 1;
@@ -16,10 +15,9 @@ export class TeacherListComponent implements OnInit, OnChanges {
   total = 0;
   teachers: any[] = [];
   @Input() classID = 0;
-  constructor(private api: ApiService, private message: NzMessageService) { }
+  constructor(private api: ApiService, private message: NzMessageService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ngOnChanges() {
     if (this.classID) {
@@ -70,5 +68,4 @@ export class TeacherListComponent implements OnInit, OnChanges {
   new() {
     this.isNewTeacherModalVisible = true;
   }
-
 }
