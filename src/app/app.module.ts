@@ -78,6 +78,8 @@ import { SelfClassSelectComponent } from './components/self-class-select/self-cl
 import { ClassModalComponent } from './components/class-modal/class-modal.component';
 import { TeacherListComponent } from './components/teacher-list/teacher-list.component';
 import { StudentListComponent } from './components/student-list/student-list.component';
+import { StudentMorningCheckListPageComponent } from './pages/student-morning-check-list-page/student-morning-check-list-page.component';
+import { DateLabelComponent } from './components/date-label/date-label.component';
 
 registerLocaleData(zh);
 
@@ -111,6 +113,8 @@ registerLocaleData(zh);
     ClassModalComponent,
     TeacherListComponent,
     StudentListComponent,
+    StudentMorningCheckListPageComponent,
+    DateLabelComponent,
   ],
   imports: [
     BrowserModule,

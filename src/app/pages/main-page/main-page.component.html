@@ -15,15 +15,13 @@
           </li>
         </ul>
       </li>
-      <li nz-submenu nzTitle="Team" nzIcon="team">
+      <li nz-submenu nzTitle="健康管理" nzIcon="heart">
         <ul>
-          <li nz-menu-item>Team 1</li>
-          <li nz-menu-item>Team 2</li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/student/morning/checks">晨检</a>
+          </li>
+          <li nz-menu-item>体检</li>
         </ul>
-      </li>
-      <li nz-menu-item>
-        <i nz-icon nzType="file"></i>
-        <span>File</span>
       </li>
     </ul>
   </nz-sider>

@@ -49,6 +49,7 @@ import {
   CloudDownloadOutline,
   ManOutline,
   WomanOutline,
+  HeartOutline,
 } from '@ant-design/icons-angular/icons';
 
 const icons = [
@@ -99,6 +100,7 @@ const icons = [
   CloudDownloadOutline,
   ManOutline,
   WomanOutline,
+  HeartOutline,
 ];
 
 @NgModule({
@@ -106,4 +108,4 @@ const icons = [
   exports: [NzIconModule],
   providers: [{ provide: NZ_ICONS, useValue: icons }],
 })
-export class IconsProviderModule {}
+export class IconsProviderModule { }
