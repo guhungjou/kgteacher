@@ -75,6 +75,9 @@ import { GenderSelectComponent } from './components/gender-select/gender-select.
 import { NewStudentModalComponent } from './components/new-student-modal/new-student-modal.component';
 import { UpdateStudentModalComponent } from './components/update-student-modal/update-student-modal.component';
 import { SelfClassSelectComponent } from './components/self-class-select/self-class-select.component';
+import { ClassModalComponent } from './components/class-modal/class-modal.component';
+import { TeacherListComponent } from './components/teacher-list/teacher-list.component';
+import { StudentListComponent } from './components/student-list/student-list.component';
 
 registerLocaleData(zh);
 
@@ -105,6 +108,9 @@ registerLocaleData(zh);
     NewStudentModalComponent,
     UpdateStudentModalComponent,
     SelfClassSelectComponent,
+    ClassModalComponent,
+    TeacherListComponent,
+    StudentListComponent,
   ],
   imports: [
     BrowserModule,

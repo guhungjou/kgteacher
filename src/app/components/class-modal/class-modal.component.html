@@ -1,0 +1,32 @@
+<nz-modal
+  [nzTitle]="'班级 - '+data.name"
+  [(nzVisible)]="isVisible"
+  (nzOnCancel)="close()"
+  [nzMaskClosable]="true"
+  [nzStyle]="{width:'90%'}"
+>
+  <ng-container *nzModalContent>
+    <nz-descriptions
+      nzTitle="班级信息"
+      [nzColumn]="{ xxl: 4, xl: 4, lg: 4, md: 4, sm: 2, xs: 1 }"
+    >
+      <nz-descriptions-item nzTitle="名称">{{
+        data.name
+      }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="备注">{{
+        data.remark
+      }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="老师数">{{data.number_of_teacher|number}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="学生数">{{data.number_of_student|number}}</nz-descriptions-item>
+    </nz-descriptions>
+    <nz-tabset nzType="card">
+        <nz-tab nzTitle="老师">
+            <app-teacher-list [classID]="data.id"></app-teacher-list>
+        </nz-tab>
+        <nz-tab nzTitle="学生">        </nz-tab>
+      </nz-tabset>
+  </ng-container>
+  <ng-container *nzModalFooter>
+    <button nz-button (click)="close()">关闭</button>
+  </ng-container>
+</nz-modal>

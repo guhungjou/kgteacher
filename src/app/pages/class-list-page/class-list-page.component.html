@@ -58,6 +58,7 @@
             </a>
             <nz-dropdown-menu #menu="nzDropdownMenu">
               <ul nz-menu nzSelectable>
+                <li nz-menu-item (click)="showClassModal(data)">详情</li>
                 <li nz-menu-item (click)="showUpdateClassModal(data)">编辑</li>
               </ul>
             </nz-dropdown-menu>
@@ -80,3 +81,4 @@
   [data]="updateClassData"
   (update)="findClasses()"
 ></app-update-class-modal>
+<app-class-modal [(isVisible)]="isClassModalVisible" [data]="classData"></app-class-modal>
