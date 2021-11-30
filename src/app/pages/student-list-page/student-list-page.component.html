@@ -71,6 +71,9 @@
             </a>
             <nz-dropdown-menu #menu="nzDropdownMenu">
               <ul nz-menu nzSelectable>
+                <li nz-menu-item (click)="showStudentModal(data)">
+                  详情
+                </li>
                 <li nz-menu-item (click)="showUpdateStudentModal(data)">
                   编辑
                 </li>
@@ -95,3 +98,4 @@
   [data]="updateStudentData"
   (update)="findStudents()"
 ></app-update-student-modal>
+<app-student-modal [(isVisible)]="isStudentModalVisible" [data]="studentData"></app-student-modal>

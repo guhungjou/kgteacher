@@ -1,0 +1,66 @@
+<nz-table
+#basicTable
+nzSize="small"
+nzShowPagination
+nzShowSizeChanger
+[nzFrontPagination]="false"
+[nzShowTotal]="totalTemplate"
+[(nzPageIndex)]="page"
+[(nzPageSize)]="pageSize"
+[nzTotal]="total"
+[nzLoading]="loading"
+(nzPageIndexChange)="onPageChange()"
+(nzPageSizeChange)="onPageChange()"
+[nzData]="checks"
+>
+<thead>
+  <tr>
+    <th>序号</th>
+    <th>日期</th>
+    <th>班级</th>
+    <th>学生</th>
+    <th>性别</th>
+    <th>体温</th>
+    <th>手</th>
+    <th>口</th>
+    <th>眼</th>
+    <th>创建时间</th>
+    <!-- <th>操作</th> -->
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let data of basicTable.data; let i = index">
+    <td>{{ i + 1 + (page - 1) * pageSize }}</td>
+    <td>
+        <app-date-label [text]="data.date"></app-date-label>
+    </td>
+    <td>{{data.student?.class?.name}}</td>
+    <td class="b">{{data.student?.name}}</td>
+    <td>
+      <app-gender [gender]="data.student?.gender"></app-gender>
+    </td>
+    <td class="b">{{data.temperature|number: '1.1-1'}}℃</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>
+      <app-datetime-label [text]="data.created_at"></app-datetime-label>
+    </td>
+    <!-- <td>
+      <a nz-dropdown [nzDropdownMenu]="menu">
+        <i nz-icon nzType="menu"></i>
+      </a>
+      <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu nzSelectable>
+          <li nz-menu-item>
+            编辑
+          </li>
+        </ul>
+      </nz-dropdown-menu>
+    </td> -->
+  </tr>
+</tbody>
+</nz-table>
+<ng-template #totalTemplate let-range="range" let-total>
+总计：{{ total }}
+</ng-template>

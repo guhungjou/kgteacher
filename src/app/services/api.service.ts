@@ -209,8 +209,8 @@ export class ApiService {
     return this.put(url, body);
   }
 
-  findStudentMorningChecks(query: string, classID: number, startTime: any, endTime: any, page: number, pageSize: number) {
-    const q: any = { query, class_id: classID, page, page_size: pageSize };
+  findStudentMorningChecks(query: string, classID: number, studentID: number, startTime: any, endTime: any, page: number, pageSize: number) {
+    const q: any = { query, class_id: classID, page, page_size: pageSize, student_id: studentID };
     if (startTime) {
       q['start_time'] = startTime;
     }

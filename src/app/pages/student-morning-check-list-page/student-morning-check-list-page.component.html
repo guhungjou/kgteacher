@@ -7,7 +7,7 @@
         <app-input label="关键字" placeholder="学生名" [(value)]="query" (enter)="search()"></app-input>
         <app-class-select [(value)]="queryClassID" style="margin-left: 5px;"></app-class-select>
 
-        <nz-range-picker [(ngModel)]="queryDate" style="margin-left: 5px;"></nz-range-picker>
+        <nz-range-picker [(ngModel)]="queryDate" [nzRanges]="ranges" style="margin-left: 5px;"></nz-range-picker>
 
         <app-search-button
         style="margin-left: 10px"
@@ -43,7 +43,7 @@
               <th>口</th>
               <th>眼</th>
               <th>创建时间</th>
-              <th>操作</th>
+              <!-- <th>操作</th> -->
             </tr>
           </thead>
           <tbody>
@@ -64,7 +64,7 @@
               <td>
                 <app-datetime-label [text]="data.created_at"></app-datetime-label>
               </td>
-              <td>
+              <!-- <td>
                 <a nz-dropdown [nzDropdownMenu]="menu">
                   <i nz-icon nzType="menu"></i>
                 </a>
@@ -75,7 +75,7 @@
                     </li>
                   </ul>
                 </nz-dropdown-menu>
-              </td>
+              </td> -->
             </tr>
           </tbody>
         </nz-table>

@@ -80,6 +80,8 @@ import { TeacherListComponent } from './components/teacher-list/teacher-list.com
 import { StudentListComponent } from './components/student-list/student-list.component';
 import { StudentMorningCheckListPageComponent } from './pages/student-morning-check-list-page/student-morning-check-list-page.component';
 import { DateLabelComponent } from './components/date-label/date-label.component';
+import { StudentModalComponent } from './components/student-modal/student-modal.component';
+import { StudentMorningCheckListComponent } from './components/student-morning-check-list/student-morning-check-list.component';
 
 registerLocaleData(zh);
 
@@ -115,6 +117,8 @@ registerLocaleData(zh);
     StudentListComponent,
     StudentMorningCheckListPageComponent,
     DateLabelComponent,
+    StudentModalComponent,
+    StudentMorningCheckListComponent,
   ],
   imports: [
     BrowserModule,
