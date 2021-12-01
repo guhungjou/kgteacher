@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   buildurl(path: string, queryMap: any = null) {
     let query = '';
@@ -209,8 +209,22 @@ export class ApiService {
     return this.put(url, body);
   }
 
-  findStudentMorningChecks(query: string, classID: number, studentID: number, startTime: any, endTime: any, page: number, pageSize: number) {
-    const q: any = { query, class_id: classID, page, page_size: pageSize, student_id: studentID };
+  findStudentMorningChecks(
+    query: string,
+    classID: number,
+    studentID: number,
+    startTime: any,
+    endTime: any,
+    page: number,
+    pageSize: number
+  ) {
+    const q: any = {
+      query,
+      class_id: classID,
+      page,
+      page_size: pageSize,
+      student_id: studentID,
+    };
     if (startTime) {
       q['start_time'] = startTime;
     }

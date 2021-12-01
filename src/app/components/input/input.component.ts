@@ -13,9 +13,9 @@ export class InputComponent implements OnInit {
 
   @Input() placeholder = '';
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   onChange() {
     this.value = this.value || '';

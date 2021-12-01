@@ -6,10 +6,9 @@ import { formatRangeDate } from 'src/app/x/datetime';
 @Component({
   selector: 'app-student-morning-check-list',
   templateUrl: './student-morning-check-list.component.html',
-  styleUrls: ['./student-morning-check-list.component.scss']
+  styleUrls: ['./student-morning-check-list.component.scss'],
 })
 export class StudentMorningCheckListComponent implements OnInit, OnChanges {
-
   page = 1;
   pageSize = 10;
   queryDate = [];
@@ -17,10 +16,9 @@ export class StudentMorningCheckListComponent implements OnInit, OnChanges {
   checks: any[] = [];
   loading = false;
   @Input() studentID = 0;
-  constructor(private api: ApiService, private message: NzMessageService) { }
+  constructor(private api: ApiService, private message: NzMessageService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ngOnChanges() {
     if (this.studentID) {
@@ -41,7 +39,15 @@ export class StudentMorningCheckListComponent implements OnInit, OnChanges {
     try {
       this.loading = true;
       const ranges = formatRangeDate(this.queryDate, false);
-      const r = await this.api.findStudentMorningChecks('', 0, this.studentID, ranges[0], ranges[1], this.page, this.pageSize)
+      const r = await this.api.findStudentMorningChecks(
+        '',
+        0,
+        this.studentID,
+        ranges[0],
+        ranges[1],
+        this.page,
+        this.pageSize
+      );
       const data = r.data;
       this.page = data.page;
       this.pageSize = data.page_size;

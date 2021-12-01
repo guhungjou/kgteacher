@@ -33,10 +33,11 @@ const routes: Routes = [
       {
         path: 'students',
         component: StudentListPageComponent,
-      }, {
+      },
+      {
         path: 'student/morning/checks',
         component: StudentMorningCheckListPageComponent,
-      }
+      },
     ],
   },
 ];
@@ -45,4 +46,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

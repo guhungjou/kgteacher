@@ -1,70 +1,82 @@
 <nz-breadcrumb>
-    <nz-breadcrumb-item>健康管理</nz-breadcrumb-item>
-    <nz-breadcrumb-item>晨检</nz-breadcrumb-item>
+  <nz-breadcrumb-item>健康管理</nz-breadcrumb-item>
+  <nz-breadcrumb-item>晨检</nz-breadcrumb-item>
 </nz-breadcrumb>
 <div class="content">
-    <div class="actionbar">
-        <app-input label="关键字" placeholder="学生名" [(value)]="query" (enter)="search()"></app-input>
-        <app-class-select [(value)]="queryClassID" style="margin-left: 5px;"></app-class-select>
+  <div class="actionbar">
+    <app-input
+      label="关键字"
+      placeholder="学生名"
+      [(value)]="query"
+      (enter)="search()"
+    ></app-input>
+    <app-class-select
+      [(value)]="queryClassID"
+      style="margin-left: 5px"
+    ></app-class-select>
 
-        <nz-range-picker [(ngModel)]="queryDate" [nzRanges]="ranges" style="margin-left: 5px;"></nz-range-picker>
+    <nz-range-picker
+      [(ngModel)]="queryDate"
+      [nzRanges]="ranges"
+      style="margin-left: 5px"
+    ></nz-range-picker>
 
-        <app-search-button
-        style="margin-left: 10px"
-        [loading]="loading"
-        (search)="search()"
-      ></app-search-button>
-    </div>
-    <div class="table">
-        <nz-table
-          #basicTable
-          nzSize="middle"
-          nzShowPagination
-          nzShowSizeChanger
-          [nzFrontPagination]="false"
-          [nzShowTotal]="totalTemplate"
-          [(nzPageIndex)]="page"
-          [(nzPageSize)]="pageSize"
-          [nzTotal]="total"
-          [nzLoading]="loading"
-          (nzPageIndexChange)="onPageChange()"
-          (nzPageSizeChange)="onPageChange()"
-          [nzData]="checks"
-        >
-          <thead>
-            <tr>
-              <th>序号</th>
-              <th>日期</th>
-              <th>班级</th>
-              <th>学生</th>
-              <th>性别</th>
-              <th>体温</th>
-              <th>手</th>
-              <th>口</th>
-              <th>眼</th>
-              <th>创建时间</th>
-              <!-- <th>操作</th> -->
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let data of basicTable.data; let i = index">
-              <td>{{ i + 1 + (page - 1) * pageSize }}</td>
-              <td>
-                  <app-date-label [text]="data.date"></app-date-label>
-              </td>
-              <td>{{data.student?.class?.name}}</td>
-              <td class="b">{{data.student?.name}}</td>
-              <td>
-                <app-gender [gender]="data.student?.gender"></app-gender>
-              </td>
-              <td class="b">{{data.temperature|number: '1.1-1'}}℃</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <app-datetime-label [text]="data.created_at"></app-datetime-label>
-              </td>
-              <!-- <td>
+    <app-search-button
+      style="margin-left: 10px"
+      [loading]="loading"
+      (search)="search()"
+    ></app-search-button>
+  </div>
+  <div class="table">
+    <nz-table
+      #basicTable
+      nzSize="middle"
+      nzShowPagination
+      nzShowSizeChanger
+      [nzFrontPagination]="false"
+      [nzShowTotal]="totalTemplate"
+      [(nzPageIndex)]="page"
+      [(nzPageSize)]="pageSize"
+      [nzTotal]="total"
+      [nzLoading]="loading"
+      (nzPageIndexChange)="onPageChange()"
+      (nzPageSizeChange)="onPageChange()"
+      [nzData]="checks"
+    >
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>日期</th>
+          <th>班级</th>
+          <th>学生</th>
+          <th>性别</th>
+          <th>体温</th>
+          <th>手</th>
+          <th>口</th>
+          <th>眼</th>
+          <th>创建时间</th>
+          <!-- <th>操作</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data; let i = index">
+          <td>{{ i + 1 + (page - 1) * pageSize }}</td>
+          <td>
+            <app-date-label [text]="data.date"></app-date-label>
+          </td>
+          <td>{{ data.student?.class?.name }}</td>
+          <td class="b">{{ data.student?.name }}</td>
+          <td>
+            <app-gender [gender]="data.student?.gender"></app-gender>
+          </td>
+          <td class="b">{{ data.temperature | number: "1.1-1" }}℃</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            <app-datetime-label [text]="data.created_at"></app-datetime-label>
+          </td>
+          <!-- <td>
                 <a nz-dropdown [nzDropdownMenu]="menu">
                   <i nz-icon nzType="menu"></i>
                 </a>
@@ -76,11 +88,11 @@
                   </ul>
                 </nz-dropdown-menu>
               </td> -->
-            </tr>
-          </tbody>
-        </nz-table>
-        <ng-template #totalTemplate let-range="range" let-total>
-          总计：{{ total }}
-        </ng-template>
-      </div>
+        </tr>
+      </tbody>
+    </nz-table>
+    <ng-template #totalTemplate let-range="range" let-total>
+      总计：{{ total }}
+    </ng-template>
+  </div>
 </div>

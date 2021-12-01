@@ -1,32 +1,38 @@
 <nz-modal
-  [nzTitle]="'学生 - '+data.name"
+  [nzTitle]="'学生 - ' + data.name"
   [(nzVisible)]="isVisible"
   (nzOnCancel)="close()"
   [nzMaskClosable]="true"
-  [nzStyle]="{width:'90%'}"
+  [nzStyle]="{ width: '90%' }"
 >
-    <ng-container *nzModalContent>
-        <nz-descriptions [nzColumn]="{ xxl: 4, xl: 4, lg: 4, md: 4, sm: 2, xs: 1 }">
-            <nz-descriptions-item nzTitle="姓名">{{data?.name}}</nz-descriptions-item>
-            <nz-descriptions-item nzTitle="性别">
-                <app-gender [gender]="data?.gender"></app-gender>
-            </nz-descriptions-item>
-            <nz-descriptions-item nzTitle="班级">{{data?.class?.name}}</nz-descriptions-item>
-            <nz-descriptions-item nzTitle="备注">{{data?.remark}}</nz-descriptions-item>
-            <nz-descriptions-item nzTitle="创建时间">
-                <app-datetime-label [text]="data.created_at"></app-datetime-label>
-            </nz-descriptions-item>
-        </nz-descriptions>
-        <nz-tabset nzType="card">
-            <nz-tab nzTitle="晨检">
-                <app-student-morning-check-list [studentID]="data.id"></app-student-morning-check-list>
-            </nz-tab>
-            <nz-tab nzTitle="体检">
-
-            </nz-tab>
-        </nz-tabset>
-    </ng-container>
-    <ng-container *nzModalFooter>
-        <button nz-button (click)="close()">关闭</button>
-    </ng-container>
+  <ng-container *nzModalContent>
+    <nz-descriptions [nzColumn]="{ xxl: 4, xl: 4, lg: 4, md: 4, sm: 2, xs: 1 }">
+      <nz-descriptions-item nzTitle="姓名">{{
+        data?.name
+      }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="性别">
+        <app-gender [gender]="data?.gender"></app-gender>
+      </nz-descriptions-item>
+      <nz-descriptions-item nzTitle="班级">{{
+        data?.class?.name
+      }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="备注">{{
+        data?.remark
+      }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="创建时间">
+        <app-datetime-label [text]="data.created_at"></app-datetime-label>
+      </nz-descriptions-item>
+    </nz-descriptions>
+    <nz-tabset nzType="card">
+      <nz-tab nzTitle="晨检">
+        <app-student-morning-check-list
+          [studentID]="data.id"
+        ></app-student-morning-check-list>
+      </nz-tab>
+      <nz-tab nzTitle="体检"> </nz-tab>
+    </nz-tabset>
+  </ng-container>
+  <ng-container *nzModalFooter>
+    <button nz-button (click)="close()">关闭</button>
+  </ng-container>
 </nz-modal>

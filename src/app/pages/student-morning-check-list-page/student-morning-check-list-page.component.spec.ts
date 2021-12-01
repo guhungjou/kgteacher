@@ -8,9 +8,8 @@ describe('StudentMorningCheckListPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StudentMorningCheckListPageComponent ]
-    })
-    .compileComponents();
+      declarations: [StudentMorningCheckListPageComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

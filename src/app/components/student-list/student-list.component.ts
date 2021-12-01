@@ -78,4 +78,11 @@ export class StudentListComponent implements OnInit, OnChanges {
     this.isUpdateStudentModalVisible = true;
     this.updateStudentData = Object.assign({}, data);
   }
+
+  isStudentModalVisible = false;
+  studentData: any = {};
+  showStudentModal(data: any) {
+    this.isStudentModalVisible = true;
+    this.studentData = Object.assign({}, data);
+  }
 }

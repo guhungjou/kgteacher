@@ -4,15 +4,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ApiService } from 'src/app/services/api.service';
 import { defaultRanges, formatRangeDate } from 'src/app/x/datetime';
-import { mergeRouter, parseDateRangesQuery, parseIntQuery, parseStringQuery } from 'src/app/x/router';
+import {
+  mergeRouter,
+  parseDateRangesQuery,
+  parseIntQuery,
+  parseStringQuery,
+} from 'src/app/x/router';
 
 @Component({
   selector: 'app-student-morning-check-list-page',
   templateUrl: './student-morning-check-list-page.component.html',
-  styleUrls: ['./student-morning-check-list-page.component.scss']
+  styleUrls: ['./student-morning-check-list-page.component.scss'],
 })
 export class StudentMorningCheckListPageComponent implements OnInit {
-
   query = '';
   queryClassID = 0;
   queryStudentID = 0;
@@ -23,10 +27,15 @@ export class StudentMorningCheckListPageComponent implements OnInit {
   checks: any[] = [];
   loading = false;
 
-  ranges = defaultRanges(false)
+  ranges = defaultRanges(false);
 
-  constructor(private api: ApiService, private message: NzMessageService,
-    private title: Title, private route: ActivatedRoute, private router: Router) {
+  constructor(
+    private api: ApiService,
+    private message: NzMessageService,
+    private title: Title,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     this.title.setTitle('健康管理 - 晨检');
   }
 
@@ -34,7 +43,7 @@ export class StudentMorningCheckListPageComponent implements OnInit {
     this.route.queryParams.subscribe(() => {
       this.loadRouter();
       this.findStudentMorningChecks();
-    })
+    });
   }
 
   mergeRouter() {
@@ -70,7 +79,15 @@ export class StudentMorningCheckListPageComponent implements OnInit {
     try {
       this.loading = true;
       const ranges = formatRangeDate(this.queryDate, false);
-      const r = await this.api.findStudentMorningChecks(this.query, this.queryClassID, this.queryStudentID, ranges[0], ranges[1], this.page, this.pageSize)
+      const r = await this.api.findStudentMorningChecks(
+        this.query,
+        this.queryClassID,
+        this.queryStudentID,
+        ranges[0],
+        ranges[1],
+        this.page,
+        this.pageSize
+      );
       const data = r.data;
       this.page = data.page;
       this.pageSize = data.page_size;
@@ -82,5 +99,4 @@ export class StudentMorningCheckListPageComponent implements OnInit {
       this.loading = false;
     }
   }
-
 }

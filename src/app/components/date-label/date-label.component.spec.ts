@@ -8,9 +8,8 @@ describe('DateLabelComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DateLabelComponent ]
-    })
-    .compileComponents();
+      declarations: [DateLabelComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
