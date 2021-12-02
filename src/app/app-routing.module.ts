@@ -5,6 +5,7 @@ import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.co
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { StudentListPageComponent } from './pages/student-list-page/student-list-page.component';
+import { StudentMedicalExaminationListPageComponent } from './pages/student-medical-examination-list-page/student-medical-examination-list-page.component';
 import { StudentMorningCheckListPageComponent } from './pages/student-morning-check-list-page/student-morning-check-list-page.component';
 import { TeacherListPageComponent } from './pages/teacher-list-page/teacher-list-page.component';
 
@@ -38,6 +39,10 @@ const routes: Routes = [
         path: 'student/morning/checks',
         component: StudentMorningCheckListPageComponent,
       },
+      {
+        path: 'student/medical/exams',
+        component: StudentMedicalExaminationListPageComponent,
+      }
     ],
   },
 ];
@@ -46,4 +51,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
