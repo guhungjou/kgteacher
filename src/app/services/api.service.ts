@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   buildurl(path: string, queryMap: any = null) {
     let query = '';
@@ -285,5 +285,30 @@ export class ApiService {
     }
     const url = this.buildurl('/student/medical/examinations', q);
     return this.get(url);
+  }
+  exportStudentMedicalExaminations(
+    query: string,
+    classID: number,
+    studentID: number,
+    startTime: any,
+    endTime: any,
+    page: number,
+    pageSize: number
+  ) {
+    const q: any = {
+      query,
+      class_id: classID,
+      page,
+      page_size: pageSize,
+      student_id: studentID,
+    };
+    if (startTime) {
+      q['start_time'] = startTime;
+    }
+    if (endTime) {
+      q['end_time'] = endTime;
+    }
+    const url = this.buildurl('/student/medical/examinations/export', q);
+    return window.open(url, '_blank');
   }
 }
