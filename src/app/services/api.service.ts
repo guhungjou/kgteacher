@@ -234,4 +234,30 @@ export class ApiService {
     const url = this.buildurl('/student/morning/checks', q);
     return this.get(url);
   }
+
+  findStudentMedicalExaminations(
+    query: string,
+    classID: number,
+    studentID: number,
+    startTime: any,
+    endTime: any,
+    page: number,
+    pageSize: number
+  ) {
+    const q: any = {
+      query,
+      class_id: classID,
+      page,
+      page_size: pageSize,
+      student_id: studentID,
+    };
+    if (startTime) {
+      q['start_time'] = startTime;
+    }
+    if (endTime) {
+      q['end_time'] = endTime;
+    }
+    const url = this.buildurl('/student/medical/examinations', q);
+    return this.get(url);
+  }
 }

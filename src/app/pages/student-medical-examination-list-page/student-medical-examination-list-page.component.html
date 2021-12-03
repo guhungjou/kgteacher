@@ -1,7 +1,107 @@
 <nz-breadcrumb>
-    <nz-breadcrumb-item>健康管理</nz-breadcrumb-item>
-    <nz-breadcrumb-item>体检</nz-breadcrumb-item>
+  <nz-breadcrumb-item>健康管理</nz-breadcrumb-item>
+  <nz-breadcrumb-item>体检</nz-breadcrumb-item>
 </nz-breadcrumb>
 <div class="content">
-    
+  <div class="actionbar">
+    <app-input
+      label="关键字"
+      placeholder="学生名"
+      [(value)]="query"
+      (enter)="search()"
+    ></app-input>
+    <app-class-select
+      [(value)]="queryClassID"
+      style="margin-left: 5px"
+    ></app-class-select>
+
+    <nz-range-picker
+      [(ngModel)]="queryDate"
+      [nzRanges]="ranges"
+      style="margin-left: 5px"
+    ></nz-range-picker>
+
+    <app-search-button
+      style="margin-left: 10px"
+      [loading]="loading"
+      (search)="search()"
+    ></app-search-button>
+  </div>
+  <div class="table">
+    <nz-table
+      #basicTable
+      nzSize="middle"
+      nzShowPagination
+      nzShowSizeChanger
+      [nzFrontPagination]="false"
+      [nzShowTotal]="totalTemplate"
+      [(nzPageIndex)]="page"
+      [(nzPageSize)]="pageSize"
+      [nzTotal]="total"
+      [nzLoading]="loading"
+      (nzPageIndexChange)="onPageChange()"
+      (nzPageSizeChange)="onPageChange()"
+      [nzData]="exams"
+    >
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>日期</th>
+          <th>班级</th>
+          <th>学生</th>
+          <th>性别</th>
+          <th>身高/体重</th>
+          <th>血红蛋白</th>
+          <th>视力(左/右)</th>
+          <th>牙齿</th>
+          <th>创建时间</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data; let i = index">
+          <td>{{ i + 1 + (page - 1) * pageSize }}</td>
+          <td>
+            <app-date-label [text]="data.date"></app-date-label>
+          </td>
+          <td>{{ data.student?.class?.name }}</td>
+          <td class="b">{{ data.student?.name }}</td>
+          <td>
+            <app-gender [gender]="data.student?.gender"></app-gender>
+          </td>
+          <td>
+            <app-height-and-weight-label
+              [height]="data.height"
+              [weight]="data.weight"
+              [updatedAt]="data.height_updated_at"
+            ></app-height-and-weight-label>
+          </td>
+          <td>
+            <app-hemoglobin-label
+              [hemoglobin]="data.hemoglobin"
+              [updatedAt]="data.hemoglobin_updated_at"
+            ></app-hemoglobin-label>
+          </td>
+          <td>
+            <app-sight-label
+              [left]="data.sight_l"
+              [right]="data.sight_r"
+              [updatedAt]="data.sight_updated_at"
+            ></app-sight-label>
+          </td>
+          <td>
+            <app-tooth-label
+              [tooth]="data.tooth"
+              [updatedAt]="data.tooth_updated_at"
+            ></app-tooth-label>
+          </td>
+          <td>
+            <app-datetime-label [text]="data.created_at"></app-datetime-label>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+    <ng-template #totalTemplate let-range="range" let-total>
+      总计：{{ total }}
+    </ng-template>
+  </div>
 </div>

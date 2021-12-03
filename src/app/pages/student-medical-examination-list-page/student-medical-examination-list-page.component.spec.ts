@@ -8,13 +8,14 @@ describe('StudentMedicalExaminationListPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StudentMedicalExaminationListPageComponent ]
-    })
-    .compileComponents();
+      declarations: [StudentMedicalExaminationListPageComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StudentMedicalExaminationListPageComponent);
+    fixture = TestBed.createComponent(
+      StudentMedicalExaminationListPageComponent
+    );
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

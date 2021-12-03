@@ -42,7 +42,7 @@ const routes: Routes = [
       {
         path: 'student/medical/exams',
         component: StudentMedicalExaminationListPageComponent,
-      }
+      },
     ],
   },
 ];
@@ -51,4 +51,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

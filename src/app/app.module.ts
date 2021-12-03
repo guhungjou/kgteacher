@@ -83,6 +83,10 @@ import { DateLabelComponent } from './components/date-label/date-label.component
 import { StudentModalComponent } from './components/student-modal/student-modal.component';
 import { StudentMorningCheckListComponent } from './components/student-morning-check-list/student-morning-check-list.component';
 import { StudentMedicalExaminationListPageComponent } from './pages/student-medical-examination-list-page/student-medical-examination-list-page.component';
+import { HeightAndWeightLabelComponent } from './components/height-and-weight-label/height-and-weight-label.component';
+import { HemoglobinLabelComponent } from './components/hemoglobin-label/hemoglobin-label.component';
+import { SightLabelComponent } from './components/sight-label/sight-label.component';
+import { ToothLabelComponent } from './components/tooth-label/tooth-label.component';
 
 registerLocaleData(zh);
 
@@ -121,6 +125,10 @@ registerLocaleData(zh);
     StudentModalComponent,
     StudentMorningCheckListComponent,
     StudentMedicalExaminationListPageComponent,
+    HeightAndWeightLabelComponent,
+    HemoglobinLabelComponent,
+    SightLabelComponent,
+    ToothLabelComponent,
   ],
   imports: [
     BrowserModule,
