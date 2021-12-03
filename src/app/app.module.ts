@@ -87,6 +87,7 @@ import { HeightAndWeightLabelComponent } from './components/height-and-weight-la
 import { HemoglobinLabelComponent } from './components/hemoglobin-label/hemoglobin-label.component';
 import { SightLabelComponent } from './components/sight-label/sight-label.component';
 import { ToothLabelComponent } from './components/tooth-label/tooth-label.component';
+import { StudentMedicalExaminationListComponent } from './components/student-medical-examination-list/student-medical-examination-list.component';
 
 registerLocaleData(zh);
 
@@ -129,6 +130,7 @@ registerLocaleData(zh);
     HemoglobinLabelComponent,
     SightLabelComponent,
     ToothLabelComponent,
+    StudentMedicalExaminationListComponent,
   ],
   imports: [
     BrowserModule,

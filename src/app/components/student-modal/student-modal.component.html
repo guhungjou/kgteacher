@@ -29,7 +29,9 @@
           [studentID]="data.id"
         ></app-student-morning-check-list>
       </nz-tab>
-      <nz-tab nzTitle="体检"> </nz-tab>
+      <nz-tab nzTitle="体检">
+        <app-student-medical-examination-list [studentID]="data.id"></app-student-medical-examination-list>
+      </nz-tab>
     </nz-tabset>
   </ng-container>
   <ng-container *nzModalFooter>
