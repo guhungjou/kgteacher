@@ -235,6 +235,32 @@ export class ApiService {
     return this.get(url);
   }
 
+  exportStudentMorningChecks(
+    query: string,
+    classID: number,
+    studentID: number,
+    startTime: any,
+    endTime: any,
+    page: number,
+    pageSize: number
+  ) {
+    const q: any = {
+      query,
+      class_id: classID,
+      page,
+      page_size: pageSize,
+      student_id: studentID,
+    };
+    if (startTime) {
+      q['start_time'] = startTime;
+    }
+    if (endTime) {
+      q['end_time'] = endTime;
+    }
+    const url = this.buildurl('/student/morning/checks/export', q);
+    return window.open(url, '_blank');
+  }
+
   findStudentMedicalExaminations(
     query: string,
     classID: number,

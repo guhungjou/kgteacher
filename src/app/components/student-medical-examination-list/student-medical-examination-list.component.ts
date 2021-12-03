@@ -6,10 +6,11 @@ import { formatRangeDate } from 'src/app/x/datetime';
 @Component({
   selector: 'app-student-medical-examination-list',
   templateUrl: './student-medical-examination-list.component.html',
-  styleUrls: ['./student-medical-examination-list.component.scss']
+  styleUrls: ['./student-medical-examination-list.component.scss'],
 })
-export class StudentMedicalExaminationListComponent implements OnInit, OnChanges {
-
+export class StudentMedicalExaminationListComponent
+  implements OnInit, OnChanges
+{
   @Input() studentID = 0;
   query = '';
   queryDate = [];
@@ -19,10 +20,9 @@ export class StudentMedicalExaminationListComponent implements OnInit, OnChanges
   exams: any[] = [];
   loading = false;
 
-  constructor(private api: ApiService, private message: NzMessageService) { }
+  constructor(private api: ApiService, private message: NzMessageService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ngOnChanges() {
     if (this.studentID) {

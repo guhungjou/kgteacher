@@ -2,7 +2,7 @@
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
     <div class="logo" (click)="clickLogo()"></div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
-      <li nz-submenu nzTitle="幼儿园" nzIcon="home">
+      <li nz-submenu nzTitle="幼儿园" nzIcon="home" nzOpen>
         <ul>
           <li nz-menu-item nzMatchRouter *ngIf="self.role === 'manager'">
             <a routerLink="/classes">班级</a>
@@ -15,7 +15,7 @@
           </li>
         </ul>
       </li>
-      <li nz-submenu nzTitle="健康管理" nzIcon="heart">
+      <li nz-submenu nzTitle="健康管理" nzIcon="heart" nzOpen>
         <ul>
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/student/morning/checks">晨检</a>
@@ -27,7 +27,7 @@
       </li>
     </ul>
   </nz-sider>
-  <nz-layout>
+  <nz-layout class="content">
     <nz-header>
       <div class="left">
         <i

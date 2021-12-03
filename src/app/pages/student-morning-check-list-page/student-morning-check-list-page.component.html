@@ -15,17 +15,27 @@
       style="margin-left: 5px"
     ></app-class-select>
 
-    <nz-range-picker
-      [(ngModel)]="queryDate"
-      [nzRanges]="ranges"
-      style="margin-left: 5px"
-    ></nz-range-picker>
+    <nz-input-group nzAddOnBefore="日期" style="margin-left: 5px">
+      <nz-range-picker
+        [(ngModel)]="queryDate"
+        [nzRanges]="ranges"
+      ></nz-range-picker>
+    </nz-input-group>
 
-    <app-search-button
-      style="margin-left: 10px"
-      [loading]="loading"
-      (search)="search()"
-    ></app-search-button>
+    <nz-button-group style="margin-left: 10px">
+      <app-search-button
+        [loading]="loading"
+        (search)="search()"
+      ></app-search-button>
+      <button
+        nz-button
+        (click)="export()"
+        nz-tooltip
+        nzTooltipTitle="一次最多导出一万条数据，如果需要，请分次导出"
+      >
+        <i nz-icon nzType="export" nzTheme="outline"></i>导出
+      </button>
+    </nz-button-group>
   </div>
   <div class="table">
     <nz-table

@@ -99,4 +99,17 @@ export class StudentMorningCheckListPageComponent implements OnInit {
       this.loading = false;
     }
   }
+
+  export() {
+    const ranges = formatRangeDate(this.queryDate, false);
+    this.api.exportStudentMorningChecks(
+      this.query,
+      this.queryClassID,
+      this.queryStudentID,
+      ranges[0],
+      ranges[1],
+      this.page,
+      this.pageSize
+    );
+  }
 }
