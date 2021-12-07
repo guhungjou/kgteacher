@@ -1,0 +1,8 @@
+<nz-upload
+  [(nzFileList)]="fileList"
+  [nzBeforeUpload]="beforeUpload"
+  [nzLimit]="1"
+  [nzAccept]="accept"
+>
+  <button nz-button><i nz-icon nzType="upload"></i>{{ label }}</button>
+</nz-upload>

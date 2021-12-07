@@ -1,0 +1,71 @@
+<nz-modal
+  nzTitle="上传班级信息"
+  [(nzVisible)]="isVisible"
+  (nzOnCancel)="close()"
+  (nzOnOk)="onLoad()"
+  [nzOkLoading]="loading"
+  [nzCancelLoading]="loading"
+  [nzMaskClosable]="false"
+  [nzOkDisabled]="!file"
+  nzOkText="下一步"
+>
+  <ng-container *nzModalContent>
+    <div style="margin-bottom: 20px">
+      <a nz-button nzType="link" (click)="downloadTemplate()">下载模板</a>
+    </div>
+    <app-file-select
+      accept=".xlsx"
+      label="文件(.xlsx)"
+      [(file)]="file"
+    ></app-file-select>
+  </ng-container>
+</nz-modal>
+
+<nz-modal
+  nzTitle="班级列表"
+  [(nzVisible)]="isClassListModalVisible"
+  (nzOnCancel)="closeClassListModal()"
+  (nzOnOk)="onOk()"
+  [nzOkLoading]="loading"
+  [nzCancelLoading]="loading"
+  [nzMaskClosable]="false"
+  [nzStyle]="{ width: '80%' }"
+>
+  <ng-container *nzModalContent>
+    <nz-table
+      #basicTable
+      [nzData]="classes"
+      nzSize="small"
+      [nzFrontPagination]="false"
+      [nzShowPagination]="false"
+    >
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>班级名</th>
+          <th>备注</th>
+          <th>是否可创建</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ data.name }}</td>
+          <td>{{ data.remark }}</td>
+          <td>
+            <nz-tag nzColor="success" *ngIf="data.status === 'OK'">可以</nz-tag>
+            <nz-tag nzColor="warning" *ngIf="data.status === 'Duplicated'"
+              >班级名重复</nz-tag
+            >
+          </td>
+          <td>
+            <a nz-button nzType="link" nzDanger (click)="removeClass(data, i)">
+              <i nz-icon nzType="delete" nzTheme="outline"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </ng-container>
+</nz-modal>

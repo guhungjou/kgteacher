@@ -88,6 +88,8 @@ import { HemoglobinLabelComponent } from './components/hemoglobin-label/hemoglob
 import { SightLabelComponent } from './components/sight-label/sight-label.component';
 import { ToothLabelComponent } from './components/tooth-label/tooth-label.component';
 import { StudentMedicalExaminationListComponent } from './components/student-medical-examination-list/student-medical-examination-list.component';
+import { LoadClassModalComponent } from './components/load-class-modal/load-class-modal.component';
+import { FileSelectComponent } from './components/file-select/file-select.component';
 
 registerLocaleData(zh);
 
@@ -131,6 +133,8 @@ registerLocaleData(zh);
     SightLabelComponent,
     ToothLabelComponent,
     StudentMedicalExaminationListComponent,
+    LoadClassModalComponent,
+    FileSelectComponent,
   ],
   imports: [
     BrowserModule,

@@ -27,7 +27,7 @@ export class UpdateClassModalComponent implements OnInit, OnChanges {
     private api: ApiService,
     private message: NzMessageService,
     private formBuilder: FormBuilder
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({

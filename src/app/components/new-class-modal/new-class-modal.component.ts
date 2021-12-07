@@ -19,7 +19,7 @@ export class NewClassModalComponent implements OnInit {
     private api: ApiService,
     private message: NzMessageService,
     private formBuilder: FormBuilder
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({

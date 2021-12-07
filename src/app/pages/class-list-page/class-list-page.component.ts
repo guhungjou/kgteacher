@@ -82,6 +82,11 @@ export class ClassListPageComponent implements OnInit {
     this.isNewClassModalVisible = true;
   }
 
+  isLoadClassModalVisible = false;
+  load() {
+    this.isLoadClassModalVisible = true;
+  }
+
   isNewClassModalVisible = false;
   isUpdateClassModalVisible = false;
   updateClassData: any = {};

@@ -12,7 +12,20 @@
     ></app-search-button>
 
     <div style="float: right">
-      <button nz-button (click)="new()">新建</button>
+      <button
+        nz-button
+        nz-dropdown
+        [nzDropdownMenu]="newmenu"
+        style="width: 64px"
+      >
+        <i nz-icon nzType="plus" nzTheme="outline"></i>
+      </button>
+      <nz-dropdown-menu #newmenu="nzDropdownMenu">
+        <ul nz-menu>
+          <li nz-menu-item (click)="new()">新建</li>
+          <li nz-menu-item (click)="load()">导入</li>
+        </ul>
+      </nz-dropdown-menu>
     </div>
   </div>
   <div class="table">
@@ -85,3 +98,8 @@
   [(isVisible)]="isClassModalVisible"
   [data]="classData"
 ></app-class-modal>
+
+<app-load-class-modal
+  [(isVisible)]="isLoadClassModalVisible"
+  (update)="search()"
+></app-load-class-modal>
