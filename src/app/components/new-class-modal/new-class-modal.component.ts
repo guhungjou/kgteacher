@@ -19,7 +19,7 @@ export class NewClassModalComponent implements OnInit {
     private api: ApiService,
     private message: NzMessageService,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
@@ -56,6 +56,8 @@ export class NewClassModalComponent implements OnInit {
       const r = await this.api.createClass(name, remark);
       if (r.status === 20003) {
         this.message.warning('您没有创建班级的权限，只有园长才能创建班级');
+      } else if (r.status === 22001) {
+        this.message.warning('班级名重复，请重新输入');
       } else if (r.status !== 0) {
         this.message.warning('未知错误');
       } else {

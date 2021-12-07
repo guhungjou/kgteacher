@@ -27,7 +27,7 @@ export class UpdateClassModalComponent implements OnInit, OnChanges {
     private api: ApiService,
     private message: NzMessageService,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
@@ -76,6 +76,8 @@ export class UpdateClassModalComponent implements OnInit, OnChanges {
       const r = await this.api.updateClass(id, name, remark);
       if (r.status === 20003) {
         this.message.warning('您没有编辑班级的权限，只有园长才能编辑班级');
+      } else if (r.status === 22001) {
+        this.message.warning('班级名重复，请重新输入');
       } else if (r.status !== 0) {
         this.message.warning('未知错误');
       } else {
