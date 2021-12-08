@@ -90,6 +90,7 @@ import { ToothLabelComponent } from './components/tooth-label/tooth-label.compon
 import { StudentMedicalExaminationListComponent } from './components/student-medical-examination-list/student-medical-examination-list.component';
 import { LoadClassModalComponent } from './components/load-class-modal/load-class-modal.component';
 import { FileSelectComponent } from './components/file-select/file-select.component';
+import { LoadTeacherModalComponent } from './components/load-teacher-modal/load-teacher-modal.component';
 
 registerLocaleData(zh);
 
@@ -135,6 +136,7 @@ registerLocaleData(zh);
     StudentMedicalExaminationListComponent,
     LoadClassModalComponent,
     FileSelectComponent,
+    LoadTeacherModalComponent,
   ],
   imports: [
     BrowserModule,

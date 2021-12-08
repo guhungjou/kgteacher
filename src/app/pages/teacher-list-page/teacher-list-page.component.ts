@@ -93,4 +93,9 @@ export class TeacherListPageComponent implements OnInit {
     this.isUpdateTeacherModalVisible = true;
     this.updateTeacherData = Object.assign({}, data);
   }
+
+  isLoadTeacherModalVisible = false;
+  load() {
+    this.isLoadTeacherModalVisible = true;
+  }
 }

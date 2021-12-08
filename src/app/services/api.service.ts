@@ -317,6 +317,11 @@ export class ApiService {
     return window.open(url, '_blank');
   }
 
+  downloadLoadTeacherTemplate() {
+    const url = this.buildurl('/teacher/load/template');
+    return window.open(url, '_blank');
+  }
+
   loadClass(file: any) {
     const url = this.buildurl('/class/load');
     const body = new FormData();
@@ -327,6 +332,19 @@ export class ApiService {
   createKindergartenClassLoad(classes: any[]) {
     const url = this.buildurl('/classes');
     const body = { classes };
+    return this.post(url, body);
+  }
+
+  loadTeacher(file: any) {
+    const url = this.buildurl('/teacher/load');
+    const body = new FormData();
+    body.append('file', file);
+    return this.post(url, body);
+  }
+
+  createKindergartenTeacherLoad(teachers: any[]) {
+    const url = this.buildurl('/teachers');
+    const body = { teachers };
     return this.post(url, body);
   }
 }

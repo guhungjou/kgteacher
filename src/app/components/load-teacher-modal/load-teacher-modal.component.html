@@ -1,0 +1,108 @@
+<nz-modal
+  nzTitle="上传老师信息"
+  [(nzVisible)]="isVisible"
+  (nzOnCancel)="close()"
+  (nzOnOk)="onLoad()"
+  [nzOkLoading]="loading"
+  [nzCancelLoading]="loading"
+  [nzMaskClosable]="false"
+  [nzOkDisabled]="!file"
+  nzOkText="下一步"
+>
+  <ng-container *nzModalContent>
+    <div style="margin-bottom: 20px">
+      <a nz-button nzType="link" (click)="downloadTemplate()">下载模板</a>
+    </div>
+    <app-file-select
+      accept=".xlsx"
+      label="文件(.xlsx)"
+      [(file)]="file"
+    ></app-file-select>
+  </ng-container>
+</nz-modal>
+
+<nz-modal
+  nzTitle="老师列表"
+  [(nzVisible)]="isTeacherListModalVisible"
+  (nzOnCancel)="closeTeacherListModal()"
+  (nzOnOk)="onOk()"
+  [nzOkLoading]="loading"
+  [nzCancelLoading]="loading"
+  [nzMaskClosable]="false"
+  [nzStyle]="{ width: '80%' }"
+>
+  <ng-container *nzModalContent>
+    <nz-table
+      #basicTable
+      [nzData]="teachers"
+      nzSize="small"
+      [nzFrontPagination]="false"
+      [nzShowPagination]="false"
+    >
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>姓名</th>
+          <th>电话</th>
+          <th>性别</th>
+          <th>班级</th>
+          <th>用户名</th>
+          <th>密码</th>
+          <th>是否可创建</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ data.name }}</td>
+          <td>{{ data.phone }}</td>
+          <td>
+            <app-gender [gender]="data.gender"></app-gender>
+          </td>
+          <td>{{ data.class?.name }}</td>
+          <td>{{ data.username }}</td>
+          <td>{{ data.password }}</td>
+          <td>
+            <nz-tag nzColor="warning" *ngIf="data.statusmap['NoName']"
+              >没有姓名</nz-tag
+            >
+            <nz-tag nzColor="warning" *ngIf="data.statusmap['NoGender']"
+              >没有性别</nz-tag
+            >
+            <nz-tag nzColor="warning" *ngIf="data.statusmap['NoClass']"
+              >没有班级</nz-tag
+            >
+            <nz-tag nzColor="warning" *ngIf="data.statusmap['NoUsername']"
+              >没有用户名</nz-tag
+            >
+            <nz-tag nzColor="warning" *ngIf="data.statusmap['InvalidUsername']"
+              >用户名无效</nz-tag
+            >
+            <nz-tag
+              nzColor="warning"
+              *ngIf="data.statusmap['DuplicatedUsername']"
+              >用户名重复</nz-tag
+            >
+            <nz-tag nzColor="warning" *ngIf="data.statusmap['NoPassword']"
+              >没有密码</nz-tag
+            >
+            <nz-tag nzColor="warning" *ngIf="data.statusmap['ShortPassword']"
+              >密码过短</nz-tag
+            >
+          </td>
+          <td>
+            <a
+              nz-button
+              nzType="link"
+              nzDanger
+              (click)="removeTeacher(data, i)"
+            >
+              <i nz-icon nzType="delete" nzTheme="outline"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </ng-container>
+</nz-modal>
