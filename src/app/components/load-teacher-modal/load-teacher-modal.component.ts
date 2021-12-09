@@ -86,7 +86,7 @@ export class LoadTeacherModalComponent implements OnInit {
   async createKindergartenTeacherLoad() {
     try {
       this.loading = true;
-      const r = await this.api.createKindergartenTeacherLoad(this.teachers);
+      const r = await this.api.createTeacherLoad(this.teachers);
       if (r.status === 20004) {
         this.message.warning('用户名重复');
       } else if (r.status === 20003) {

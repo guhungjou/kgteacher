@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { ApiService } from 'src/app/services/api.service';
 import { mergeRouter, parseIntQuery, parseStringQuery } from 'src/app/x/router';
 
@@ -24,7 +25,8 @@ export class StudentListPageComponent implements OnInit {
     private api: ApiService,
     private message: NzMessageService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private modal: NzModalService
   ) {
     this.title.setTitle('幼儿园 - 学生');
   }
@@ -107,5 +109,37 @@ export class StudentListPageComponent implements OnInit {
   isLoadStudentModalVisible = false;
   load() {
     this.isLoadStudentModalVisible = true;
+  }
+
+  delete(data: any) {
+    this.modal.confirm({
+      nzTitle: '删除学生',
+      nzContent:
+        '是否确认删除学生 <b>' +
+        data.class?.name +
+        ' - ' +
+        data.name +
+        '</b>？<br>删除该学生后设备可以重新绑定。',
+      nzOnOk: () => this.deleteStudent(data.id),
+    });
+  }
+
+  async deleteStudent(id: number) {
+    try {
+      this.loading = true;
+      const r = await this.api.deleteStudent(id);
+      if (r.status === 20003) {
+        this.message.warning('您无权删除非本班级的学生');
+      } else if (r.status !== 0) {
+        this.message.warning('未知错误');
+      } else {
+        this.message.success('删除成功');
+        this.findStudents();
+      }
+    } catch (error) {
+      this.message.success('网络错误');
+    } finally {
+      this.loading = false;
+    }
   }
 }

@@ -63,17 +63,23 @@
           <td>{{ data.remark }}</td>
           <td>
             <nz-tag nzColor="warning" *ngIf="data.statusmap['NoName']"
-              >没有姓名</nz-tag>
-              <nz-tag nzColor="warning" *ngIf="data.statusmap['NoGender']"
-              >没有性别</nz-tag>
-              <nz-tag nzColor="warning" *ngIf="data.statusmap['NoClass']"
-              >没有班级</nz-tag>
-              <nz-tag nzColor="warning" *ngIf="data.statusmap['WrongClass']"
-              >班级错误</nz-tag>
-              <nz-tag nzColor="warning" *ngIf="data.statusmap['NoDevice']"
-              >没有设备</nz-tag>
-              <nz-tag nzColor="warning" *ngIf="data.statusmap['DuplicatedDevice']"
-              >设备重复</nz-tag>
+              >没有姓名</nz-tag
+            >
+            <nz-tag nzColor="warning" *ngIf="data.statusmap['NoGender']"
+              >没有性别</nz-tag
+            >
+            <nz-tag nzColor="warning" *ngIf="data.statusmap['NoClass']"
+              >没有班级</nz-tag
+            >
+            <nz-tag nzColor="warning" *ngIf="data.statusmap['WrongClass']"
+              >班级错误</nz-tag
+            >
+            <nz-tag nzColor="warning" *ngIf="data.statusmap['NoDevice']"
+              >没有设备</nz-tag
+            >
+            <nz-tag nzColor="warning" *ngIf="data.statusmap['DuplicatedDevice']"
+              >设备重复</nz-tag
+            >
           </td>
           <td>
             <a

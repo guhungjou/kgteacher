@@ -6,10 +6,9 @@ import { removeArrayIndex } from 'src/app/x/slice';
 @Component({
   selector: 'app-load-student-modal',
   templateUrl: './load-student-modal.component.html',
-  styleUrls: ['./load-student-modal.component.scss']
+  styleUrls: ['./load-student-modal.component.scss'],
 })
 export class LoadStudentModalComponent implements OnInit {
-
   @Input() isVisible = false;
   @Output() isVisibleChange = new EventEmitter<boolean>();
   @Output() update = new EventEmitter<any>();
@@ -17,9 +16,9 @@ export class LoadStudentModalComponent implements OnInit {
 
   file: any = null;
 
-  constructor(private api: ApiService, private message: NzMessageService) { }
+  constructor(private api: ApiService, private message: NzMessageService) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   close() {
     this.isStudentListModalVisible = false;
@@ -86,7 +85,7 @@ export class LoadStudentModalComponent implements OnInit {
   async createKindergartenStudentLoad() {
     try {
       this.loading = true;
-      const r = await this.api.createKindergartenStudentLoad(this.students);
+      const r = await this.api.createStudentLoad(this.students);
       if (r.status === 21001) {
         this.message.warning('设备重复');
       } else if (r.status === 20003) {

@@ -79,7 +79,7 @@ export class LoadClassModalComponent implements OnInit {
   async createKindergartenClassLoad() {
     try {
       this.loading = true;
-      const r = await this.api.createKindergartenClassLoad(this.classes);
+      const r = await this.api.createClassLoad(this.classes);
       if (r.status === 22001) {
         this.message.warning('班级名重复');
       } else if (r.status !== 0) {
