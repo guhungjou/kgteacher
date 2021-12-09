@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   buildurl(path: string, queryMap: any = null) {
     let query = '';
@@ -322,6 +322,12 @@ export class ApiService {
     return window.open(url, '_blank');
   }
 
+  downloadLoadStudentTemplate() {
+    const url = this.buildurl('/student/load/template');
+    return window.open(url, '_blank');
+  }
+
+
   loadClass(file: any) {
     const url = this.buildurl('/class/load');
     const body = new FormData();
@@ -342,9 +348,22 @@ export class ApiService {
     return this.post(url, body);
   }
 
+  loadStudent(file: any) {
+    const url = this.buildurl('/student/load');
+    const body = new FormData();
+    body.append('file', file);
+    return this.post(url, body);
+  }
+
   createKindergartenTeacherLoad(teachers: any[]) {
     const url = this.buildurl('/teachers');
     const body = { teachers };
+    return this.post(url, body);
+  }
+
+  createKindergartenStudentLoad(students: any[]) {
+    const url = this.buildurl('/students');
+    const body = { students };
     return this.post(url, body);
   }
 }

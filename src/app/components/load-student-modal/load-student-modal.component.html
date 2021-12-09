@@ -1,0 +1,92 @@
+<nz-modal
+  nzTitle="上传学生信息"
+  [(nzVisible)]="isVisible"
+  (nzOnCancel)="close()"
+  (nzOnOk)="onLoad()"
+  [nzOkLoading]="loading"
+  [nzCancelLoading]="loading"
+  [nzMaskClosable]="false"
+  [nzOkDisabled]="!file"
+  nzOkText="下一步"
+>
+  <ng-container *nzModalContent>
+    <div style="margin-bottom: 20px">
+      <a nz-button nzType="link" (click)="downloadTemplate()">下载模板</a>
+    </div>
+    <app-file-select
+      accept=".xlsx"
+      label="文件(.xlsx)"
+      [(file)]="file"
+    ></app-file-select>
+  </ng-container>
+</nz-modal>
+
+<nz-modal
+  nzTitle="学生列表"
+  [(nzVisible)]="isStudentListModalVisible"
+  (nzOnCancel)="closeStudentListModal()"
+  (nzOnOk)="onOk()"
+  [nzOkLoading]="loading"
+  [nzCancelLoading]="loading"
+  [nzMaskClosable]="false"
+  [nzStyle]="{ width: '80%' }"
+>
+  <ng-container *nzModalContent>
+    <nz-table
+      #basicTable
+      [nzData]="students"
+      nzSize="small"
+      [nzFrontPagination]="false"
+      [nzShowPagination]="false"
+    >
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>姓名</th>
+          <th>性别</th>
+          <th>班级</th>
+          <th>备注</th>
+          <th>设备</th>
+          <th>是否可创建</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ data.name }}</td>
+          <td>
+            <app-gender [gender]="data.gender"></app-gender>
+          </td>
+          <td>{{ data.class?.name }}</td>
+          <td>{{ data.device }}</td>
+          <td>{{ data.remark }}</td>
+          <td>
+            <nz-tag nzColor="warning" *ngIf="data.statusmap['NoName']"
+              >没有姓名</nz-tag>
+              <nz-tag nzColor="warning" *ngIf="data.statusmap['NoGender']"
+              >没有性别</nz-tag>
+              <nz-tag nzColor="warning" *ngIf="data.statusmap['NoClass']"
+              >没有班级</nz-tag>
+              <nz-tag nzColor="warning" *ngIf="data.statusmap['WrongClass']"
+              >班级错误</nz-tag>
+              <nz-tag nzColor="warning" *ngIf="data.statusmap['NoDevice']"
+              >没有设备</nz-tag>
+              <nz-tag nzColor="warning" *ngIf="data.statusmap['DuplicatedDevice']"
+              >设备重复</nz-tag>
+          </td>
+          <td>
+            <a
+              nz-button
+              nzType="link"
+              nzDanger
+              (click)="removeStudent(data, i)"
+            >
+              <i nz-icon nzType="delete" nzTheme="outline"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </ng-container>
+</nz-modal>

@@ -91,6 +91,7 @@ import { StudentMedicalExaminationListComponent } from './components/student-med
 import { LoadClassModalComponent } from './components/load-class-modal/load-class-modal.component';
 import { FileSelectComponent } from './components/file-select/file-select.component';
 import { LoadTeacherModalComponent } from './components/load-teacher-modal/load-teacher-modal.component';
+import { LoadStudentModalComponent } from './components/load-student-modal/load-student-modal.component';
 
 registerLocaleData(zh);
 
@@ -137,6 +138,7 @@ registerLocaleData(zh);
     LoadClassModalComponent,
     FileSelectComponent,
     LoadTeacherModalComponent,
+    LoadStudentModalComponent,
   ],
   imports: [
     BrowserModule,

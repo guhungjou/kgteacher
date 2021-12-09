@@ -103,4 +103,9 @@ export class StudentListPageComponent implements OnInit {
     this.isStudentModalVisible = true;
     this.studentData = Object.assign({}, data);
   }
+
+  isLoadStudentModalVisible = false;
+  load() {
+    this.isLoadStudentModalVisible = true;
+  }
 }
