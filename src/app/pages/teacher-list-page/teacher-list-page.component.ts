@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { ApiService } from 'src/app/services/api.service';
 import { mergeRouter, parseIntQuery, parseStringQuery } from 'src/app/x/router';
 
@@ -24,7 +25,8 @@ export class TeacherListPageComponent implements OnInit {
     private message: NzMessageService,
     private router: Router,
     private route: ActivatedRoute,
-    private title: Title
+    private title: Title,
+    private modal: NzModalService
   ) {
     this.title.setTitle('幼儿园 - 老师');
   }
@@ -97,5 +99,39 @@ export class TeacherListPageComponent implements OnInit {
   isLoadTeacherModalVisible = false;
   load() {
     this.isLoadTeacherModalVisible = true;
+  }
+
+  delete(data: any) {
+    this.modal.confirm({
+      nzTitle: '删除老师',
+      nzContent:
+        '是否确认删除老师 <b>' +
+        data.class?.name +
+        ' - ' +
+        data.name +
+        '</b>？',
+      nzOnOk: () => this.deleteTeacher(data.id),
+    });
+  }
+
+  async deleteTeacher(id: number) {
+    try {
+      this.loading = true;
+      const r = await this.api.deleteTeacher(id);
+      if (r.status === 20003) {
+        this.message.warning('只有园长能删除老师');
+      } else if (r.status === 20005) {
+        this.message.warning('不能删除园长帐号');
+      } else if (r.status !== 0) {
+        this.message.warning('未知错误');
+      } else {
+        this.message.success('删除成功');
+        this.findTeachers();
+      }
+    } catch (error) {
+      this.message.error('网络错误');
+    } finally {
+      this.loading = false;
+    }
   }
 }

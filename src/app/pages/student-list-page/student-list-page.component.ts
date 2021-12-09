@@ -137,7 +137,7 @@ export class StudentListPageComponent implements OnInit {
         this.findStudents();
       }
     } catch (error) {
-      this.message.success('网络错误');
+      this.message.error('网络错误');
     } finally {
       this.loading = false;
     }

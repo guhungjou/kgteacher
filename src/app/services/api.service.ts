@@ -370,4 +370,9 @@ export class ApiService {
     const url = this.buildurl('/student/' + id);
     return this.delete(url);
   }
+
+  deleteTeacher(id: number) {
+    const url = this.buildurl('/teacher/' + id);
+    return this.delete(url);
+  }
 }
