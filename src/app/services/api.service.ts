@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   buildurl(path: string, queryMap: any = null) {
     let query = '';
@@ -373,6 +373,11 @@ export class ApiService {
 
   deleteTeacher(id: number) {
     const url = this.buildurl('/teacher/' + id);
+    return this.delete(url);
+  }
+
+  deleteClass(id: number, withStudent: boolean, withTeacher: boolean) {
+    const url = this.buildurl('/class/' + id, { with_student: withStudent, with_teacher: withTeacher });
     return this.delete(url);
   }
 }

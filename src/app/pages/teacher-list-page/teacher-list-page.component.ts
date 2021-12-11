@@ -110,6 +110,7 @@ export class TeacherListPageComponent implements OnInit {
         ' - ' +
         data.name +
         '</b>？',
+      nzOkDanger: true,
       nzOnOk: () => this.deleteTeacher(data.id),
     });
   }

@@ -92,6 +92,7 @@ import { LoadClassModalComponent } from './components/load-class-modal/load-clas
 import { FileSelectComponent } from './components/file-select/file-select.component';
 import { LoadTeacherModalComponent } from './components/load-teacher-modal/load-teacher-modal.component';
 import { LoadStudentModalComponent } from './components/load-student-modal/load-student-modal.component';
+import { DeleteClassModalComponent } from './components/delete-class-modal/delete-class-modal.component';
 
 registerLocaleData(zh);
 
@@ -139,6 +140,7 @@ registerLocaleData(zh);
     FileSelectComponent,
     LoadTeacherModalComponent,
     LoadStudentModalComponent,
+    DeleteClassModalComponent,
   ],
   imports: [
     BrowserModule,

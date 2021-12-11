@@ -54,10 +54,11 @@
           <td>{{ data.name }}</td>
           <td>{{ data.remark }}</td>
           <td>
-            <nz-tag nzColor="success" *ngIf="data.status === 'OK'">可以</nz-tag>
-            <nz-tag nzColor="warning" *ngIf="data.status === 'Duplicated'"
+            <nz-tag nzColor="warning" *ngIf="data.statusmap['Duplicated']"
               >班级名重复</nz-tag
-            >
+            >            <nz-tag nzColor="warning" *ngIf="data.statusmap['NoName']"
+            >班级名重复</nz-tag
+          >
           </td>
           <td>
             <a nz-button nzType="link" nzDanger (click)="removeClass(data, i)">

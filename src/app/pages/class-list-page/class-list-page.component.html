@@ -73,6 +73,8 @@
               <ul nz-menu nzSelectable>
                 <li nz-menu-item (click)="showClassModal(data)">详情</li>
                 <li nz-menu-item (click)="showUpdateClassModal(data)">编辑</li>
+                <li nz-menu-divider></li>
+                <li nz-menu-item nzDanger (click)="delete(data)">删除</li>
               </ul>
             </nz-dropdown-menu>
           </td>
@@ -103,3 +105,5 @@
   [(isVisible)]="isLoadClassModalVisible"
   (update)="search()"
 ></app-load-class-modal>
+
+<app-delete-class-modal [(isVisible)]="isDeleteClassModalVisible" [data]="deleteClassData" (update)="findClasses()"></app-delete-class-modal>

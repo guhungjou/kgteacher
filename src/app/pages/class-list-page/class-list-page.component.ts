@@ -101,4 +101,11 @@ export class ClassListPageComponent implements OnInit {
     this.isClassModalVisible = true;
     this.classData = Object.assign({}, data);
   }
+
+  isDeleteClassModalVisible = false;
+  deleteClassData: any = {};
+  delete(data: any) {
+    this.isDeleteClassModalVisible = true;
+    this.deleteClassData = Object.assign({}, data);
+  }
 }

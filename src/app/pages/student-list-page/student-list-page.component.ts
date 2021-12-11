@@ -120,6 +120,7 @@ export class StudentListPageComponent implements OnInit {
         ' - ' +
         data.name +
         '</b>？<br>删除该学生后设备可以重新绑定。',
+      nzOkDanger: true,
       nzOnOk: () => this.deleteStudent(data.id),
     });
   }

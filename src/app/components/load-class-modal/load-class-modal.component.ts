@@ -16,9 +16,9 @@ export class LoadClassModalComponent implements OnInit {
 
   file: any = null;
 
-  constructor(private api: ApiService, private message: NzMessageService) {}
+  constructor(private api: ApiService, private message: NzMessageService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   close() {
     this.isClassListModalVisible = false;
@@ -46,6 +46,12 @@ export class LoadClassModalComponent implements OnInit {
       const r = await this.api.loadClass(this.file);
       this.classes = r.data;
       this.isClassListModalVisible = true;
+      for (const t of this.classes) {
+        t.statusmap = {};
+        for (const s of t.status) {
+          t.statusmap[s] = true;
+        }
+      }
     } catch (error) {
       this.message.error('未知错误');
     } finally {
@@ -68,7 +74,7 @@ export class LoadClassModalComponent implements OnInit {
       return;
     }
     for (const c of this.classes) {
-      if (c.status !== 'OK') {
+      if (c.status.length !== 0) {
         this.message.warning('请先移除无效项');
         return;
       }
