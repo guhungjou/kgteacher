@@ -56,9 +56,10 @@
           <td>
             <nz-tag nzColor="warning" *ngIf="data.statusmap['Duplicated']"
               >班级名重复</nz-tag
-            >            <nz-tag nzColor="warning" *ngIf="data.statusmap['NoName']"
-            >班级名重复</nz-tag
-          >
+            >
+            <nz-tag nzColor="warning" *ngIf="data.statusmap['NoName']"
+              >班级名重复</nz-tag
+            >
           </td>
           <td>
             <a nz-button nzType="link" nzDanger (click)="removeClass(data, i)">

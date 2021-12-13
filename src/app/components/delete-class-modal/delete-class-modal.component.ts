@@ -1,14 +1,21 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-delete-class-modal',
   templateUrl: './delete-class-modal.component.html',
-  styleUrls: ['./delete-class-modal.component.scss']
+  styleUrls: ['./delete-class-modal.component.scss'],
 })
 export class DeleteClassModalComponent implements OnInit, OnChanges {
-
   @Input() isVisible = false;
   @Output() isVisibleChange = new EventEmitter<boolean>();
   @Input() data: any = {};
@@ -18,10 +25,9 @@ export class DeleteClassModalComponent implements OnInit, OnChanges {
   withStudent = false;
   withTeacher = false;
 
-  constructor(private api: ApiService, private message: NzMessageService) { }
+  constructor(private api: ApiService, private message: NzMessageService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.isVisible) {
@@ -45,7 +51,11 @@ export class DeleteClassModalComponent implements OnInit, OnChanges {
     }
     try {
       this.loading = true;
-      const r = await this.api.deleteClass(this.data.id, this.withStudent, this.withTeacher);
+      const r = await this.api.deleteClass(
+        this.data.id,
+        this.withStudent,
+        this.withTeacher
+      );
       if (r.status !== 0) {
         this.message.warning('未知错误');
       } else {
@@ -59,5 +69,4 @@ export class DeleteClassModalComponent implements OnInit, OnChanges {
       this.loading = false;
     }
   }
-
 }

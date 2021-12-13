@@ -1,0 +1,118 @@
+<div class="form" *ngIf="data">
+  <h2>{{ data.kindergarten.name }}健康检查表</h2>
+
+  <nz-descriptions nzTitle="">
+    <nz-descriptions-item nzTitle="班级">{{
+      data.student?.class?.name
+    }}</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="儿童">{{
+      data.student?.name
+    }}</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="电话"></nz-descriptions-item>
+  </nz-descriptions>
+
+  <table border="1">
+    <tr class="header">
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+      <th>12</th>
+    </tr>
+    <tr>
+      <td colspan="2">姓名</td>
+      <td colspan="2">{{ data.student?.name }}</td>
+      <td colspan="1">性别</td>
+      <td colspan="1">{{ data.student?.gender === "male" ? "男" : "女" }}</td>
+      <td colspan="1">年龄</td>
+      <td colspan="1">{{ data.student?.age | number }}</td>
+      <td colspan="2">出生日期</td>
+      <td colspan="2"></td>
+    </tr>
+    <tr>
+      <td colspan="2">既往病史</td>
+      <td colspan="10"></td>
+    </tr>
+    <tr>
+      <td colspan="2">过敏史</td>
+      <td colspan="5"></td>
+      <td colspan="3">儿童家长确认签字</td>
+      <td colspan="2"></td>
+    </tr>
+    <tr>
+      <td rowspan="3" colspan="2">体格检查</td>
+      <td colspan="2">身高</td>
+      <td colspan="3">{{ data.height | number }}cm</td>
+      <td colspan="2">体重</td>
+      <td colspan="3">{{ data.weight | number }}kg</td>
+    </tr>
+    <tr>
+      <td rowspan="2">眼</td>
+      <td>左</td>
+      <td>{{ data.sight_l | number: "1.1-1" }}</td>
+      <td colspan="2">{{ data.sight_l_remark }}</td>
+      <td rowspan="2">口腔</td>
+      <td>牙齿数</td>
+      <td>{{ data.tooth_count | number }}</td>
+      <td rowspan="2" colspan="2">{{ data.tooth_remark }}</td>
+    </tr>
+    <tr>
+      <td>右</td>
+      <td>{{ data.sight_r | number: "1.1-1" }}</td>
+      <td colspan="2">{{ data.sight_r_remark }}</td>
+      <td>龋齿数</td>
+      <td>{{ data.tooth_caries_count | number }}</td>
+    </tr>
+    <tr>
+      <td colspan="2" rowspan="2">辅助检查</td>
+      <td colspan="2">血红蛋白(Hb)</td>
+      <td colspan="3">
+        {{ data.hemoglobin | number: "1.1-1" }} {{ data.hemoglobin_remark }}
+      </td>
+      <td colspan="2">谷丙转氨酶(U/L)</td>
+      <td colspan="3">
+        {{ data.alt | number: "1.1-1" }} {{ data.alt_remark }}
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">其他</td>
+      <td colspan="8"></td>
+    </tr>
+    <tr>
+      <td colspan="2">检查结果</td>
+      <td colspan="4"></td>
+      <td colspan="2">医生意见</td>
+      <td colspan="4"></td>
+    </tr>
+    <tr>
+      <td colspan="12" class="bottom">
+        <div>
+          医生签字：
+          <div style="float: right; margin-right: 260px">检查单位：</div>
+        </div>
+        <div style="margin-top: 10px">
+          体检日期：
+          <app-date-label [text]="data.date" [chinese]="true"></app-date-label>
+
+          <div
+            style="
+              float: right;
+              margin-right: 160px;
+              font-weight: normal;
+              font-size: 12px;
+            "
+          >
+            (检查单位盖章)
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

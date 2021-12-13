@@ -3,16 +3,16 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 @Component({
   selector: 'app-height-label',
   templateUrl: './height-label.component.html',
-  styleUrls: ['./height-label.component.scss']
+  styleUrls: ['./height-label.component.scss'],
 })
 export class HeightLabelComponent implements OnInit, OnChanges {
   @Input() height = 0;
   @Input() updatedAt = '';
   updated = false;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   ngOnChanges() {
     this.updated = false;
@@ -21,5 +21,4 @@ export class HeightLabelComponent implements OnInit, OnChanges {
       this.updated = dt.getTime() > 0;
     }
   }
-
 }

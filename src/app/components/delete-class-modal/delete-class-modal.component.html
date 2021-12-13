@@ -1,5 +1,5 @@
 <nz-modal
-  [nzTitle]="'删除班级 - '+data.name"
+  [nzTitle]="'删除班级 - ' + data.name"
   [(nzVisible)]="isVisible"
   (nzOnCancel)="close()"
   (nzOnOk)="onOk()"
@@ -8,21 +8,39 @@
   [nzMaskClosable]="false"
   nzOkDanger
 >
-<ng-container *nzModalContent>
+  <ng-container *nzModalContent>
     <nz-descriptions [nzColumn]="{ xxl: 2, xl: 2, lg: 2, md: 2, sm: 2, xs: 1 }">
-        <nz-descriptions-item nzTitle="老师数">{{data.number_of_teacher|number}}</nz-descriptions-item>
-        <nz-descriptions-item nzTitle="学生数">{{data.number_of_student|number}}</nz-descriptions-item>
-        <nz-descriptions-item nzTitle="备注信息">{{data.remark}}</nz-descriptions-item>
-        <nz-descriptions-item nzTitle="创建时间">
-            <app-datetime-label [text]="data.created_at"></app-datetime-label>
-        </nz-descriptions-item>
-      </nz-descriptions>
+      <nz-descriptions-item nzTitle="老师数">{{
+        data.number_of_teacher | number
+      }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="学生数">{{
+        data.number_of_student | number
+      }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="备注信息">{{
+        data.remark
+      }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="创建时间">
+        <app-datetime-label [text]="data.created_at"></app-datetime-label>
+      </nz-descriptions-item>
+    </nz-descriptions>
 
-      <div>
-        <label nz-checkbox [(ngModel)]="withStudent" nz-tooltip nzTooltipTitle="勾选则表示将同时删除该班级的学生，否则将学生的班级设置成空。">同时删除学生。</label>
-      </div>
-      <div>
-        <label nz-checkbox [(ngModel)]="withTeacher"  nz-tooltip nzTooltipTitle="勾选则表示将同时删除该班级的老师，否则将老师的班级设置成空。">同时删除老师。</label>
-      </div>
-</ng-container>
+    <div>
+      <label
+        nz-checkbox
+        [(ngModel)]="withStudent"
+        nz-tooltip
+        nzTooltipTitle="勾选则表示将同时删除该班级的学生，否则将学生的班级设置成空。"
+        >同时删除学生。</label
+      >
+    </div>
+    <div>
+      <label
+        nz-checkbox
+        [(ngModel)]="withTeacher"
+        nz-tooltip
+        nzTooltipTitle="勾选则表示将同时删除该班级的老师，否则将老师的班级设置成空。"
+        >同时删除老师。</label
+      >
+    </div>
+  </ng-container>
 </nz-modal>

@@ -3,16 +3,16 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 @Component({
   selector: 'app-weight-label',
   templateUrl: './weight-label.component.html',
-  styleUrls: ['./weight-label.component.scss']
+  styleUrls: ['./weight-label.component.scss'],
 })
 export class WeightLabelComponent implements OnInit, OnChanges {
   @Input() weight = 0;
   @Input() updatedAt = '';
   updated = false;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   ngOnChanges() {
     this.updated = false;
@@ -21,6 +21,4 @@ export class WeightLabelComponent implements OnInit, OnChanges {
       this.updated = dt.getTime() > 0;
     }
   }
-
-
 }

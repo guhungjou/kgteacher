@@ -13,9 +13,9 @@ export class SightLabelComponent implements OnInit, OnChanges {
   @Input() rightRemark = '';
   updated = false;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   ngOnChanges() {
     this.updated = false;

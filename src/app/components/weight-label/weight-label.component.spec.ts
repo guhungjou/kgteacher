@@ -8,9 +8,8 @@ describe('WeightLabelComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WeightLabelComponent ]
-    })
-    .compileComponents();
+      declarations: [WeightLabelComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

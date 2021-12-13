@@ -16,9 +16,9 @@ export class LoadClassModalComponent implements OnInit {
 
   file: any = null;
 
-  constructor(private api: ApiService, private message: NzMessageService) { }
+  constructor(private api: ApiService, private message: NzMessageService) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   close() {
     this.isClassListModalVisible = false;

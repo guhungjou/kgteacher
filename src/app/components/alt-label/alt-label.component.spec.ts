@@ -8,9 +8,8 @@ describe('AltLabelComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AltLabelComponent ]
-    })
-    .compileComponents();
+      declarations: [AltLabelComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

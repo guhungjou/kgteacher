@@ -111,4 +111,11 @@ export class StudentMedicalExaminationListPageComponent implements OnInit {
       this.pageSize
     );
   }
+
+  showExamFormModal(data: any) {
+    const printSpecs =
+      'toolbar=no, menubar=no, resizable=yes, status=no, titlebar=no';
+
+    window.open('/student/medical/exam/form/' + data.id, '_blank', printSpecs);
+  }
 }

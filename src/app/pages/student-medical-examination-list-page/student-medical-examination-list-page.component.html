@@ -67,6 +67,7 @@
           <th>视力(左/右)</th>
           <th>牙齿/龋齿</th>
           <th>创建时间</th>
+          <th>操作</th>
         </tr>
       </thead>
       <tbody>
@@ -81,10 +82,16 @@
             <app-gender [gender]="data.student?.gender"></app-gender>
           </td>
           <td>
-            <app-height-label [height]="data.height" [updatedAt]="data.height_updated_at"></app-height-label>
+            <app-height-label
+              [height]="data.height"
+              [updatedAt]="data.height_updated_at"
+            ></app-height-label>
           </td>
           <td>
-            <app-weight-label [weight]="data.weight" [updatedAt]="data.weight_updated_at"></app-weight-label>
+            <app-weight-label
+              [weight]="data.weight"
+              [updatedAt]="data.weight_updated_at"
+            ></app-weight-label>
           </td>
           <td>
             <app-hemoglobin-label
@@ -119,6 +126,16 @@
           </td>
           <td>
             <app-datetime-label [text]="data.created_at"></app-datetime-label>
+          </td>
+          <td>
+            <a nz-dropdown [nzDropdownMenu]="menu">
+              <i nz-icon nzType="menu"></i>
+            </a>
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+              <ul nz-menu nzSelectable>
+                <li nz-menu-item (click)="showExamFormModal(data)">表格</li>
+              </ul>
+            </nz-dropdown-menu>
           </td>
         </tr>
       </tbody>

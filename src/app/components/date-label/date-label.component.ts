@@ -7,6 +7,7 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 })
 export class DateLabelComponent implements OnInit, OnChanges {
   @Input() text = '';
+  @Input() chinese = false;
   dt: Date | null = null;
 
   constructor() {}

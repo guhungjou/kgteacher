@@ -12,9 +12,9 @@ export class ToothLabelComponent implements OnInit, OnChanges {
   @Input() updatedAt = '';
   updated = false;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
   ngOnChanges() {
     this.updated = false;
     if (this.updatedAt) {

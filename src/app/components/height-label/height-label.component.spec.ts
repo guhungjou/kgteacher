@@ -8,9 +8,8 @@ describe('HeightLabelComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeightLabelComponent ]
-    })
-    .compileComponents();
+      declarations: [HeightLabelComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

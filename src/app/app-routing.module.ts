@@ -5,6 +5,7 @@ import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.co
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { StudentListPageComponent } from './pages/student-list-page/student-list-page.component';
+import { StudentMedicalExaminationFormPageComponent } from './pages/student-medical-examination-form-page/student-medical-examination-form-page.component';
 import { StudentMedicalExaminationListPageComponent } from './pages/student-medical-examination-list-page/student-medical-examination-list-page.component';
 import { StudentMorningCheckListPageComponent } from './pages/student-morning-check-list-page/student-morning-check-list-page.component';
 import { TeacherListPageComponent } from './pages/teacher-list-page/teacher-list-page.component';
@@ -44,6 +45,10 @@ const routes: Routes = [
         component: StudentMedicalExaminationListPageComponent,
       },
     ],
+  },
+  {
+    path: 'student/medical/exam/form/:id',
+    component: StudentMedicalExaminationFormPageComponent,
   },
 ];
 

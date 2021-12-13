@@ -96,6 +96,7 @@ import { DeleteClassModalComponent } from './components/delete-class-modal/delet
 import { AltLabelComponent } from './components/alt-label/alt-label.component';
 import { HeightLabelComponent } from './components/height-label/height-label.component';
 import { WeightLabelComponent } from './components/weight-label/weight-label.component';
+import { StudentMedicalExaminationFormPageComponent } from './pages/student-medical-examination-form-page/student-medical-examination-form-page.component';
 
 registerLocaleData(zh);
 
@@ -147,6 +148,7 @@ registerLocaleData(zh);
     AltLabelComponent,
     HeightLabelComponent,
     WeightLabelComponent,
+    StudentMedicalExaminationFormPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -208,4 +210,4 @@ registerLocaleData(zh);
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

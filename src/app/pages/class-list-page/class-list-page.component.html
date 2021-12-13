@@ -106,4 +106,8 @@
   (update)="search()"
 ></app-load-class-modal>
 
-<app-delete-class-modal [(isVisible)]="isDeleteClassModalVisible" [data]="deleteClassData" (update)="findClasses()"></app-delete-class-modal>
+<app-delete-class-modal
+  [(isVisible)]="isDeleteClassModalVisible"
+  [data]="deleteClassData"
+  (update)="findClasses()"
+></app-delete-class-modal>
