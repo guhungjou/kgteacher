@@ -1,13 +1,12 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-hemoglobin-label',
-  templateUrl: './hemoglobin-label.component.html',
-  styleUrls: ['./hemoglobin-label.component.scss'],
+  selector: 'app-weight-label',
+  templateUrl: './weight-label.component.html',
+  styleUrls: ['./weight-label.component.scss']
 })
-export class HemoglobinLabelComponent implements OnInit, OnChanges {
-  @Input() hemoglobin = 0;
-  @Input() remark = '';
+export class WeightLabelComponent implements OnInit, OnChanges {
+  @Input() weight = 0;
   @Input() updatedAt = '';
   updated = false;
 
@@ -22,4 +21,6 @@ export class HemoglobinLabelComponent implements OnInit, OnChanges {
       this.updated = dt.getTime() > 0;
     }
   }
+
+
 }

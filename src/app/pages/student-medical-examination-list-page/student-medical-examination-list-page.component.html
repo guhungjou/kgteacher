@@ -60,10 +60,12 @@
           <th>班级</th>
           <th>学生</th>
           <th>性别</th>
-          <th>身高/体重</th>
-          <th>血红蛋白</th>
+          <th>身高(CM)</th>
+          <th>体重(KG)</th>
+          <th>血红蛋白(Hb)</th>
+          <th>谷丙转氨酶(U/L)</th>
           <th>视力(左/右)</th>
-          <th>牙齿</th>
+          <th>牙齿/龋齿</th>
           <th>创建时间</th>
         </tr>
       </thead>
@@ -79,28 +81,39 @@
             <app-gender [gender]="data.student?.gender"></app-gender>
           </td>
           <td>
-            <app-height-and-weight-label
-              [height]="data.height"
-              [weight]="data.weight"
-              [updatedAt]="data.height_updated_at"
-            ></app-height-and-weight-label>
+            <app-height-label [height]="data.height" [updatedAt]="data.height_updated_at"></app-height-label>
+          </td>
+          <td>
+            <app-weight-label [weight]="data.weight" [updatedAt]="data.weight_updated_at"></app-weight-label>
           </td>
           <td>
             <app-hemoglobin-label
               [hemoglobin]="data.hemoglobin"
+              [remark]="data.hemoglobin_remark"
               [updatedAt]="data.hemoglobin_updated_at"
             ></app-hemoglobin-label>
+          </td>
+          <td>
+            <app-alt-label
+              [alt]="data.alt"
+              [remark]="data.alt_remark"
+              [updatedAt]="data.alt_updated_at"
+            ></app-alt-label>
           </td>
           <td>
             <app-sight-label
               [left]="data.sight_l"
               [right]="data.sight_r"
+              [leftRemark]="data.sight_l_remark"
+              [rightRemark]="data.sight_r_remark"
               [updatedAt]="data.sight_updated_at"
             ></app-sight-label>
           </td>
           <td>
             <app-tooth-label
-              [tooth]="data.tooth"
+              [tooth]="data.tooth_count"
+              [caries]="data.tooth_caries_count"
+              [remark]="data.tooth_remark"
               [updatedAt]="data.tooth_updated_at"
             ></app-tooth-label>
           </td>

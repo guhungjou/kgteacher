@@ -9,11 +9,13 @@ export class SightLabelComponent implements OnInit, OnChanges {
   @Input() left = 0;
   @Input() right = 0;
   @Input() updatedAt = '';
+  @Input() leftRemark = '';
+  @Input() rightRemark = '';
   updated = false;
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   ngOnChanges() {
     this.updated = false;

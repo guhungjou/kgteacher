@@ -1,4 +1,4 @@
 <span *ngIf="updated" style="font-weight: bold">
-  {{ left | number: "1.1-1" }} / {{ right | number: "1.1-1" }}
+  {{ left | number: "1.1-1" }} <span *ngIf="leftRemark">({{leftRemark}})</span> / {{ right | number: "1.1-1" }} <span *ngIf="rightRemark">({{rightRemark}})</span>
 </span>
 <nz-tag nzColor="warning" *ngIf="!updated">未检测</nz-tag>

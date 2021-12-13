@@ -6,13 +6,15 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
   styleUrls: ['./tooth-label.component.scss'],
 })
 export class ToothLabelComponent implements OnInit, OnChanges {
-  @Input() tooth = '';
+  @Input() tooth = 0;
+  @Input() caries = 0;
+  @Input() remark = '';
   @Input() updatedAt = '';
   updated = false;
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
   ngOnChanges() {
     this.updated = false;
     if (this.updatedAt) {

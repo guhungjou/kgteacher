@@ -1,4 +1,4 @@
 <span *ngIf="updated" style="font-weight: bold">
-  {{ hemoglobin }}
+  {{ hemoglobin }} Hb <span *ngIf="remark">({{remark}})</span>
 </span>
 <nz-tag nzColor="warning" *ngIf="!updated">未检测</nz-tag>

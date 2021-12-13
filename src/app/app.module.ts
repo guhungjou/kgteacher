@@ -93,6 +93,9 @@ import { FileSelectComponent } from './components/file-select/file-select.compon
 import { LoadTeacherModalComponent } from './components/load-teacher-modal/load-teacher-modal.component';
 import { LoadStudentModalComponent } from './components/load-student-modal/load-student-modal.component';
 import { DeleteClassModalComponent } from './components/delete-class-modal/delete-class-modal.component';
+import { AltLabelComponent } from './components/alt-label/alt-label.component';
+import { HeightLabelComponent } from './components/height-label/height-label.component';
+import { WeightLabelComponent } from './components/weight-label/weight-label.component';
 
 registerLocaleData(zh);
 
@@ -141,6 +144,9 @@ registerLocaleData(zh);
     LoadTeacherModalComponent,
     LoadStudentModalComponent,
     DeleteClassModalComponent,
+    AltLabelComponent,
+    HeightLabelComponent,
+    WeightLabelComponent,
   ],
   imports: [
     BrowserModule,
@@ -202,4 +208,4 @@ registerLocaleData(zh);
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
