@@ -15,14 +15,17 @@ export class LoginPageComponent implements OnInit {
     private api: ApiService,
     private message: NzMessageService,
     private router: Router,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+  ) { }
 
+  kindergartenName = '幼儿园';
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
       username: [null, [Validators.required]],
       password: [null, [Validators.required]],
     });
+
+    this.kindergartenName = localStorage.getItem('kindergarten') || '幼儿园';
   }
 
   formGroup!: FormGroup;
@@ -59,6 +62,7 @@ export class LoginPageComponent implements OnInit {
       } else if (r.status !== 0) {
         this.message.warning('未知错误');
       } else {
+        localStorage.setItem('kindergarten', r.data?.kindergarten?.name);
         let redirect = this.route.snapshot.queryParamMap.get('redirect');
         if (!redirect) {
           redirect = '/';
