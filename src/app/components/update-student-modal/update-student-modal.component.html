@@ -48,13 +48,13 @@
         </nz-form-control>
       </nz-form-item>
       <nz-form-item style="margin-bottom: 12px">
-        <nz-form-control>
+        <nz-form-control nzErrorTip="设备地址格式为 AB:12:CD:23:EF:45">
           <nz-input-group nzAddOnBefore="设 备">
             <input
               type="text"
               nz-input
               formControlName="device"
-              placeholder="手环的MAC地址"
+              placeholder="不区分大小写,可省略冒号"
             />
           </nz-input-group>
         </nz-form-control>

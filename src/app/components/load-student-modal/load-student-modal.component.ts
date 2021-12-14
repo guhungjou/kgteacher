@@ -16,9 +16,9 @@ export class LoadStudentModalComponent implements OnInit {
 
   file: any = null;
 
-  constructor(private api: ApiService, private message: NzMessageService) {}
+  constructor(private api: ApiService, private message: NzMessageService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   close() {
     this.isStudentListModalVisible = false;
@@ -88,6 +88,8 @@ export class LoadStudentModalComponent implements OnInit {
       const r = await this.api.createStudentLoad(this.students);
       if (r.status === 21001) {
         this.message.warning('设备重复');
+      } else if (r.status === 21002) {
+        this.message.warning('设备格式错误');
       } else if (r.status === 20003) {
         this.message.warning('您没有创建老师的权限，只有园长才能创建老师');
       } else if (r.status !== 0) {

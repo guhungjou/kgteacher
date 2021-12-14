@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -20,7 +20,7 @@ export class NewStudentModalComponent implements OnInit {
     private formBuilder: FormBuilder,
     private api: ApiService,
     private message: NzMessageService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getSelf();
@@ -28,7 +28,7 @@ export class NewStudentModalComponent implements OnInit {
       name: [null, [Validators.required]],
       remark: [null, []],
       gender: [null, [Validators.required]],
-      device: [null, [Validators.required]],
+      device: [null, [Validators.required, this.validateDevice]],
     });
   }
 
@@ -41,7 +41,7 @@ export class NewStudentModalComponent implements OnInit {
       if (self?.class_id) {
         this.classID = self?.class_id;
       }
-    } catch (error) {}
+    } catch (error) { }
   }
 
   close() {
@@ -91,6 +91,8 @@ export class NewStudentModalComponent implements OnInit {
       );
       if (r.status === 21001) {
         this.message.warning('设备已使用');
+      } else if (r.status === 21002) {
+        this.message.warning('设备格式错误');
       } else if (r.status !== 0) {
         this.message.warning('未知错误');
       } else {
@@ -104,5 +106,14 @@ export class NewStudentModalComponent implements OnInit {
     } finally {
       this.loading = false;
     }
+  }
+
+  private validateDevice(control: AbstractControl) {
+    const u = control.value || '';
+    const res = /^([0-9A-Fa-f]{2}[:]?){5}([0-9A-Fa-f]{2})$/.exec(u);
+    if (!res) {
+      return { error: true };
+    }
+    return true;
   }
 }
