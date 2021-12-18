@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiHost: 'http://127.0.0.1:2323/api/teacher',
+  apiHost: 'http://kg.ykwell.cn/api/teacher',
 };

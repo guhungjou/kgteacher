@@ -36,7 +36,12 @@ export class StudentMedicalExaminationFormPageComponent implements OnInit {
       const r = await this.api.getStudentMedicalExamination(id);
       this.data = r.data;
 
-      this.title.setTitle('体检报告 - ' + this.data?.student?.class?.name + ' - ' + this.data?.student?.name)
-    } catch (error) { }
+      this.title.setTitle(
+        '体检报告 - ' +
+          this.data?.student?.class?.name +
+          ' - ' +
+          this.data?.student?.name
+      );
+    } catch (error) {}
   }
 }

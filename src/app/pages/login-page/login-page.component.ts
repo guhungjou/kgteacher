@@ -15,8 +15,8 @@ export class LoginPageComponent implements OnInit {
     private api: ApiService,
     private message: NzMessageService,
     private router: Router,
-    private route: ActivatedRoute,
-  ) { }
+    private route: ActivatedRoute
+  ) {}
 
   kindergartenName = '幼儿园';
   ngOnInit(): void {

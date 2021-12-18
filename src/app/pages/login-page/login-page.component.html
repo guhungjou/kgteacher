@@ -1,6 +1,9 @@
 <form nz-form [formGroup]="formGroup" class="login-form" (ngSubmit)="submit()">
   <nz-form-item>
-    <h2><span style="color: #2196f3;">{{kindergartenName}}</span>管理后台</h2>
+    <h2>
+      <span style="color: #2196f3">{{ kindergartenName }}</span
+      >管理后台
+    </h2>
   </nz-form-item>
   <nz-form-item>
     <nz-form-control nzErrorTip="请输入用户名!">
