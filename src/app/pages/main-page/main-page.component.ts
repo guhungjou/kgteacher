@@ -11,12 +11,13 @@ import { ApiService } from 'src/app/services/api.service';
 export class MainPageComponent implements OnInit {
   isCollapsed = false;
   self: any = {};
+  loading = false;
 
   constructor(
     private api: ApiService,
     private message: NzMessageService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.api.reset();
@@ -25,9 +26,12 @@ export class MainPageComponent implements OnInit {
 
   async getSelf() {
     try {
+      this.loading = true;
       const r = await this.api.getSelf();
       this.self = r.data;
-    } catch (error) {}
+    } catch (error) { } finally {
+      this.loading = false;
+    }
   }
 
   clickLogo() {

@@ -1,4 +1,8 @@
-<nz-layout class="main">
+
+<div *ngIf="loading" class="loading">
+  <nz-spin nzSimple nzSize="large"></nz-spin>
+</div>
+<nz-layout class="main" *ngIf="!loading">
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
     <div class="logo" (click)="clickLogo()" style="background: url(../../../assets/logo.jpg);background-repeat: no-repeat;background-size: contain;background-position: center;">
     </div>
