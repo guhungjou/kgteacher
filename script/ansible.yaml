@@ -1,0 +1,18 @@
+- hosts: localhost
+  tasks:
+    - name: build teacher
+      command: "{{item}}"
+      with_items:
+        - git checkout master
+        - ng build --configuration production
+      args:
+        chdir: "{{playbook_dir}}/.."
+- hosts: ykwell.cn
+  user: ubuntu
+  tasks:
+    - name: deploy teacher
+      synchronize:
+        src: "{{playbook_dir}}/../dist/teacher/"
+        dest: /var/www/ykgk/teacher/
+        #rsync_opts:
+        #  - "--exclude=assets/"
