@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   buildurl(path: string, queryMap: any = null) {
     let query = '';
@@ -187,12 +187,13 @@ export class ApiService {
   createStudent(
     name: string,
     gender: string,
+    birthday: any,
     remark: string,
     device: string,
     classID: number
   ) {
     const url = this.buildurl('/student');
-    const body = { name, gender, remark, device, class_id: classID };
+    const body = { name, gender, remark, birthday, device, class_id: classID };
     return this.post(url, body);
   }
 
@@ -200,12 +201,13 @@ export class ApiService {
     id: number,
     name: string,
     gender: string,
+    birthday: any,
     remark: string,
     device: string,
     classID: number
   ) {
     const url = this.buildurl('/student/' + id);
-    const body = { name, gender, remark, device, class_id: classID };
+    const body = { name, gender, remark, device, birthday, class_id: classID };
     return this.put(url, body);
   }
 

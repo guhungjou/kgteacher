@@ -25,7 +25,7 @@ export class NewStudentModalComponent implements OnInit {
     private formBuilder: FormBuilder,
     private api: ApiService,
     private message: NzMessageService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getSelf();
@@ -34,6 +34,7 @@ export class NewStudentModalComponent implements OnInit {
       remark: [null, []],
       gender: [null, [Validators.required]],
       device: [null, [Validators.required, this.validateDevice]],
+      birthday: [null, [Validators.required]],
     });
   }
 
@@ -46,7 +47,7 @@ export class NewStudentModalComponent implements OnInit {
       if (self?.class_id) {
         this.classID = self?.class_id;
       }
-    } catch (error) {}
+    } catch (error) { }
   }
 
   close() {
@@ -75,13 +76,15 @@ export class NewStudentModalComponent implements OnInit {
     const gender = value.gender;
     const remark = value.remark;
     const device = value.device;
-    this.createStudent(name, gender, remark, device, this.classID);
+    const birthday = value.birthday;
+    this.createStudent(name, gender, remark, birthday, device, this.classID);
   }
 
   async createStudent(
     name: string,
     gender: string,
     remark: string,
+    birthday: any,
     device: string,
     classID: number
   ) {
@@ -90,6 +93,7 @@ export class NewStudentModalComponent implements OnInit {
       const r = await this.api.createStudent(
         name,
         gender,
+        birthday,
         remark,
         device,
         classID

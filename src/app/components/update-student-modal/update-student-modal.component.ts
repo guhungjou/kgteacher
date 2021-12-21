@@ -32,7 +32,7 @@ export class UpdateStudentModalComponent implements OnInit, OnChanges {
     private formBuilder: FormBuilder,
     private api: ApiService,
     private message: NzMessageService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
@@ -40,6 +40,7 @@ export class UpdateStudentModalComponent implements OnInit, OnChanges {
       remark: [null, []],
       gender: [null, [Validators.required]],
       device: [null, [Validators.required, this.validateDevice]],
+      birthday: [null, [Validators.required]]
     });
   }
 
@@ -51,6 +52,7 @@ export class UpdateStudentModalComponent implements OnInit, OnChanges {
         remark: this.data.remark,
         gender: this.data.gender,
         device: this.data.device,
+        birthday: this.data.birthday,
       });
       this.classID = this.data.class_id;
     }
@@ -82,10 +84,12 @@ export class UpdateStudentModalComponent implements OnInit, OnChanges {
     const gender = value.gender;
     const remark = value.remark;
     const device = value.device;
+    const birthday = value.birthday;
     this.updateStudent(
       this.data.id,
       name,
       gender,
+      birthday,
       remark,
       device,
       this.classID
@@ -96,6 +100,7 @@ export class UpdateStudentModalComponent implements OnInit, OnChanges {
     id: number,
     name: string,
     gender: string,
+    birthday: any,
     remark: string,
     device: string,
     classID: number
@@ -106,6 +111,7 @@ export class UpdateStudentModalComponent implements OnInit, OnChanges {
         id,
         name,
         gender,
+        birthday,
         remark,
         device,
         classID
