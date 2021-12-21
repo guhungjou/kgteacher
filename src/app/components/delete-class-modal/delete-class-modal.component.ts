@@ -25,14 +25,14 @@ export class DeleteClassModalComponent implements OnInit, OnChanges {
   withStudent = false;
   withTeacher = false;
 
-  constructor(private api: ApiService, private message: NzMessageService) {}
+  constructor(private api: ApiService, private message: NzMessageService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.isVisible) {
       this.withStudent = true;
-      this.withTeacher = true;
+      this.withTeacher = false;
     }
   }
 

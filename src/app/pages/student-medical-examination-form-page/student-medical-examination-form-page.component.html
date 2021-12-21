@@ -31,10 +31,15 @@
       <td colspan="2">{{ data.student?.name }}</td>
       <td colspan="1">性别</td>
       <td colspan="1">{{ data.student?.gender === "male" ? "男" : "女" }}</td>
-      <td colspan="1">年龄</td>
-      <td colspan="1">{{ data.student?.age | number }}</td>
-      <td colspan="2">出生日期</td>
-      <td colspan="2"></td>
+      <!-- <td colspan="1">年龄</td>
+      <td colspan="1">
+        <app-student-age [birthday]="data.student?.birthday"></app-student-age>
+      </td> -->
+      <td colspan="2">出生年月</td>
+      <td colspan="4">
+        <app-date-label [text]="data.student?.birthday"></app-date-label>
+        <app-student-age [birthday]="data.student?.birthday"></app-student-age>
+      </td>
     </tr>
     <tr>
       <td colspan="2">既往病史</td>

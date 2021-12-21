@@ -10,9 +10,9 @@ export class DateLabelComponent implements OnInit, OnChanges {
   @Input() chinese = false;
   dt: Date | null = null;
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   ngOnChanges() {
     this.dt = new Date(this.text);

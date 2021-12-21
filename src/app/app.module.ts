@@ -97,6 +97,7 @@ import { AltLabelComponent } from './components/alt-label/alt-label.component';
 import { HeightLabelComponent } from './components/height-label/height-label.component';
 import { WeightLabelComponent } from './components/weight-label/weight-label.component';
 import { StudentMedicalExaminationFormPageComponent } from './pages/student-medical-examination-form-page/student-medical-examination-form-page.component';
+import { StudentAgeComponent } from './components/student-age/student-age.component';
 
 registerLocaleData(zh);
 
@@ -149,6 +150,7 @@ registerLocaleData(zh);
     HeightLabelComponent,
     WeightLabelComponent,
     StudentMedicalExaminationFormPageComponent,
+    StudentAgeComponent,
   ],
   imports: [
     BrowserModule,

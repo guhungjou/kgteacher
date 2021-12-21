@@ -80,11 +80,11 @@
             <app-gender [gender]="data.student?.gender"></app-gender>
           </td>
           <td class="b">{{ data.temperature | number: "1.1-1" }}℃</td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>{{data.hand}}</td>
+          <td>{{data.mouth}}</td>
+          <td>{{data.eye}}</td>
           <td>
-            <app-datetime-label [text]="data.created_at"></app-datetime-label>
+            <app-datetime-label [text]="data.updated_at"></app-datetime-label>
           </td>
           <!-- <td>
                 <a nz-dropdown [nzDropdownMenu]="menu">

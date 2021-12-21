@@ -4,7 +4,10 @@
 </div>
 <nz-layout class="main" *ngIf="!loading">
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
-    <div class="logo" (click)="clickLogo()" style="background: url(../../../assets/logo.jpg);background-repeat: no-repeat;background-size: contain;background-position: center;">
+    <div class="logo" (click)="clickLogo()">
+      <img src="../../../assets/logo.jpg">
+      <span>童角健康站</span>
+      
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
       <li nz-submenu nzTitle="幼儿园" nzIcon="home" nzOpen>
@@ -52,6 +55,6 @@
     <nz-content>
       <router-outlet></router-outlet>
     </nz-content>
-    <nz-footer>永康国科晨检机器人 ©2021</nz-footer>
+    <nz-footer>永康国科康复工程技术有限公司 ©2021</nz-footer>
   </nz-layout>
 </nz-layout>
