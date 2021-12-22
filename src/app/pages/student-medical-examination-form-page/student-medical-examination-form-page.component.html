@@ -89,9 +89,14 @@
     </tr>
     <tr>
       <td colspan="2" rowspan="2">辅助检查</td>
-      <td colspan="2">血红蛋白</td>
+      <td colspan="2">血红蛋白(Hb)</td>
       <td colspan="3">
-        {{ data.hemoglobin | number: "1.1-1" }}Hb {{ data.hemoglobin_remark }}
+        <app-hemoglobin-label
+        [hemoglobin]="data.hemoglobin"
+        [remark]="data.hemoglobin_remark"
+        [status]="data.hemoglobin_status"
+        [updatedAt]="data.hemoglobin_updated_at"
+      ></app-hemoglobin-label>
       </td>
       <td colspan="2">谷丙转氨酶</td>
       <td colspan="3">

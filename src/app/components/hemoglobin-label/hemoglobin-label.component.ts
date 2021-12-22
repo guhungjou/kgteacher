@@ -9,11 +9,12 @@ export class HemoglobinLabelComponent implements OnInit, OnChanges {
   @Input() hemoglobin = 0;
   @Input() remark = '';
   @Input() updatedAt = '';
+  @Input() status = '';
   updated = false;
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   ngOnChanges() {
     this.updated = false;
