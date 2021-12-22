@@ -1,4 +1,3 @@
 <span *ngIf="updated" style="font-weight: bold"> {{ height }} cm </span>
 <nz-tag nzColor="warning" *ngIf="!updated">未检测</nz-tag>
-<i nz-icon nzType="caret-up" nzTheme="fill" style="color:magenta;" *ngIf="updated && status==='high'"></i>
-<i nz-icon nzType="caret-down" nzTheme="fill" style="color:magenta;" *ngIf="updated && status==='low'"></i>
+<app-up-or-down *ngIf="updated" [status]="status"></app-up-or-down>

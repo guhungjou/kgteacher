@@ -98,6 +98,7 @@ import { HeightLabelComponent } from './components/height-label/height-label.com
 import { WeightLabelComponent } from './components/weight-label/weight-label.component';
 import { StudentMedicalExaminationFormPageComponent } from './pages/student-medical-examination-form-page/student-medical-examination-form-page.component';
 import { StudentAgeComponent } from './components/student-age/student-age.component';
+import { UpOrDownComponent } from './components/up-or-down/up-or-down.component';
 
 registerLocaleData(zh);
 
@@ -151,6 +152,7 @@ registerLocaleData(zh);
     WeightLabelComponent,
     StudentMedicalExaminationFormPageComponent,
     StudentAgeComponent,
+    UpOrDownComponent,
   ],
   imports: [
     BrowserModule,
