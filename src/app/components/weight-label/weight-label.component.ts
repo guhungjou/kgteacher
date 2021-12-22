@@ -7,12 +7,13 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 })
 export class WeightLabelComponent implements OnInit, OnChanges {
   @Input() weight = 0;
+  @Input() status = '';
   @Input() updatedAt = '';
   updated = false;
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   ngOnChanges() {
     this.updated = false;

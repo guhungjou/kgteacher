@@ -7,12 +7,13 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 })
 export class HeightLabelComponent implements OnInit, OnChanges {
   @Input() height = 0;
+  @Input() status = '';
   @Input() updatedAt = '';
   updated = false;
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   ngOnChanges() {
     this.updated = false;

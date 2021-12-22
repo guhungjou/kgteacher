@@ -54,9 +54,21 @@
     <tr>
       <td rowspan="3" colspan="2">体格检查</td>
       <td colspan="2">身高</td>
-      <td colspan="3">{{ data.height | number }}cm</td>
+      <td colspan="3">
+        <app-height-label
+        [height]="data.height"
+        [status]="data.height_status"
+        [updatedAt]="data.height_updated_at"
+      ></app-height-label>
+      </td>
       <td colspan="2">体重</td>
-      <td colspan="3">{{ data.weight | number }}kg</td>
+      <td colspan="3">
+        <app-weight-label
+        [weight]="data.weight"
+        [status]="data.weight_status"
+        [updatedAt]="data.weight_updated_at"
+      ></app-weight-label>
+      </td>
     </tr>
     <tr>
       <td rowspan="2">眼</td>
