@@ -1,4 +1,6 @@
 <span *ngIf="updated" style="font-weight: bold">
-  {{ alt }} U/L<span *ngIf="remark">({{ remark }})</span>
+  {{ alt | number: "1.1-1" }} U/L<span *ngIf="remark">({{ remark }})</span>
 </span>
 <nz-tag nzColor="warning" *ngIf="!updated">未检测</nz-tag>
+<i nz-icon nzType="caret-up" nzTheme="fill" style="color:magenta;" *ngIf="updated && status==='high'"></i>
+<i nz-icon nzType="caret-down" nzTheme="fill" style="color:magenta;" *ngIf="updated && status==='low'"></i>
