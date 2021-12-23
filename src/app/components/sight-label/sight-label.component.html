@@ -1,7 +1,10 @@
 <span *ngIf="updated" style="font-weight: bold">
   {{ left | number: "1.1-1" }}
-  <span *ngIf="leftRemark">({{ leftRemark }})</span> /
+  <span *ngIf="leftRemark">({{ leftRemark }})</span>
+  <app-up-or-down *ngIf="updated" [status]="lstatus"></app-up-or-down>
+  /
   {{ right | number: "1.1-1" }}
   <span *ngIf="rightRemark">({{ rightRemark }})</span>
+  <app-up-or-down *ngIf="updated" [status]="rstatus"></app-up-or-down>
 </span>
 <nz-tag nzColor="warning" *ngIf="!updated">未检测</nz-tag>

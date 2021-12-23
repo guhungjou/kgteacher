@@ -73,7 +73,10 @@
     <tr>
       <td rowspan="2" colspan="2">眼</td>
       <td>左</td>
-      <td colspan="2">{{ data.sight_l | number: "1.1-1" }}</td>
+      <td colspan="2">
+        {{ data.sight_l | number: "1.1-1" }}
+        <app-up-or-down [status]="data.sight_l_status"></app-up-or-down>
+      </td>
       <!-- <td colspan="1">{{ data.sight_l_remark }}</td> -->
       <td rowspan="2" colspan="2">口腔</td>
       <td>牙齿数</td>
@@ -82,7 +85,10 @@
     </tr>
     <tr>
       <td>右</td>
-      <td colspan="2">{{ data.sight_r | number: "1.1-1" }}</td>
+      <td colspan="2">
+        {{ data.sight_r | number: "1.1-1" }}
+        <app-up-or-down [status]="data.sight_r_status"></app-up-or-down>
+      </td>
       <!-- <td colspan="1">{{ data.sight_r_remark }}</td> -->
       <td>龋齿数</td>
       <td colspan="2">{{ data.tooth_caries_count | number }}</td>
