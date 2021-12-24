@@ -1,0 +1,4 @@
+<span *ngIf="updated" style="font-weight: bold">
+    {{ bmi | number }}
+</span>
+<app-up-or-down *ngIf="updated" [status]="status"></app-up-or-down>

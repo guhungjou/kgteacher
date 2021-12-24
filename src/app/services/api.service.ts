@@ -276,6 +276,7 @@ export class ApiService {
     hemoglobinFilters: string[],
     sightFilters: string[],
     altFilters: string[],
+    bmiFilters: string[],
     startTime: any,
     endTime: any,
     page: number,
@@ -292,6 +293,7 @@ export class ApiService {
       hemoglobin_filters: hemoglobinFilters,
       sight_filters: sightFilters,
       alt_filters: altFilters,
+      bmi_filters: bmiFilters,
     };
     if (startTime) {
       q['start_time'] = startTime;
@@ -311,6 +313,7 @@ export class ApiService {
     hemoglobinFilters: string[],
     sightFilters: string[],
     altFilters: string[],
+    bmiFilters: string[],
     startTime: any,
     endTime: any,
     page: number,
@@ -327,6 +330,7 @@ export class ApiService {
       hemoglobin_filters: hemoglobinFilters,
       sight_filters: sightFilters,
       alt_filters: altFilters,
+      bmi_filters: bmiFilters,
     };
     if (startTime) {
       q['start_time'] = startTime;

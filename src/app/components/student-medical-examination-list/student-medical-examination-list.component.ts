@@ -52,6 +52,7 @@ export class StudentMedicalExaminationListComponent
         [],
         [],
         [],
+        [],
         ranges[0],
         ranges[1],
         this.page,

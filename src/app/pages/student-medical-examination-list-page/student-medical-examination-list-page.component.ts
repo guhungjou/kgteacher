@@ -87,6 +87,7 @@ export class StudentMedicalExaminationListPageComponent implements OnInit {
         this.queryHemoglobinFilters,
         this.querySightFilters,
         this.queryALTFilters,
+        this.queryBMIFilters,
         ranges[0],
         ranges[1],
         this.page,
@@ -115,6 +116,7 @@ export class StudentMedicalExaminationListPageComponent implements OnInit {
       this.queryHemoglobinFilters,
       this.querySightFilters,
       this.queryALTFilters,
+      this.queryBMIFilters,
       ranges[0],
       ranges[1],
       this.page,
@@ -130,7 +132,8 @@ export class StudentMedicalExaminationListPageComponent implements OnInit {
   }
 
   healthFilters = [{ text: '正常', value: 'normal' }, { text: '偏高', value: 'high' }, { text: '偏低', value: 'low' }];
-
+  bmiFilters = [{ text: '正常', value: 'normal' }, { text: '肥胖', value: 'high' }, { text: '偏瘦', value: 'low' }];
+  weightFilters = [{ text: '正常', value: 'normal' }, { text: '偏重', value: 'high' }, { text: '偏轻', value: 'low' }];
   queryHeightFilters: string[] = [];
   onHeightFilterChanged(d: string[]) {
     this.queryHeightFilters = d;
@@ -158,6 +161,12 @@ export class StudentMedicalExaminationListPageComponent implements OnInit {
   querySightFilters: string[] = [];
   onSightFilterChanged(d: string[]) {
     this.querySightFilters = d;
+    this.findStudentMedicalExaminations();
+  }
+
+  queryBMIFilters: string[] = [];
+  onBMIFilterChanged(d: string[]) {
+    this.queryBMIFilters = d;
     this.findStudentMedicalExaminations();
   }
 }

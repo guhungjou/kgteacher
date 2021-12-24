@@ -62,8 +62,10 @@
           <th>性别</th>
           <th [nzFilters]="healthFilters" [nzFilterFn]="true"
           (nzFilterChange)="onHeightFilterChanged($event)">身高</th>
-          <th [nzFilters]="healthFilters" [nzFilterFn]="true"
+          <th [nzFilters]="weightFilters" [nzFilterFn]="true"
           (nzFilterChange)="onWeightFilterChanged($event)">体重</th>
+          <th [nzFilters]="bmiFilters" [nzFilterFn]="true"
+          (nzFilterChange)="onBMIFilterChanged($event)">BMI指数</th>
           <th [nzFilters]="healthFilters" [nzFilterFn]="true"
           (nzFilterChange)="onHemoglobinFilterChanged($event)">血红蛋白(Hb)</th>
           <th [nzFilters]="healthFilters" [nzFilterFn]="true"
@@ -99,6 +101,9 @@
               [status]="data.weight_status"
               [updatedAt]="data.weight_updated_at"
             ></app-weight-label>
+          </td>
+          <td>
+            <app-bmi-label [bmi]="data.bmi" [updatedAt]="data.bmi_updated_at" [status]="data.bmi_status"></app-bmi-label>
           </td>
           <td>
             <app-hemoglobin-label
