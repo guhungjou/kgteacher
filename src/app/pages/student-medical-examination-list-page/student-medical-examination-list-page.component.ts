@@ -82,6 +82,11 @@ export class StudentMedicalExaminationListPageComponent implements OnInit {
         this.query,
         this.queryClassID,
         this.queryStudentID,
+        this.queryHeightFilters,
+        this.queryWeightFilters,
+        this.queryHemoglobinFilters,
+        this.querySightFilters,
+        this.queryALTFilters,
         ranges[0],
         ranges[1],
         this.page,
@@ -105,6 +110,11 @@ export class StudentMedicalExaminationListPageComponent implements OnInit {
       this.query,
       this.queryClassID,
       this.queryStudentID,
+      this.queryHeightFilters,
+      this.queryWeightFilters,
+      this.queryHemoglobinFilters,
+      this.querySightFilters,
+      this.queryALTFilters,
       ranges[0],
       ranges[1],
       this.page,
@@ -117,5 +127,37 @@ export class StudentMedicalExaminationListPageComponent implements OnInit {
       'toolbar=no, menubar=no, resizable=yes, status=no, titlebar=no';
 
     window.open('/student/medical/exam/form/' + data.id, '_blank', printSpecs);
+  }
+
+  healthFilters = [{ text: '正常', value: 'normal' }, { text: '偏高', value: 'high' }, { text: '偏低', value: 'low' }];
+
+  queryHeightFilters: string[] = [];
+  onHeightFilterChanged(d: string[]) {
+    this.queryHeightFilters = d;
+    this.findStudentMedicalExaminations();
+  }
+
+  queryWeightFilters: string[] = [];
+  onWeightFilterChanged(d: string[]) {
+    this.queryWeightFilters = d;
+    this.findStudentMedicalExaminations();
+  }
+
+  queryHemoglobinFilters: string[] = [];
+  onHemoglobinFilterChanged(d: string[]) {
+    this.queryHemoglobinFilters = d;
+    this.findStudentMedicalExaminations();
+  }
+
+  queryALTFilters: string[] = [];
+  onALTFilterChanged(d: string[]) {
+    this.queryALTFilters = d;
+    this.findStudentMedicalExaminations();
+  }
+
+  querySightFilters: string[] = [];
+  onSightFilterChanged(d: string[]) {
+    this.querySightFilters = d;
+    this.findStudentMedicalExaminations();
   }
 }

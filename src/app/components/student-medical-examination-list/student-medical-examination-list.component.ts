@@ -9,8 +9,7 @@ import { formatRangeDate } from 'src/app/x/datetime';
   styleUrls: ['./student-medical-examination-list.component.scss'],
 })
 export class StudentMedicalExaminationListComponent
-  implements OnInit, OnChanges
-{
+  implements OnInit, OnChanges {
   @Input() studentID = 0;
   query = '';
   queryDate = [];
@@ -20,9 +19,9 @@ export class StudentMedicalExaminationListComponent
   exams: any[] = [];
   loading = false;
 
-  constructor(private api: ApiService, private message: NzMessageService) {}
+  constructor(private api: ApiService, private message: NzMessageService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   ngOnChanges() {
     if (this.studentID) {
@@ -48,6 +47,11 @@ export class StudentMedicalExaminationListComponent
         this.query,
         0,
         this.studentID,
+        [],
+        [],
+        [],
+        [],
+        [],
         ranges[0],
         ranges[1],
         this.page,

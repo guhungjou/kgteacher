@@ -67,11 +67,6 @@ export class StudentMorningCheckVisionPageComponent implements OnInit {
   temperaturePie: Pie | null = null;
 
   renderTemperature(data: any[], total: number) {
-    // const data = [
-    //   { type: '正常', value: 27 },
-    //   { type: '偏低', value: 25 },
-    //   { type: '偏高', value: 18 },
-    // ];
     const cfg: PieOptions = {
       appendPadding: 10,
       data,
@@ -96,6 +91,7 @@ export class StudentMorningCheckVisionPageComponent implements OnInit {
           textAlign: 'center',
           fontSize: 14,
         },
+        autoRotate: false,
       },
       interactions: [{ type: 'element-selected' }, { type: 'element-active' }],
       statistic: {

@@ -271,6 +271,11 @@ export class ApiService {
     query: string,
     classID: number,
     studentID: number,
+    heightFilters: string[],
+    weightFilters: string[],
+    hemoglobinFilters: string[],
+    sightFilters: string[],
+    altFilters: string[],
     startTime: any,
     endTime: any,
     page: number,
@@ -282,6 +287,11 @@ export class ApiService {
       page,
       page_size: pageSize,
       student_id: studentID,
+      height_filters: heightFilters,
+      weight_filters: weightFilters,
+      hemoglobin_filters: hemoglobinFilters,
+      sight_filters: sightFilters,
+      alt_filters: altFilters,
     };
     if (startTime) {
       q['start_time'] = startTime;
@@ -296,6 +306,11 @@ export class ApiService {
     query: string,
     classID: number,
     studentID: number,
+    heightFilters: string[],
+    weightFilters: string[],
+    hemoglobinFilters: string[],
+    sightFilters: string[],
+    altFilters: string[],
     startTime: any,
     endTime: any,
     page: number,
@@ -307,6 +322,11 @@ export class ApiService {
       page,
       page_size: pageSize,
       student_id: studentID,
+      height_filters: heightFilters,
+      weight_filters: weightFilters,
+      hemoglobin_filters: hemoglobinFilters,
+      sight_filters: sightFilters,
+      alt_filters: altFilters,
     };
     if (startTime) {
       q['start_time'] = startTime;
