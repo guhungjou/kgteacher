@@ -13,7 +13,17 @@
 
         <app-search-button style="margin-left: 10px;" (search)="search()" [disabled]="!queryDate"></app-search-button>
     </div>
-    <nz-spin nzTip="加载中..." [nzSpinning]="heightLoading" style="width: 500px;">
-        <div id="heightcolumn" style="padding: 20px;"></div>
-    </nz-spin>
+    <div nz-row>
+        <div nz-col [nzSpan]="8">
+            <nz-spin nzTip="加载中..." [nzSpinning]="heightLoading">
+                <div id="heightcolumn" style="padding: 20px;"></div>
+            </nz-spin>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <nz-spin nzTip="加载中..." [nzSpinning]="weightLoading">
+                <div id="weightcolumn" style="padding: 20px;"></div>
+            </nz-spin>
+        </div>
+        <div nz-col [nzSpan]="8"></div>
+    </div>
 </div>

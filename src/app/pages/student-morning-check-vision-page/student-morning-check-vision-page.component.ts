@@ -103,6 +103,9 @@ export class StudentMorningCheckVisionPageComponent implements OnInit {
             whiteSpace: 'pre-wrap',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
+            fontSize: '22px',
+            fontWeight: 'normal',
+            marginTop: '10px'
           },
           content: '总数 ' + total,
         },

@@ -101,7 +101,7 @@ export class StudentMedicalExaminationVisionPageComponent implements OnInit {
           // 数据标签防遮挡
           { type: 'interval-hide-overlap' },
           // 数据标签文颜色自动调整
-          // { type: 'adjust-color' },
+          { type: 'adjust-color' },
         ],
       },
     };
@@ -113,4 +113,6 @@ export class StudentMedicalExaminationVisionPageComponent implements OnInit {
 
     this.heightColumn.render();
   }
+
+  weightLoading = false;
 }

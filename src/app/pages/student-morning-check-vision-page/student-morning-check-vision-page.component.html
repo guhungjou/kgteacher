@@ -12,7 +12,12 @@
 
         <app-search-button style="margin-left: 10px;" (search)="search()" [disabled]="!queryDate"></app-search-button>
     </div>
-    <nz-spin nzTip="加载中..." [nzSpinning]="loading" style="width: 500px;">
-        <div id="temperaturepie" style="padding: 20px;"></div>
-    </nz-spin>
+    <div nz-row>
+        <div nz-col [nzSpan]="8">
+            <nz-spin nzTip="加载中..." [nzSpinning]="loading">
+                <div id="temperaturepie" style="padding: 20px;"></div>
+            </nz-spin>
+        </div>
+    </div>
+
 </div>

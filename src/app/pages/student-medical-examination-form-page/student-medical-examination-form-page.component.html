@@ -53,21 +53,25 @@
     </tr>
     <tr>
       <td rowspan="3" colspan="2">体格检查</td>
-      <td colspan="2">身高</td>
-      <td colspan="3">
+      <td colspan="1">身高</td>
+      <td colspan="2">
         <app-height-label
         [height]="data.height"
         [status]="data.height_status"
         [updatedAt]="data.height_updated_at"
       ></app-height-label>
       </td>
-      <td colspan="2">体重</td>
-      <td colspan="3">
+      <td colspan="1">体重</td>
+      <td colspan="2">
         <app-weight-label
         [weight]="data.weight"
         [status]="data.weight_status"
         [updatedAt]="data.weight_updated_at"
       ></app-weight-label>
+      </td>
+      <td colspan="1">BMI</td>
+      <td colspan="3">
+        <app-bmi-label [bmi]="data.bmi" [status]="data.bmi_status" [updatedAt]="data.bmi_updated_at"></app-bmi-label>
       </td>
     </tr>
     <tr>
