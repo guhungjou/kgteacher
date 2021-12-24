@@ -99,6 +99,7 @@ import { WeightLabelComponent } from './components/weight-label/weight-label.com
 import { StudentMedicalExaminationFormPageComponent } from './pages/student-medical-examination-form-page/student-medical-examination-form-page.component';
 import { StudentAgeComponent } from './components/student-age/student-age.component';
 import { UpOrDownComponent } from './components/up-or-down/up-or-down.component';
+import { TemperatureLabelComponent } from './components/temperature-label/temperature-label.component';
 
 registerLocaleData(zh);
 
@@ -153,6 +154,7 @@ registerLocaleData(zh);
     StudentMedicalExaminationFormPageComponent,
     StudentAgeComponent,
     UpOrDownComponent,
+    TemperatureLabelComponent,
   ],
   imports: [
     BrowserModule,

@@ -79,7 +79,9 @@
           <td>
             <app-gender [gender]="data.student?.gender"></app-gender>
           </td>
-          <td class="b">{{ data.temperature | number: "1.1-1" }}℃</td>
+          <td>
+            <app-temperature-label [temperature]="data.temperature" [status]="data.temperature_status"></app-temperature-label>
+          </td>
           <td>{{data.hand}}</td>
           <td>{{data.mouth}}</td>
           <td>{{data.eye}}</td>
