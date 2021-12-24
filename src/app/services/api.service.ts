@@ -415,8 +415,13 @@ export class ApiService {
     return this.get(url);
   }
 
-  findKindergartenStudentMorningCheckTemperatureVision(date: any, classID: number) {
+  findStudentMorningCheckTemperatureVision(date: any, classID: number) {
     const url = this.buildurl('/student/morning/check/temperature/vision', { date, class_id: classID });
+    return this.fget(url);
+  }
+
+  findStudentMedicalExaminationHeightVision(date: any, classID: number) {
+    const url = this.buildurl('/student/medical/examination/height/vision', { date, class_id: classID });
     return this.fget(url);
   }
 }

@@ -101,6 +101,7 @@ import { StudentAgeComponent } from './components/student-age/student-age.compon
 import { UpOrDownComponent } from './components/up-or-down/up-or-down.component';
 import { TemperatureLabelComponent } from './components/temperature-label/temperature-label.component';
 import { StudentMorningCheckVisionPageComponent } from './pages/student-morning-check-vision-page/student-morning-check-vision-page.component';
+import { StudentMedicalExaminationVisionPageComponent } from './pages/student-medical-examination-vision-page/student-medical-examination-vision-page.component';
 
 registerLocaleData(zh);
 
@@ -157,6 +158,7 @@ registerLocaleData(zh);
     UpOrDownComponent,
     TemperatureLabelComponent,
     StudentMorningCheckVisionPageComponent,
+    StudentMedicalExaminationVisionPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -21,20 +21,20 @@ export class StudentMorningCheckVisionPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.findKindergartenStudentMorningCheckTemperatureVision();
+    this.findStudentMorningCheckTemperatureVision();
   }
 
   search() {
-    this.findKindergartenStudentMorningCheckTemperatureVision();
+    this.findStudentMorningCheckTemperatureVision();
   }
 
-  async findKindergartenStudentMorningCheckTemperatureVision() {
+  async findStudentMorningCheckTemperatureVision() {
     if (!this.queryDate) {
       return;
     }
     try {
       this.loading = true;
-      const r = await this.api.findKindergartenStudentMorningCheckTemperatureVision(this.queryDate.toISOString(), this.queryClassID);
+      const r = await this.api.findStudentMorningCheckTemperatureVision(this.queryDate.toISOString(), this.queryClassID);
       const data = r.data;
       if (data.length === 0) {
         this.message.warning('所选日期没有任何晨检数据');
