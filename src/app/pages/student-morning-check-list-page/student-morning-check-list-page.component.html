@@ -60,7 +60,8 @@
           <th>班级</th>
           <th>学生</th>
           <th>性别</th>
-          <th>体温</th>
+          <th [nzFilters]="temperatureFilters" [nzFilterFn]="true" [nzShowFilter]="true"
+          (nzFilterChange)="onTemperatureFilterChanged($event)">体温</th>
           <th>手</th>
           <th>口</th>
           <th>眼</th>

@@ -215,6 +215,7 @@ export class ApiService {
     query: string,
     classID: number,
     studentID: number,
+    temperatureFilters: string[],
     startTime: any,
     endTime: any,
     page: number,
@@ -223,6 +224,7 @@ export class ApiService {
     const q: any = {
       query,
       class_id: classID,
+      temperature_filters: temperatureFilters,
       page,
       page_size: pageSize,
       student_id: studentID,
@@ -241,6 +243,7 @@ export class ApiService {
     query: string,
     classID: number,
     studentID: number,
+    temperatureFilters: string[],
     startTime: any,
     endTime: any,
     page: number,
@@ -249,6 +252,7 @@ export class ApiService {
     const q: any = {
       query,
       class_id: classID,
+      temperature_filters: temperatureFilters,
       page,
       page_size: pageSize,
       student_id: studentID,
@@ -389,5 +393,10 @@ export class ApiService {
   getStudentMedicalExamination(id: number) {
     const url = this.buildurl('/student/medical/examination/' + id);
     return this.get(url);
+  }
+
+  findKindergartenStudentMorningCheckTemperatureVision(date: any, classID: number) {
+    const url = this.buildurl('/student/morning/check/temperature/vision', { date, class_id: classID });
+    return this.fget(url);
   }
 }

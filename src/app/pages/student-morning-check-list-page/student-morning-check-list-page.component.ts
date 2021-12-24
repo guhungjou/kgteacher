@@ -8,6 +8,7 @@ import {
   mergeRouter,
   parseDateRangesQuery,
   parseIntQuery,
+  parseStringArrayQuery,
   parseStringQuery,
 } from 'src/app/x/router';
 
@@ -20,6 +21,7 @@ export class StudentMorningCheckListPageComponent implements OnInit {
   query = '';
   queryClassID = 0;
   queryStudentID = 0;
+  queryTemperatureFilters: string[] = [];
   queryDate = [];
   page = 1;
   pageSize = 10;
@@ -54,6 +56,7 @@ export class StudentMorningCheckListPageComponent implements OnInit {
       page: this.page,
       page_size: this.pageSize,
       date: this.queryDate.toString(),
+      // temperature_filters: this.queryTemperatureFilters.toString(),
     });
   }
 
@@ -64,6 +67,7 @@ export class StudentMorningCheckListPageComponent implements OnInit {
     this.page = parseIntQuery(this.route, 'page', 1);
     this.pageSize = parseIntQuery(this.route, 'page_size', 10);
     this.queryDate = parseDateRangesQuery(this.route, 'date', []);
+    // this.queryTemperatureFilters = parseStringArrayQuery(this.route, 'temperature_filters', []);
   }
 
   search() {
@@ -83,6 +87,7 @@ export class StudentMorningCheckListPageComponent implements OnInit {
         this.query,
         this.queryClassID,
         this.queryStudentID,
+        this.queryTemperatureFilters,
         ranges[0],
         ranges[1],
         this.page,
@@ -106,10 +111,17 @@ export class StudentMorningCheckListPageComponent implements OnInit {
       this.query,
       this.queryClassID,
       this.queryStudentID,
+      this.queryTemperatureFilters,
       ranges[0],
       ranges[1],
       this.page,
       this.pageSize
     );
+  }
+
+  temperatureFilters = [{ text: '正常', value: 'normal' }, { text: '偏高', value: 'high' }, { text: '偏低', value: 'low' }];
+  onTemperatureFilterChanged(d: any) {
+    this.queryTemperatureFilters = d;
+    this.mergeRouter();
   }
 }

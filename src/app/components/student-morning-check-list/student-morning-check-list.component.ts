@@ -16,9 +16,9 @@ export class StudentMorningCheckListComponent implements OnInit, OnChanges {
   checks: any[] = [];
   loading = false;
   @Input() studentID = 0;
-  constructor(private api: ApiService, private message: NzMessageService) {}
+  constructor(private api: ApiService, private message: NzMessageService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   ngOnChanges() {
     if (this.studentID) {
@@ -43,6 +43,7 @@ export class StudentMorningCheckListComponent implements OnInit, OnChanges {
         '',
         0,
         this.studentID,
+        [],
         ranges[0],
         ranges[1],
         this.page,

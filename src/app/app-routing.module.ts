@@ -8,6 +8,7 @@ import { StudentListPageComponent } from './pages/student-list-page/student-list
 import { StudentMedicalExaminationFormPageComponent } from './pages/student-medical-examination-form-page/student-medical-examination-form-page.component';
 import { StudentMedicalExaminationListPageComponent } from './pages/student-medical-examination-list-page/student-medical-examination-list-page.component';
 import { StudentMorningCheckListPageComponent } from './pages/student-morning-check-list-page/student-morning-check-list-page.component';
+import { StudentMorningCheckVisionPageComponent } from './pages/student-morning-check-vision-page/student-morning-check-vision-page.component';
 import { TeacherListPageComponent } from './pages/teacher-list-page/teacher-list-page.component';
 
 const routes: Routes = [
@@ -41,6 +42,10 @@ const routes: Routes = [
         component: StudentMorningCheckListPageComponent,
       },
       {
+        path: 'student/morning/check/vision',
+        component: StudentMorningCheckVisionPageComponent,
+      },
+      {
         path: 'student/medical/exams',
         component: StudentMedicalExaminationListPageComponent,
       },
@@ -56,4 +61,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
