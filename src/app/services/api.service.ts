@@ -428,4 +428,8 @@ export class ApiService {
     const url = this.buildurl('/student/medical/examination/height/vision', { date, class_id: classID });
     return this.fget(url);
   }
+  findStudentMedicalExaminationDates() {
+    const url = this.buildurl('/student/medical/examination/dates');
+    return this.fget(url);
+  }
 }

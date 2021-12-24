@@ -11,7 +11,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class StudentMedicalExaminationVisionPageComponent implements OnInit {
 
-  queryDate: null | Date = new Date();
+  queryDate: null | Date = null;
   queryClassID = 0;
   heightLoading = false;
 
@@ -23,7 +23,7 @@ export class StudentMedicalExaminationVisionPageComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.findStudentMedicalExaminationHeightVision();
+    // this.findStudentMedicalExaminationHeightVision();
   }
 
   search() {
@@ -31,7 +31,7 @@ export class StudentMedicalExaminationVisionPageComponent implements OnInit {
   }
 
   async findStudentMedicalExaminationHeightVision() {
-    if (!this.queryDate) {
+    if (!this.queryDate || this.heightLoading) {
       return;
     }
     try {
