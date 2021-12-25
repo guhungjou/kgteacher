@@ -367,6 +367,7 @@ export class StudentMedicalExaminationVisionPageComponent implements OnInit {
         this.sightPie.destroy();
         this.sightPie = null;
       }
+      return;
     }
     let total = 0;
     for (const d of data) {
