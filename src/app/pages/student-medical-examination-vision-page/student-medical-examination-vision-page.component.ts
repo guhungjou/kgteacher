@@ -28,6 +28,7 @@ export class StudentMedicalExaminationVisionPageComponent implements OnInit {
 
   search() {
     this.findStudentMedicalExaminationHeightVision();
+    this.findStudentMedicalExaminationWeightVision();
   }
 
   async findStudentMedicalExaminationHeightVision() {
@@ -85,7 +86,7 @@ export class StudentMedicalExaminationVisionPageComponent implements OnInit {
       },
       legend: {
         title: {
-          text: '男女学生身高 总数:' + total,
+          text: '学生身高 总数:' + total,
           style: {
             fontSize: 18,
           }
@@ -115,4 +116,87 @@ export class StudentMedicalExaminationVisionPageComponent implements OnInit {
   }
 
   weightLoading = false;
+  weightColumn: null | Column = null;
+  async findStudentMedicalExaminationWeightVision() {
+    if (!this.queryDate || this.weightLoading) {
+      return;
+    }
+    try {
+      this.weightLoading = true;
+      const r = await this.api.findStudentMedicalExaminationWeightVision(this.queryDate.toISOString(), this.queryClassID);
+      const data = r.data;
+      if (data.length === 0) {
+        if (this.weightColumn) {
+          this.weightColumn.destroy();
+          this.weightColumn = null;
+        }
+      } else {
+        let total = 0;
+        for (const d of data) {
+          d.name = (d.weight * 5) + ' - ' + (d.weight * 5 + 4);
+          d.gender = d.gender == 'male' ? '男' : '女';
+          total += d.count;
+        }
+        this.renderWeight(data, total);
+      }
+    } catch (error) {
+      this.message.error('网络错误');
+    } finally {
+      this.weightLoading = false;
+    }
+  }
+
+  renderWeight(data: any, total: number) {
+    const cfg: ColumnOptions = {
+      data,
+      xField: 'name',
+      yField: 'count',
+      seriesField: 'gender',
+      isGroup: true,
+      autoFit: true,
+      columnStyle: {
+        radius: [5, 5, 0, 0],
+      },
+      xAxis: {
+        title: {
+          text: '体重区间(kg)'
+        },
+      },
+      yAxis: {
+        title: {
+          text: '人数',
+          autoRotate: false,
+        },
+        tickInterval: 1,
+      },
+      legend: {
+        title: {
+          text: '学生体重 总数:' + total,
+          style: {
+            fontSize: 18,
+          }
+        }
+      },
+      label: {
+        // 可手动配置 label 数据标签位置
+        position: 'top', // 'top', 'bottom', 'middle'
+        // 可配置附加的布局方法
+        layout: [
+          // 柱形图数据标签位置自动调整
+          { type: 'interval-adjust-position' },
+          // 数据标签防遮挡
+          { type: 'interval-hide-overlap' },
+          // 数据标签文颜色自动调整
+          { type: 'adjust-color' },
+        ],
+      },
+    };
+    if (!this.weightColumn) {
+      this.weightColumn = new Column(this.el.nativeElement.querySelector('#weightcolumn'), cfg);
+    } else {
+      this.weightColumn.update(cfg);
+    }
+
+    this.weightColumn.render();
+  }
 }

@@ -37,7 +37,7 @@ export class StudentMorningCheckVisionPageComponent implements OnInit {
       const r = await this.api.findStudentMorningCheckTemperatureVision(this.queryDate.toISOString(), this.queryClassID);
       const data = r.data;
       if (data.length === 0) {
-        this.message.warning('所选日期没有任何晨检数据');
+        // this.message.warning('所选日期没有任何晨检数据');
         if (this.temperaturePie) {
           this.temperaturePie.destroy();
           this.temperaturePie = null;

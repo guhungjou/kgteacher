@@ -432,4 +432,9 @@ export class ApiService {
     const url = this.buildurl('/student/medical/examination/dates');
     return this.fget(url);
   }
+
+  findStudentMedicalExaminationWeightVision(date: any, classID: number) {
+    const url = this.buildurl('/student/medical/examination/weight/vision', { date, class_id: classID });
+    return this.fget(url);
+  }
 }

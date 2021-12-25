@@ -24,6 +24,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "pdfast",
+              "size-sensor"
+           ],
             "outputPath": "dist/teacher",
             "index": "src/index.html",
             "main": "src/main.ts",
