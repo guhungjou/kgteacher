@@ -437,4 +437,24 @@ export class ApiService {
     const url = this.buildurl('/student/medical/examination/weight/vision', { date, class_id: classID });
     return this.fget(url);
   }
+
+  findStudentMedicalExaminationBMIVision(date: any, classID: number) {
+    const url = this.buildurl('/student/medical/examination/bmi/vision', { date, class_id: classID });
+    return this.fget(url);
+  }
+
+  findStudentMedicalExaminationHemoglobinVision(date: any, classID: number) {
+    const url = this.buildurl('/student/medical/examination/hemoglobin/vision', { date, class_id: classID });
+    return this.fget(url);
+  }
+
+  findStudentMedicalExaminationALTVision(date: any, classID: number) {
+    const url = this.buildurl('/student/medical/examination/alt/vision', { date, class_id: classID });
+    return this.fget(url);
+  }
+
+  findStudentMedicalExaminationSightVision(date: any, classID: number) {
+    const url = this.buildurl('/student/medical/examination/sight/vision', { date, class_id: classID });
+    return this.fget(url);
+  }
 }

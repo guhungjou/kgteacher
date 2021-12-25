@@ -26,6 +26,27 @@
                 <div id="weightcolumn" style="padding: 20px;"></div>
             </nz-spin>
         </div>
-        <div nz-col [nzSpan]="8"></div>
+        <div nz-col [nzSpan]="8">
+            <nz-spin nzTip="加载中..." [nzSpinning]="bmiloading">
+                <div id="bmipie" style="padding: 20px;"></div>
+            </nz-spin>
+        </div>
+    </div>
+    <div nz-row style="margin-top: 20px;">
+        <div nz-col [nzSpan]="8">
+            <nz-spin nzTip="加载中..." [nzSpinning]="hemoglobinloading">
+                <div id="hemoglobinpie" style="padding: 20px;"></div>
+            </nz-spin>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <nz-spin nzTip="加载中..." [nzSpinning]="altloading">
+                <div id="altpie" style="padding: 20px;"></div>
+            </nz-spin>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <nz-spin nzTip="加载中..." [nzSpinning]="sightloading">
+                <div id="sightpie" style="padding: 20px;"></div>
+            </nz-spin>
+        </div>
     </div>
 </div>

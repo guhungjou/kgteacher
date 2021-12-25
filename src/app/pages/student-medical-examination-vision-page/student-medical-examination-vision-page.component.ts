@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Column, ColumnOptions, Plot } from '@antv/g2plot';
+import { Column, ColumnOptions, Pie, PieOptions, Plot } from '@antv/g2plot';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -23,12 +23,15 @@ export class StudentMedicalExaminationVisionPageComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // this.findStudentMedicalExaminationHeightVision();
   }
 
   search() {
     this.findStudentMedicalExaminationHeightVision();
     this.findStudentMedicalExaminationWeightVision();
+    this.findStudentMedicalExaminationBMIVision();
+    this.findStudentMedicalExaminationHemoglobinVision();
+    this.findStudentMedicalExaminationALTVision();
+    this.findStudentMedicalExaminationSightVision();
   }
 
   async findStudentMedicalExaminationHeightVision() {
@@ -199,4 +202,238 @@ export class StudentMedicalExaminationVisionPageComponent implements OnInit {
 
     this.weightColumn.render();
   }
+
+  bmiloading = false;
+  bmiPie: null | Pie = null;
+  async findStudentMedicalExaminationBMIVision() {
+    if (!this.queryDate) {
+      return;
+    }
+    try {
+      this.bmiloading = true;
+      const r = await this.api.findStudentMedicalExaminationBMIVision(this.queryDate.toISOString(), this.queryClassID);
+      const data = r.data;
+      this.renderBMI(data);
+    } catch (error) {
+      this.message.error('网络错误');
+    } finally {
+      this.bmiloading = false;
+    }
+  }
+
+
+  renderBMI(data: any[]) {
+    this.bmiPie = this.renderPie(this.bmiPie, '#bmipie', 'BMI指数', data);
+  }
+
+  hemoglobinloading = false;
+  hemoglobinPie: null | Pie = null;
+  async findStudentMedicalExaminationHemoglobinVision() {
+    if (!this.queryDate) {
+      return;
+    }
+    try {
+      this.hemoglobinloading = true;
+      const r = await this.api.findStudentMedicalExaminationHemoglobinVision(this.queryDate.toISOString(), this.queryClassID);
+      const data = r.data;
+      this.renderHemoglobin(data);
+    } catch (error) {
+      this.message.error('网络错误');
+    } finally {
+      this.hemoglobinloading = false;
+    }
+  }
+
+  renderHemoglobin(data: any[]) {
+    this.hemoglobinPie = this.renderPie(this.hemoglobinPie, '#hemoglobinpie', '血红蛋白', data);
+  }
+
+  altloading = false;
+  altPie: null | Pie = null;
+  async findStudentMedicalExaminationALTVision() {
+    if (!this.queryDate) {
+      return;
+    }
+    try {
+      this.altloading = true;
+      const r = await this.api.findStudentMedicalExaminationALTVision(this.queryDate.toISOString(), this.queryClassID);
+      const data = r.data;
+      this.renderALT(data);
+    } catch (error) {
+      this.message.error('网络错误');
+    } finally {
+      this.altloading = false;
+    }
+  }
+
+  renderALT(data: any[]) {
+    this.altPie = this.renderPie(this.altPie, '#altpie', '谷丙转氨酶', data);
+  }
+
+
+  renderPie(pie: null | Pie, selector: string, title: string, data: any[]) {
+    if (data.length === 0) {
+      if (pie) {
+        pie.destroy();
+      }
+      return null;
+    }
+    let total = 0;
+    for (const d of data) {
+      if (d.status === 'high') {
+        d.name = '偏高';
+      } else if (d.status === 'low') {
+        d.name = '偏低'
+      } else {
+        d.name = '正常'
+      }
+      total += d.count;
+    }
+    const cfg: PieOptions = {
+      appendPadding: 10,
+      data,
+      autoFit: true,
+      angleField: 'count',
+      colorField: 'name',
+      color: (n: any) => {
+        if (n.name === '偏高') {
+          return '#f44336';
+        } else if (n.name === '偏低') {
+          return '#8bc34a'
+        }
+        return '#2196f3';
+      },
+      radius: 1,
+      innerRadius: 0.5,
+      label: {
+        type: 'inner',
+        offset: '-50%',
+        content: '{name} {value}',
+        style: {
+          textAlign: 'center',
+          fontSize: 14,
+        },
+        autoRotate: false,
+      },
+      interactions: [{ type: 'element-selected' }, { type: 'element-active' }],
+      statistic: {
+        title: {
+          content: title,
+        },
+        content: {
+          style: {
+            whiteSpace: 'pre-wrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            fontSize: '22px',
+            fontWeight: 'normal',
+            marginTop: '10px'
+          },
+          content: '总数 ' + total,
+        },
+      },
+    };
+    if (pie) {
+      pie.update(cfg);
+    } else {
+      pie = new Pie(this.el.nativeElement.querySelector(selector), cfg);
+    }
+
+    pie.render();
+    return pie;
+  }
+
+  sightloading = false;
+  sightPie: null | Pie = null;
+  async findStudentMedicalExaminationSightVision() {
+    if (!this.queryDate) {
+      return;
+    }
+    try {
+      this.altloading = true;
+      const r = await this.api.findStudentMedicalExaminationSightVision(this.queryDate.toISOString(), this.queryClassID);
+      const data = r.data;
+      this.renderSight(data);
+    } catch (error) {
+      this.message.error('网络错误');
+    } finally {
+      this.altloading = false;
+    }
+  }
+
+  renderSight(data: any[]) {
+    if (data.length === 0) {
+      if (this.sightPie) {
+        this.sightPie.destroy();
+        this.sightPie = null;
+      }
+    }
+    let total = 0;
+    for (const d of data) {
+      if (d.lstatus === 'low' && d.rstatus === 'low') {
+        d.name = '近视';
+      } else if (d.lstatus === 'low' && d.rstatus !== 'low') {
+        d.name = '左眼近视';
+      } else if (d.lstatus !== 'low' && d.rstatus === 'low') {
+        d.name = '右眼近视';
+      } else {
+        d.name = '正常'
+      }
+      total += d.count;
+    }
+    const cfg: PieOptions = {
+      appendPadding: 10,
+      data,
+      autoFit: true,
+      angleField: 'count',
+      colorField: 'name',
+      color: (n: any) => {
+        if (n.name === '近视') {
+          return '#f44336';
+        } else if (n.name === '左眼近视') {
+          return '#4CAF50';
+        } else if (n.name === '右眼近视') {
+          return '#FFC107';
+        }
+        return '#2196f3';
+      },
+      radius: 1,
+      innerRadius: 0.5,
+      label: {
+        type: 'inner',
+        offset: '-50%',
+        content: '{name} {value}',
+        style: {
+          textAlign: 'center',
+          fontSize: 14,
+        },
+        autoRotate: false,
+      },
+      interactions: [{ type: 'element-selected' }, { type: 'element-active' }],
+      statistic: {
+        title: {
+          content: '学生视力',
+        },
+        content: {
+          style: {
+            whiteSpace: 'pre-wrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            fontSize: '22px',
+            fontWeight: 'normal',
+            marginTop: '10px'
+          },
+          content: '总数 ' + total,
+        },
+      },
+    };
+    if (this.sightPie) {
+      this.sightPie.update(cfg);
+    } else {
+      this.sightPie = new Pie(this.el.nativeElement.querySelector('#sightpie'), cfg);
+    }
+
+    this.sightPie.render();
+  }
+
 }

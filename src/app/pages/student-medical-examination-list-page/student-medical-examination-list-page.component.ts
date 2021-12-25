@@ -134,6 +134,8 @@ export class StudentMedicalExaminationListPageComponent implements OnInit {
   healthFilters = [{ text: '正常', value: 'normal' }, { text: '偏高', value: 'high' }, { text: '偏低', value: 'low' }];
   bmiFilters = [{ text: '正常', value: 'normal' }, { text: '肥胖', value: 'high' }, { text: '偏瘦', value: 'low' }];
   weightFilters = [{ text: '正常', value: 'normal' }, { text: '偏重', value: 'high' }, { text: '偏轻', value: 'low' }];
+  sightFilters = [{ text: '正常', value: 'normal' }, { text: '近视', value: 'low' }, { text: '左眼近视', value: 'llow' }, { text: '右眼近视', value: 'rlow' }];
+
   queryHeightFilters: string[] = [];
   onHeightFilterChanged(d: string[]) {
     this.queryHeightFilters = d;

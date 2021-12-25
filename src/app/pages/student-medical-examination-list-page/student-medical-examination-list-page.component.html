@@ -72,10 +72,10 @@
           (nzFilterChange)="onHemoglobinFilterChanged($event)">血红蛋白(Hb)</th>
           <th [nzFilters]="healthFilters" [nzFilterFn]="true"
           (nzFilterChange)="onALTFilterChanged($event)">谷丙转氨酶(ALT)</th>
-          <th [nzFilters]="healthFilters" [nzFilterFn]="true"
+          <th [nzFilters]="sightFilters" [nzFilterFn]="true"
           (nzFilterChange)="onSightFilterChanged($event)">视力(左/右)</th>
           <th>牙齿/龋齿</th>
-          <th>创建时间</th>
+          <th>更新时间</th>
           <th>操作</th>
         </tr>
       </thead>
@@ -143,7 +143,7 @@
             ></app-tooth-label>
           </td>
           <td>
-            <app-datetime-label [text]="data.created_at"></app-datetime-label>
+            <app-datetime-label [text]="data.updated_at"></app-datetime-label>
           </td>
           <td>
             <a nz-dropdown [nzDropdownMenu]="menu">
