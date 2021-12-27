@@ -1,5 +1,5 @@
 <span *ngIf="dt && dt.getTime() > 0"
-  >{{ dt.getFullYear() }}{{ chinese ? "年" : "/"
-  }}{{ dt.getMonth() + 1 | number: "2.0-2" }}{{ chinese ? "月" : "/"
-  }}{{ dt.getDate() | number: "2.0-2" }}{{ chinese ? "日" : "" }}
+  >{{ dt.getUTCFullYear() }}{{ chinese ? "年" : "/"
+  }}{{ dt.getUTCMonth() + 1 | number: "2.0-2" }}{{ chinese ? "月" : "/"
+  }}{{ dt.getUTCDate() | number: "2.0-2" }}{{ chinese ? "日" : "" }}
 </span>

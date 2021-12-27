@@ -29,6 +29,9 @@
           [studentID]="data.id"
         ></app-student-morning-check-list>
       </nz-tab>
+      <nz-tab nzTitle="晨检统计">
+        <app-student-morning-check-temperature-vision [studentID]="data.id"></app-student-morning-check-temperature-vision>
+      </nz-tab>
       <nz-tab nzTitle="体检">
         <app-student-medical-examination-list
           [studentID]="data.id"
