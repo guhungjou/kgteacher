@@ -1,0 +1,31 @@
+<nz-spin nzTip="加载中..." [nzSpinning]="loading">
+    <div nz-row>
+        <div nz-col [nzSpan]="12">
+            <app-student-health-line yField="height" yText="身高 cm" [yMin]="60" [data]="heightData"></app-student-health-line>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <app-student-health-line yField="weight" yText="体重 kg" [yMin]="20" [data]="weightData"></app-student-health-line>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col [nzSpan]="24">
+            <app-student-health-line yField="bmi" yText="BMI指数" [yMin]="5" [data]="bmiData"></app-student-health-line>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col [nzSpan]="24">
+            <app-student-health-line yField="hemoglobin" yText="血红蛋白" [yMin]="5" [data]="hbData" low="110" high="160"></app-student-health-line>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col [nzSpan]="24">
+            <app-student-health-line yField="alt" yText="谷丙转氨酶" [yMin]="0" [data]="altData" high="40"></app-student-health-line>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div nz-col [nzSpan]="24">
+            <app-student-health-line yField="sight" sField="v" yText="视力" [yMin]="3.5" [data]="sightData"></app-student-health-line>
+        </div>
+    </div>
+</nz-spin>

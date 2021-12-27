@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Line, LineOptions } from '@antv/g2plot';
+import { Annotation, Line, LineOptions } from '@antv/g2plot';
 
 @Component({
   selector: 'app-student-health-line',
@@ -13,8 +13,10 @@ export class StudentHealthLineComponent implements OnInit, OnChanges {
   @Input() xField = 'date';
   @Input() xText = '日期';
   @Input() yMin = 0;
-  @Input() low = 'min';
-  @Input() high = 'max';
+  @Input() yMax: number | undefined = undefined;
+  @Input() low: string | undefined = undefined;
+  @Input() high: string | undefined = undefined;
+  @Input() sField: string | undefined = undefined;
 
   constructor(private el: ElementRef) { }
 
@@ -25,13 +27,73 @@ export class StudentHealthLineComponent implements OnInit, OnChanges {
     this.update();
   }
 
+
+
   line: null | Line = null;
   update() {
+    let annotations: Annotation[] = [];
+    if (this.high) {
+      annotations.push({
+        type: 'regionFilter',
+        start: ['min', this.high],
+        end: ['max', 'max'],
+        color: '#F4664A',
+      });
+      annotations.push({
+        type: 'text',
+        position: ['min', this.high],
+        content: this.high,
+        offsetY: -4,
+        style: {
+          textBaseline: 'bottom',
+        },
+      });
+      annotations.push(
+        {
+          type: 'line',
+          start: ['min', this.high],
+          end: ['max', this.high],
+          style: {
+            stroke: '#F4664A',
+            lineDash: [2, 2],
+          },
+        });
+    }
+    if (this.low) {
+      annotations.push(
+        {
+          type: 'regionFilter',
+          start: ['min', '0'],
+          end: ['max', this.low],
+          color: '#F4664A',
+        });
+      annotations.push(
+        {
+          type: 'text',
+          position: ['min', this.low],
+          content: this.low,
+          offsetY: -4,
+          style: {
+            textBaseline: 'bottom',
+          },
+        });
+      annotations.push(
+        {
+          type: 'line',
+          start: ['min', this.low],
+          end: ['max', this.low],
+          style: {
+            stroke: '#F4664A',
+            lineDash: [2, 2],
+          },
+        });
+    }
     const cfg: LineOptions = {
       data: this.data,
       padding: 'auto',
       xField: this.xField,
       yField: this.yField,
+      seriesField: this.sField,
       smooth: true,
       xAxis: {
         title: {
@@ -41,59 +103,12 @@ export class StudentHealthLineComponent implements OnInit, OnChanges {
       yAxis: {
         title: {
           text: this.yText,
+          autoRotate: false,
         },
         min: this.yMin,
+        max: this.yMax,
       },
-      annotations: [
-        {
-          type: 'regionFilter',
-          start: ['min', this.high],
-          end: ['max', 'max'],
-          color: '#F4664A',
-        },
-        {
-          type: 'regionFilter',
-          start: ['min', '0'],
-          end: ['max', this.low],
-          color: '#F4664A',
-        },
-        {
-          type: 'text',
-          position: ['min', this.low],
-          content: this.low,
-          offsetY: -4,
-          style: {
-            textBaseline: 'bottom',
-          },
-        },
-        {
-          type: 'line',
-          start: ['min', this.low],
-          end: ['max', this.low],
-          style: {
-            stroke: '#F4664A',
-            lineDash: [2, 2],
-          },
-        },
-        {
-          type: 'text',
-          position: ['min', this.high],
-          content: this.high,
-          offsetY: -4,
-          style: {
-            textBaseline: 'bottom',
-          },
-        },
-        {
-          type: 'line',
-          start: ['min', this.high],
-          end: ['max', this.high],
-          style: {
-            stroke: '#F4664A',
-            lineDash: [2, 2],
-          },
-        },
-      ],
+      annotations: annotations,
     };
     if (this.line) {
       this.line.update(cfg);

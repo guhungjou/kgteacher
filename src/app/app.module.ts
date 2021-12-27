@@ -104,8 +104,9 @@ import { StudentMorningCheckVisionPageComponent } from './pages/student-morning-
 import { StudentMedicalExaminationVisionPageComponent } from './pages/student-medical-examination-vision-page/student-medical-examination-vision-page.component';
 import { BmiLabelComponent } from './components/bmi-label/bmi-label.component';
 import { StudentMedicalExaminationDateSelectComponent } from './components/student-medical-examination-date-select/student-medical-examination-date-select.component';
-import { StudentMorningCheckTemperatureVisionComponent } from './components/student-morning-check-temperature-vision/student-morning-check-temperature-vision.component';
+import { StudentMorningCheckVisionTabComponent } from './components/student-morning-check-vision-tab/student-morning-check-vision-tab.component';
 import { StudentHealthLineComponent } from './components/student-health-line/student-health-line.component';
+import { StudentMedicalExaminationVisionTabComponent } from './components/student-medical-examination-vision-tab/student-medical-examination-vision-tab.component';
 
 registerLocaleData(zh);
 
@@ -165,8 +166,9 @@ registerLocaleData(zh);
     StudentMedicalExaminationVisionPageComponent,
     BmiLabelComponent,
     StudentMedicalExaminationDateSelectComponent,
-    StudentMorningCheckTemperatureVisionComponent,
+    StudentMorningCheckVisionTabComponent,
     StudentHealthLineComponent,
+    StudentMedicalExaminationVisionTabComponent,
   ],
   imports: [
     BrowserModule,

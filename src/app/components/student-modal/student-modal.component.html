@@ -30,12 +30,15 @@
         ></app-student-morning-check-list>
       </nz-tab>
       <nz-tab nzTitle="晨检统计">
-        <app-student-morning-check-temperature-vision [studentID]="data.id"></app-student-morning-check-temperature-vision>
+        <app-student-morning-check-vision-tab [studentID]="data.id"></app-student-morning-check-vision-tab>
       </nz-tab>
       <nz-tab nzTitle="体检">
         <app-student-medical-examination-list
           [studentID]="data.id"
         ></app-student-medical-examination-list>
+      </nz-tab>
+      <nz-tab nzTitle="体检统计">
+        <app-student-medical-examination-vision-tab [studentID]="data.id"></app-student-medical-examination-vision-tab>
       </nz-tab>
     </nz-tabset>
   </ng-container>
