@@ -1,20 +1,20 @@
 <nz-spin nzTip="加载中..." [nzSpinning]="loading">
     <div nz-row>
         <div nz-col [nzSpan]="12">
-            <app-student-health-line yField="height" yText="身高 cm" [yMin]="60" [data]="heightData"></app-student-health-line>
+            <app-student-health-line yField="height" yText="身高 cm" [yMin]="heightData.length>0?(heightData[0].height-1):0" [data]="heightData"></app-student-health-line>
         </div>
         <div nz-col [nzSpan]="12">
-            <app-student-health-line yField="weight" yText="体重 kg" [yMin]="20" [data]="weightData"></app-student-health-line>
+            <app-student-health-line yField="weight" yText="体重 kg" [yMin]="weightData.length>0?(weightData[0].weight-1):0" [data]="weightData"></app-student-health-line>
         </div>
     </div>
     <div nz-row>
         <div nz-col [nzSpan]="24">
-            <app-student-health-line yField="bmi" yText="BMI指数" [yMin]="5" [data]="bmiData"></app-student-health-line>
+            <app-student-health-line yField="bmi" yText="BMI指数" [yMin]="10" [data]="bmiData"></app-student-health-line>
         </div>
     </div>
     <div nz-row>
         <div nz-col [nzSpan]="24">
-            <app-student-health-line yField="hemoglobin" yText="血红蛋白" [yMin]="5" [data]="hbData" low="110" high="160"></app-student-health-line>
+            <app-student-health-line yField="hemoglobin" yText="血红蛋白" [yMin]="50" [data]="hbData" low="110" high="160"></app-student-health-line>
         </div>
     </div>
     <div nz-row>
