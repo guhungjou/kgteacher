@@ -48,6 +48,15 @@ export class StudentMedicalExaminationDateSelectComponent implements OnInit {
   }
 
   format(d: Date) {
-    return `${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()}`;
+    let year = d.getFullYear();
+    let month: string | number = d.getUTCMonth() + 1;
+    let date: string | number = d.getUTCDate();
+    if (month < 10) {
+      month = '0' + month;
+    }
+    if (date < 10) {
+      date = '0' + date;
+    }
+    return `${year}/${month}/${date}`;
   }
 }
