@@ -38,7 +38,7 @@ export class StudentMorningCheckListComponent implements OnInit, OnChanges {
   async findStudentMorningChecks() {
     try {
       this.loading = true;
-      const ranges = formatRangeDate(this.queryDate, false);
+      const ranges = formatRangeDate(this.queryDate);
       const r = await this.api.findStudentMorningChecks(
         '',
         0,

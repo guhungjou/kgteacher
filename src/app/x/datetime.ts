@@ -9,50 +9,37 @@ import endOfToday from 'date-fns/endOfToday';
 
 export function formatRangeDate(
   ranges: any[],
-  withTime: boolean = false
 ): string[] {
   let startTime = '';
   let endTime = '';
   if (ranges.length > 0) {
     const t = new Date(ranges[0]);
-    if (!withTime) {
-      t.setHours(0);
-      t.setMinutes(0);
-      t.setSeconds(0);
-    }
+    t.setHours(0);
+    t.setMinutes(0);
+    t.setSeconds(0);
+
     startTime = t.toISOString();
   }
   if (ranges.length > 1) {
     const t = new Date(ranges[1]);
-    if (!withTime) {
-      t.setHours(24);
-      t.setMinutes(0);
-      t.setSeconds(0);
-    }
+    t.setHours(24);
+    t.setMinutes(0);
+    t.setSeconds(0);
     endTime = t.toISOString();
   }
   return [startTime, endTime];
 }
 
-export function defaultRanges(withTime: boolean = false) {
-  if (withTime) {
-    return {
-      今天: [startOfToday(), startOfTomorrow()],
-      昨天: [startOfYesterday(), startOfToday()],
-      本月: [startOfMonth(new Date()), startOfMonth(addMonths(new Date(), 1))],
-      上月: [startOfMonth(addMonths(new Date(), -1)), startOfMonth(new Date())],
-    };
-  } else {
-    return {
-      今天: [startOfToday(), endOfToday()],
-      昨天: [startOfYesterday(), endOfYesterday()],
-      本月: [startOfMonth(new Date()), endOfMonth(new Date())],
-      上月: [
-        startOfMonth(addMonths(new Date(), -1)),
-        endOfMonth(addMonths(new Date(), -1)),
-      ],
-    };
-  }
+export function defaultRanges() {
+  return {
+    今天: [startOfToday(), endOfToday()],
+    昨天: [startOfYesterday(), endOfYesterday()],
+    本月: [startOfMonth(new Date()), endOfMonth(new Date())],
+    上月: [
+      startOfMonth(addMonths(new Date(), -1)),
+      endOfMonth(addMonths(new Date(), -1)),
+    ],
+  };
 }
 
 export function parseDateRangesWithDefault(s: string, def: any) {

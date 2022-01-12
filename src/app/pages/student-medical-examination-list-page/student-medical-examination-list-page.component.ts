@@ -27,7 +27,7 @@ export class StudentMedicalExaminationListPageComponent implements OnInit {
   exams: any[] = [];
   loading = false;
 
-  ranges = defaultRanges(false);
+  ranges = defaultRanges();
 
   constructor(
     private api: ApiService,
@@ -77,7 +77,7 @@ export class StudentMedicalExaminationListPageComponent implements OnInit {
   async findStudentMedicalExaminations() {
     try {
       this.loading = true;
-      const ranges = formatRangeDate(this.queryDate, false);
+      const ranges = formatRangeDate(this.queryDate);
       const r = await this.api.findStudentMedicalExaminations(
         this.query,
         this.queryClassID,
@@ -106,7 +106,7 @@ export class StudentMedicalExaminationListPageComponent implements OnInit {
   }
 
   export() {
-    const ranges = formatRangeDate(this.queryDate, false);
+    const ranges = formatRangeDate(this.queryDate);
     this.api.exportStudentMedicalExaminations(
       this.query,
       this.queryClassID,

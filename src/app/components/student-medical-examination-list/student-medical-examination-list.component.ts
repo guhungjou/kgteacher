@@ -42,7 +42,7 @@ export class StudentMedicalExaminationListComponent
   async findStudentMedicalExaminations() {
     try {
       this.loading = true;
-      const ranges = formatRangeDate(this.queryDate, false);
+      const ranges = formatRangeDate(this.queryDate);
       const r = await this.api.findStudentMedicalExaminations(
         this.query,
         0,

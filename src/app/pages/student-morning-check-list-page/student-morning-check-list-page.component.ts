@@ -29,7 +29,7 @@ export class StudentMorningCheckListPageComponent implements OnInit {
   checks: any[] = [];
   loading = false;
 
-  ranges = defaultRanges(false);
+  ranges = defaultRanges();
 
   constructor(
     private api: ApiService,
@@ -82,7 +82,7 @@ export class StudentMorningCheckListPageComponent implements OnInit {
   async findStudentMorningChecks() {
     try {
       this.loading = true;
-      const ranges = formatRangeDate(this.queryDate, false);
+      const ranges = formatRangeDate(this.queryDate);
       const r = await this.api.findStudentMorningChecks(
         this.query,
         this.queryClassID,
@@ -106,7 +106,7 @@ export class StudentMorningCheckListPageComponent implements OnInit {
   }
 
   export() {
-    const ranges = formatRangeDate(this.queryDate, false);
+    const ranges = formatRangeDate(this.queryDate);
     this.api.exportStudentMorningChecks(
       this.query,
       this.queryClassID,
