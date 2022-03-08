@@ -8,6 +8,7 @@ import { StudentMedicalExaminationVisionPageComponent } from './pages/student-me
 import { StudentMorningCheckListPageComponent } from './pages/student-morning-check-list-page/student-morning-check-list-page.component';
 import { StudentMorningCheckVisionPageComponent } from './pages/student-morning-check-vision-page/student-morning-check-vision-page.component';
 import { BaseModule } from '../base/base.module';
+import { StudentFitnessTestListPageComponent } from './pages/student-fitness-test-list-page/student-fitness-test-list-page.component';
 
 
 
@@ -19,6 +20,7 @@ import { BaseModule } from '../base/base.module';
     StudentMedicalExaminationVisionPageComponent,
     StudentMorningCheckListPageComponent,
     StudentMorningCheckVisionPageComponent,
+    StudentFitnessTestListPageComponent,
   ],
   imports: [
     CommonModule,

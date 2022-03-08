@@ -182,4 +182,55 @@ export class HealthApiService {
     const url = this.http.buildurl('/student/medical/examination/sight/vision', { date, class_id: classID });
     return this.http.fget(url);
   }
+
+  findStudentFitnessTests(
+    query: string,
+    classID: number,
+    studentID: number,
+    startTime: any,
+    endTime: any,
+    page: number,
+    pageSize: number
+  ) {
+    const q: any = {
+      query,
+      class_id: classID,
+      page,
+      page_size: pageSize,
+      student_id: studentID,
+    };
+    if (startTime) {
+      q['start_time'] = startTime;
+    }
+    if (endTime) {
+      q['end_time'] = endTime;
+    }
+    const url = this.http.buildurl('/student/fitness/tests', q);
+    return this.http.fget(url);
+  }
+  exportStudentFitnessTests(
+    query: string,
+    classID: number,
+    studentID: number,
+    startTime: any,
+    endTime: any,
+    page: number,
+    pageSize: number
+  ) {
+    const q: any = {
+      query,
+      class_id: classID,
+      page,
+      page_size: pageSize,
+      student_id: studentID,
+    };
+    if (startTime) {
+      q['start_time'] = startTime;
+    }
+    if (endTime) {
+      q['end_time'] = endTime;
+    }
+    const url = this.http.buildurl('/student/fitness/tests/export', q);
+    return window.open(url, '_blank');
+  }
 }

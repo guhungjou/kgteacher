@@ -66,6 +66,7 @@ import { ToothLabelComponent } from './components/tooth-label/tooth-label.compon
 import { WeightLabelComponent } from './components/weight-label/weight-label.component';
 import { HeightLabelComponent } from './components/height-label/height-label.component';
 import { TemperatureLabelComponent } from './components/temperature-label/temperature-label.component';
+import { ScoreLabelComponent } from './components/score-label/score-label.component';
 
 registerLocaleData(zh);
 
@@ -140,6 +141,7 @@ const modules = [
     WeightLabelComponent,
     HeightLabelComponent,
     TemperatureLabelComponent,
+    ScoreLabelComponent,
   ],
   imports: [
     ...modules,
@@ -164,6 +166,7 @@ const modules = [
     WeightLabelComponent,
     HeightLabelComponent,
     TemperatureLabelComponent,
+    ScoreLabelComponent,
   ],
   providers: [
     { provide: NZ_I18N, useValue: zh_CN },

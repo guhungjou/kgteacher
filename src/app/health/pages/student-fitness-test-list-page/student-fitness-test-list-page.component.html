@@ -1,0 +1,123 @@
+<nz-breadcrumb>
+    <nz-breadcrumb-item>健康管理</nz-breadcrumb-item>
+    <nz-breadcrumb-item>体测</nz-breadcrumb-item>
+  </nz-breadcrumb>
+  <div class="content">
+    <div class="actionbar">
+      <app-input
+        label="关键字"
+        placeholder="学生名"
+        [(value)]="query"
+        (enter)="search()"
+      ></app-input>
+      <app-self-class-select
+        [(value)]="queryClassID"
+        style="margin-left: 5px"
+      ></app-self-class-select>
+  
+      <nz-input-group nzAddOnBefore="日期" style="margin-left: 5px">
+        <nz-range-picker
+          [(ngModel)]="queryDate"
+          [nzRanges]="ranges"
+        ></nz-range-picker>
+      </nz-input-group>
+  
+      <nz-button-group style="margin-left: 10px">
+        <app-search-button
+          [loading]="loading"
+          (search)="search()"
+        ></app-search-button>
+        <button
+          nz-button
+          (click)="export()"
+          nz-tooltip
+          nzTooltipTitle="一次最多导出一万条数据，如果需要，请分次导出"
+        >
+          <i nz-icon nzType="export" nzTheme="outline"></i>导出
+        </button>
+      </nz-button-group>
+    </div>
+
+    <div class="table">
+        <nz-table
+          #basicTable
+          nzSize="middle"
+          nzShowPagination
+          nzShowSizeChanger
+          [nzFrontPagination]="false"
+          [nzShowTotal]="totalTemplate"
+          [(nzPageIndex)]="page"
+          [(nzPageSize)]="pageSize"
+          [nzTotal]="total"
+          [nzLoading]="loading"
+          (nzPageIndexChange)="onPageChange()"
+          (nzPageSizeChange)="onPageChange()"
+          [nzData]="tests"
+        >
+          <thead>
+            <tr>
+              <th>序号</th>
+              <th>日期</th>
+              <th>班级</th>
+              <th>学生</th>
+              <th>性别</th>
+              <th>10米折返跑(秒)</th>
+                <th>立定跳远(厘米)</th>
+                <th>网球掷远(米)</th>
+                <th>双脚连续跳(秒)</th>
+                <th>坐位体前屈(厘米)</th>
+                <th>走平衡木(秒)</th>
+              <th>更新时间</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of basicTable.data; let i = index">
+              <td>{{ i + 1 + (page - 1) * pageSize }}</td>
+              <td>
+                <app-date-label [text]="data.date"></app-date-label>
+              </td>
+              <td>{{ data.student?.class?.name }}</td>
+              <td class="b">{{ data.student?.name }}</td>
+              <td>
+                <app-gender [gender]="data.student?.gender"></app-gender>
+              </td>
+              <td>
+                <app-score-label [value]="data.shuttle_run_10" [score]="data.shuttle_run_10_score" [updatedAt]="data.shuttle_run_10_updated_at"></app-score-label>
+              </td>
+              <td>
+                <app-score-label [value]="data.standing_long_jump" [score]="data.standing_long_jump_score" [updatedAt]="data.standing_long_jump_updated_at"></app-score-label>
+              </td>
+              <td>
+                <app-score-label [value]="data.baseball_throw" [score]="data.baseball_throw_score" [updatedAt]="data.baseball_throw_updated_at"></app-score-label>
+              </td>
+              <td>
+                <app-score-label [value]="data.bunny_hopping" [score]="data.bunny_hopping_score" [updatedAt]="data.bunny_hopping_updated_at"></app-score-label>
+              </td>
+              <td>
+                <app-score-label [value]="data.sit_and_reach" [score]="data.sit_and_reach_score" [updatedAt]="data.sit_and_reach_updated_at"></app-score-label>
+              </td>
+              <td>
+                <app-score-label [value]="data.balance_beam" [score]="data.balance_beam_score" [updatedAt]="data.balance_beam_updated_at"></app-score-label>
+              </td>
+              <td>
+                <app-datetime-label [text]="data.updated_at"></app-datetime-label>
+              </td>
+              <td>
+                <a nz-dropdown [nzDropdownMenu]="menu">
+                  <i nz-icon nzType="menu"></i>
+                </a>
+                <nz-dropdown-menu #menu="nzDropdownMenu">
+                  <ul nz-menu nzSelectable>
+                    <li nz-menu-item >报告单</li>
+                  </ul>
+                </nz-dropdown-menu>
+              </td>
+            </tr>
+          </tbody>
+        </nz-table>
+        <ng-template #totalTemplate let-range="range" let-total>
+          总计：{{ total }}
+        </ng-template>
+      </div>
+  </div>
