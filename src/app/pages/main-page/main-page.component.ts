@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { HttpService } from 'src/app/base/services/http.service';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -15,12 +16,13 @@ export class MainPageComponent implements OnInit {
 
   constructor(
     private api: ApiService,
+    private http: HttpService,
     private message: NzMessageService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.api.reset();
+    this.http.reset();
     this.getSelf();
   }
 
