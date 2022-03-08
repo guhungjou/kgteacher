@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ApiService } from 'src/app/services/api.service';
+import { KindergartenApiService } from '../../kindergarten-api.service';
 
 @Component({
   selector: 'app-teacher-list',
@@ -15,9 +16,9 @@ export class TeacherListComponent implements OnInit, OnChanges {
   total = 0;
   teachers: any[] = [];
   @Input() classID = 0;
-  constructor(private api: ApiService, private message: NzMessageService) {}
+  constructor(private api: KindergartenApiService, private message: NzMessageService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   ngOnChanges() {
     if (this.classID) {

@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { Pie, PieOptions } from '@antv/g2plot';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ApiService } from 'src/app/services/api.service';
+import { HealthApiService } from '../../health-api.service';
 
 @Component({
   selector: 'app-student-morning-check-vision-page',
@@ -15,7 +16,7 @@ export class StudentMorningCheckVisionPageComponent implements OnInit {
   queryDate: null | Date = new Date();
   queryClassID = 0;
 
-  constructor(private title: Title, private api: ApiService, private message: NzMessageService,
+  constructor(private title: Title, private api: HealthApiService, private message: NzMessageService,
     private el: ElementRef) {
     this.title.setTitle('健康管理 - 晨检统计')
   }

@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ApiService } from 'src/app/services/api.service';
+import { HealthApiService } from '../../health-api.service';
 
 @Component({
   selector: 'app-student-medical-examination-form-page',
@@ -17,7 +18,7 @@ export class StudentMedicalExaminationFormPageComponent implements OnInit {
     private title: Title,
     private route: ActivatedRoute,
     private message: NzMessageService,
-    private api: ApiService
+    private api: HealthApiService
   ) {
     this.title.setTitle('体检报告');
 
@@ -38,10 +39,10 @@ export class StudentMedicalExaminationFormPageComponent implements OnInit {
 
       this.title.setTitle(
         '体检报告 - ' +
-          this.data?.student?.class?.name +
-          ' - ' +
-          this.data?.student?.name
+        this.data?.student?.class?.name +
+        ' - ' +
+        this.data?.student?.name
       );
-    } catch (error) {}
+    } catch (error) { }
   }
 }

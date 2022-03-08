@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ApiService } from 'src/app/services/api.service';
+import { KindergartenApiService } from '../../kindergarten-api.service';
 
 @Component({
   selector: 'app-self-class-select',
@@ -20,9 +21,9 @@ export class SelfClassSelectComponent implements OnInit, OnChanges {
   options: any[] = [];
   loading = false;
 
-  constructor(private api: ApiService, private message: NzMessageService) {}
+  constructor(private api: KindergartenApiService, private message: NzMessageService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   ngOnChanges() {
     if (this.value) {
@@ -39,7 +40,7 @@ export class SelfClassSelectComponent implements OnInit, OnChanges {
     try {
       const r = await this.api.getClass(id);
       this.options = [r.data];
-    } catch (error) {}
+    } catch (error) { }
   }
 
   onChange() {

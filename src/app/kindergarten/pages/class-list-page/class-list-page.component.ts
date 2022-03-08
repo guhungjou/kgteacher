@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ApiService } from 'src/app/services/api.service';
 import { mergeRouter, parseIntQuery, parseRouterQuery } from 'src/app/x/router';
+import { KindergartenApiService } from '../../kindergarten-api.service';
 
 @Component({
   selector: 'app-class-list-page',
@@ -19,7 +20,7 @@ export class ClassListPageComponent implements OnInit {
   loading = false;
 
   constructor(
-    private api: ApiService,
+    private api: KindergartenApiService,
     private message: NzMessageService,
     private route: ActivatedRoute,
     private router: Router,

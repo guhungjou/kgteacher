@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { HealthApiService } from 'src/app/health/health-api.service';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class StudentMedicalExaminationVisionTabComponent implements OnInit, OnChanges {
 
   @Input() studentID = 0;
-  constructor(private api: ApiService, private message: NzMessageService) { }
+  constructor(private api: HealthApiService, private message: NzMessageService) { }
 
   ngOnInit(): void {
   }

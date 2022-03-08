@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ApiService } from 'src/app/services/api.service';
+import { KindergartenApiService } from '../../kindergarten-api.service';
 
 @Component({
   selector: 'app-new-class-modal',
@@ -16,10 +17,10 @@ export class NewClassModalComponent implements OnInit {
   formGroup!: FormGroup;
   loading = false;
   constructor(
-    private api: ApiService,
+    private api: KindergartenApiService,
     private message: NzMessageService,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({

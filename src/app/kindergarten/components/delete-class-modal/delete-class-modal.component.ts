@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ApiService } from 'src/app/services/api.service';
+import { KindergartenApiService } from '../../kindergarten-api.service';
 
 @Component({
   selector: 'app-delete-class-modal',
@@ -25,7 +26,7 @@ export class DeleteClassModalComponent implements OnInit, OnChanges {
   withStudent = false;
   withTeacher = false;
 
-  constructor(private api: ApiService, private message: NzMessageService) { }
+  constructor(private api: KindergartenApiService, private message: NzMessageService) { }
 
   ngOnInit(): void { }
 

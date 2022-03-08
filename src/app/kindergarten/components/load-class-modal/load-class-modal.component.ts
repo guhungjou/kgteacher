@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ApiService } from 'src/app/services/api.service';
 import { removeArrayIndex } from 'src/app/x/slice';
+import { KindergartenApiService } from '../../kindergarten-api.service';
 
 @Component({
   selector: 'app-load-class-modal',
@@ -16,9 +17,9 @@ export class LoadClassModalComponent implements OnInit {
 
   file: any = null;
 
-  constructor(private api: ApiService, private message: NzMessageService) {}
+  constructor(private api: KindergartenApiService, private message: NzMessageService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   close() {
     this.isClassListModalVisible = false;

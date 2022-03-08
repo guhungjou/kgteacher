@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { HealthApiService } from 'src/app/health/health-api.service';
 import { ApiService } from 'src/app/services/api.service';
 import { formatRangeDate } from 'src/app/x/datetime';
 
@@ -19,7 +20,7 @@ export class StudentMedicalExaminationListComponent
   exams: any[] = [];
   loading = false;
 
-  constructor(private api: ApiService, private message: NzMessageService) { }
+  constructor(private api: HealthApiService, private message: NzMessageService) { }
 
   ngOnInit(): void { }
 

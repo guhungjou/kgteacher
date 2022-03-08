@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ApiService } from 'src/app/services/api.service';
 import { removeArrayIndex } from 'src/app/x/slice';
+import { KindergartenApiService } from '../../kindergarten-api.service';
 
 @Component({
   selector: 'app-load-teacher-modal',
@@ -17,9 +18,9 @@ export class LoadTeacherModalComponent implements OnInit {
 
   file: any = null;
 
-  constructor(private api: ApiService, private message: NzMessageService) {}
+  constructor(private api: KindergartenApiService, private message: NzMessageService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   close() {
     this.isTeacherListModalVisible = false;

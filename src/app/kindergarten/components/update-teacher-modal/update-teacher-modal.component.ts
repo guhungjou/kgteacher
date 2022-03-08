@@ -9,6 +9,7 @@ import {
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ApiService } from 'src/app/services/api.service';
+import { KindergartenApiService } from '../../kindergarten-api.service';
 
 @Component({
   selector: 'app-update-teacher-modal',
@@ -26,10 +27,10 @@ export class UpdateTeacherModalComponent implements OnInit, OnChanges {
   formGroup!: FormGroup;
   classID = 0;
   constructor(
-    private api: ApiService,
+    private api: KindergartenApiService,
     private message: NzMessageService,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({

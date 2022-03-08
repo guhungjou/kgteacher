@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ApiService } from 'src/app/services/api.service';
+import { KindergartenApiService } from '../../kindergarten-api.service';
 
 @Component({
   selector: 'app-new-student-modal',
@@ -23,7 +24,8 @@ export class NewStudentModalComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private api: ApiService,
+    private api: KindergartenApiService,
+    private sysApi: ApiService,
     private message: NzMessageService
   ) { }
 
@@ -42,7 +44,7 @@ export class NewStudentModalComponent implements OnInit {
 
   async getSelf() {
     try {
-      const r = await this.api.getSelf();
+      const r = await this.sysApi.getSelf();
       const self = r.data;
       if (self?.class_id) {
         this.classID = self?.class_id;

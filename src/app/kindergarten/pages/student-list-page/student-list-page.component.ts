@@ -5,6 +5,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { ApiService } from 'src/app/services/api.service';
 import { mergeRouter, parseIntQuery, parseStringQuery } from 'src/app/x/router';
+import { KindergartenApiService } from '../../kindergarten-api.service';
 
 @Component({
   selector: 'app-student-list-page',
@@ -22,7 +23,7 @@ export class StudentListPageComponent implements OnInit {
   students: any[] = [];
   constructor(
     private title: Title,
-    private api: ApiService,
+    private api: KindergartenApiService,
     private message: NzMessageService,
     private route: ActivatedRoute,
     private router: Router,

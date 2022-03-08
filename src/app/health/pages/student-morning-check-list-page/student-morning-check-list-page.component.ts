@@ -11,6 +11,7 @@ import {
   parseStringArrayQuery,
   parseStringQuery,
 } from 'src/app/x/router';
+import { HealthApiService } from '../../health-api.service';
 
 @Component({
   selector: 'app-student-morning-check-list-page',
@@ -32,7 +33,7 @@ export class StudentMorningCheckListPageComponent implements OnInit {
   ranges = defaultRanges();
 
   constructor(
-    private api: ApiService,
+    private api: HealthApiService,
     private message: NzMessageService,
     private title: Title,
     private route: ActivatedRoute,

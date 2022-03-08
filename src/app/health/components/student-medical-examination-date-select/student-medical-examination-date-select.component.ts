@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ApiService } from 'src/app/services/api.service';
+import { HealthApiService } from '../../health-api.service';
 
 @Component({
   selector: 'app-student-medical-examination-date-select',
@@ -15,7 +16,7 @@ export class StudentMedicalExaminationDateSelectComponent implements OnInit {
   options: any[] = [];
   loading = false;
 
-  constructor(private api: ApiService, private message: NzMessageService) { }
+  constructor(private api: HealthApiService, private message: NzMessageService) { }
 
   ngOnInit(): void {
     this.findStudentMedicalExaminationDates();

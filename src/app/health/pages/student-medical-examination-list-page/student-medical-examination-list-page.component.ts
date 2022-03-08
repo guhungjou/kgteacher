@@ -10,6 +10,7 @@ import {
   parseIntQuery,
   parseStringQuery,
 } from 'src/app/x/router';
+import { HealthApiService } from '../../health-api.service';
 
 @Component({
   selector: 'app-student-medical-examination-list-page',
@@ -30,7 +31,7 @@ export class StudentMedicalExaminationListPageComponent implements OnInit {
   ranges = defaultRanges();
 
   constructor(
-    private api: ApiService,
+    private api: HealthApiService,
     private message: NzMessageService,
     private title: Title,
     private route: ActivatedRoute,

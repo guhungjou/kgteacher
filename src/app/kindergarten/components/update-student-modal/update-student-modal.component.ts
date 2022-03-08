@@ -14,6 +14,7 @@ import {
 } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ApiService } from 'src/app/services/api.service';
+import { KindergartenApiService } from '../../kindergarten-api.service';
 
 @Component({
   selector: 'app-update-student-modal',
@@ -30,7 +31,7 @@ export class UpdateStudentModalComponent implements OnInit, OnChanges {
   formGroup!: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
-    private api: ApiService,
+    private api: KindergartenApiService,
     private message: NzMessageService
   ) { }
 

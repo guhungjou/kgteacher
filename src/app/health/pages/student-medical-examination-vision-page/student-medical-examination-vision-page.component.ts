@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { Column, ColumnOptions, Pie, PieOptions, Plot } from '@antv/g2plot';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ApiService } from 'src/app/services/api.service';
+import { HealthApiService } from '../../health-api.service';
 
 @Component({
   selector: 'app-student-medical-examination-vision-page',
@@ -15,7 +16,7 @@ export class StudentMedicalExaminationVisionPageComponent implements OnInit {
   queryClassID = 0;
   heightLoading = false;
 
-  constructor(private title: Title, private api: ApiService, private message: NzMessageService,
+  constructor(private title: Title, private api: HealthApiService, private message: NzMessageService,
     private el: ElementRef) {
     this.title.setTitle('健康管理 - 体检统计');
   }
