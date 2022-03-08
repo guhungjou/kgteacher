@@ -13,13 +13,13 @@
       <li nz-submenu nzTitle="幼儿园" nzIcon="home" nzOpen>
         <ul>
           <li nz-menu-item nzMatchRouter *ngIf="self.role === 'manager'">
-            <a routerLink="/classes">班级</a>
+            <a routerLink="/kindergarten/classes">班级</a>
           </li>
           <li nz-menu-item nzMatchRouter *ngIf="self.role === 'manager'">
-            <a routerLink="/teachers">老师</a>
+            <a routerLink="/kindergarten/teachers">老师</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/students">学生</a>
+            <a routerLink="/kindergarten/students">学生</a>
           </li>
         </ul>
       </li>
