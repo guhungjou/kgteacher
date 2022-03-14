@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { defaultRanges, formatRangeDate } from 'src/app/x/datetime';
-import { mergeRouter, parseDateRangesQuery, parseIntQuery, parseStringQuery } from 'src/app/x/router';
+import { mergeRouter, parseDateRangesQuery, parseIntArrayQuery, parseIntQuery, parseStringQuery } from 'src/app/x/router';
 import { HealthApiService } from '../../health-api.service';
 
 @Component({
@@ -64,7 +64,11 @@ export class StudentFitnessTestListPageComponent implements OnInit {
     try {
       this.loading = true;
       const ranges = formatRangeDate(this.queryDate);
-      const r = await this.api.findStudentFitnessTests(this.query, this.queryClassID, this.queryStudentID, ranges[0], ranges[1], this.page, this.pageSize);
+      const r = await this.api.findStudentFitnessTests(
+        this.query, this.queryClassID, this.queryStudentID, ranges[0], ranges[1],
+        this.queryShuttleRunFilters, this.queryStandingLongJumpFilters, this.queryBaseballThrowFilters,
+        this.queryBunnyHoppingFilters, this.querySitAndReachFilters, this.queryBalanceBeamFilters,
+        this.page, this.pageSize);
       const data = r.data;
       this.page = data.page;
       this.pageSize = data.page_size;
@@ -85,5 +89,42 @@ export class StudentFitnessTestListPageComponent implements OnInit {
     this.mergeRouter();
     const ranges = formatRangeDate(this.queryDate);
     this.api.exportStudentFitnessTests(this.query, this.queryClassID, this.queryStudentID, ranges[0], ranges[1], this.page, this.pageSize);
+  }
+
+  scoreFilters = [{ text: '0分', value: 0 }, { text: '1分', value: 1 }, { text: '2分', value: 2 }, { text: '3分', value: 3 }, { text: '4分', value: 4 }, { text: '5分', value: 5 }];
+  queryShuttleRunFilters: number[] = [];
+  onShuttleRunFiltersChanged(d: number[]) {
+    this.queryShuttleRunFilters = d;
+    this.findStudentFitnessTests();
+  }
+
+  queryStandingLongJumpFilters: number[] = [];
+  onStandingLongJumpFiltersChanged(d: number[]) {
+    this.queryStandingLongJumpFilters = d;
+    this.findStudentFitnessTests();
+  }
+
+  queryBaseballThrowFilters: number[] = [];
+  onBaseballThrowFiltersChanged(d: number[]) {
+    this.queryBaseballThrowFilters = d;
+    this.findStudentFitnessTests();
+  }
+
+  queryBunnyHoppingFilters: number[] = [];
+  onBunnyHoppingFiltersChanged(d: number[]) {
+    this.queryBunnyHoppingFilters = d;
+    this.findStudentFitnessTests();
+  }
+
+  querySitAndReachFilters: number[] = [];
+  onSitAndReachFiltersChanged(d: number[]) {
+    this.querySitAndReachFilters = d;
+    this.findStudentFitnessTests();
+  }
+
+  queryBalanceBeamFilters: number[] = [];
+  onBalanceBeamFiltersChanged(d: number[]) {
+    this.queryBalanceBeamFilters = d;
+    this.findStudentFitnessTests();
   }
 }
