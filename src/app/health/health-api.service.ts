@@ -245,4 +245,9 @@ export class HealthApiService {
     const url = this.http.buildurl('/student/fitness/tests/export', q);
     return window.open(url, '_blank');
   }
+
+  findStudentFitnessTestDates() {
+    const url = this.http.buildurl('/student/fitness/test/dates');
+    return this.http.fget(url);
+  }
 }

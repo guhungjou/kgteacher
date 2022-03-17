@@ -1,5 +1,5 @@
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { parseDateRangesWithDefault } from './datetime';
+import { parseDateRangesWithDefault, parseDateWithDefault } from './datetime';
 import { parseBoolean, parseIntArray, parseIntWithDefault } from './int';
 import { parseStringArray } from './string';
 
@@ -64,3 +64,13 @@ export function parseDateRangesQuery(
   const v = parseRouterQuery(route, key);
   return parseDateRangesWithDefault(v, def);
 }
+
+export function parseDateQuery(
+  route: ActivatedRoute,
+  key: string,
+  def: any = null
+) {
+  const v = parseRouterQuery(route, key);
+  return parseDateWithDefault(v, def);
+}
+

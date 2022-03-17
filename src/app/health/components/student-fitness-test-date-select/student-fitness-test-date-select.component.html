@@ -1,0 +1,16 @@
+<nz-input-group nzAddOnBefore="日期">
+    <nz-select
+      [(ngModel)]="value"
+      nzAllowClear
+      [nzLoading]="loading"
+      (ngModelChange)="onChange()"
+      style="min-width: 224px"
+    >
+      <nz-option
+        *ngFor="let o of options"
+        [nzLabel]="format(o)"
+        [nzValue]="o"
+      ></nz-option>
+    </nz-select>
+  </nz-input-group>
+  

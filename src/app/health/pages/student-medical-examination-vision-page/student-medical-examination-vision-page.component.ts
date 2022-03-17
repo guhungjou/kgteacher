@@ -1,8 +1,7 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Column, ColumnOptions, Pie, PieOptions, Plot } from '@antv/g2plot';
+import { Column, ColumnOptions, Pie, PieOptions } from '@antv/g2plot';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { ApiService } from 'src/app/services/api.service';
 import { HealthApiService } from '../../health-api.service';
 
 @Component({
@@ -21,11 +20,8 @@ export class StudentMedicalExaminationVisionPageComponent implements OnInit {
     this.title.setTitle('健康管理 - 体检统计');
   }
 
-
-
   ngOnInit(): void {
   }
-
   search() {
     this.findStudentMedicalExaminationHeightVision();
     this.findStudentMedicalExaminationWeightVision();

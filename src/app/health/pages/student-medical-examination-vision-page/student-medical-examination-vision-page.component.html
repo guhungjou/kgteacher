@@ -7,10 +7,6 @@
     <div class="actionbar">
         <app-student-medical-examination-date-select [(value)]="queryDate" (initial)="search()"></app-student-medical-examination-date-select>
 
-        <!-- <nz-input-group nzAddOnBefore="日期">
-            <nz-date-picker [(ngModel)]="queryDate"></nz-date-picker>
-        </nz-input-group> -->
-
         <app-self-class-select [(value)]="queryClassID" style="margin-left: 5px;"></app-self-class-select>
 
         <app-search-button style="margin-left: 10px;" (search)="search()" [disabled]="!queryDate"></app-search-button>

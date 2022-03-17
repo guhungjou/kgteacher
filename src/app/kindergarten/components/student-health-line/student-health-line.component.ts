@@ -7,7 +7,7 @@ import { Annotation, Line, LineOptions } from '@antv/g2plot';
   styleUrls: ['./student-health-line.component.scss']
 })
 export class StudentHealthLineComponent implements OnInit, OnChanges {
-  @Input() data: any = [];
+  @Input() data: any[] = [];
   @Input() yField = '';
   @Input() yText = ''
   @Input() xField = 'date';
@@ -107,6 +107,12 @@ export class StudentHealthLineComponent implements OnInit, OnChanges {
         },
         min: this.yMin,
         max: this.yMax,
+        label: {
+          formatter: (text: string, item: any, index: number) => {
+            const n = parseFloat(text);
+            return n.toFixed(1);
+          }
+        }
       },
       annotations: annotations,
     };
