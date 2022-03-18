@@ -28,6 +28,7 @@ import { StudentListPageComponent } from './pages/student-list-page/student-list
 import { TeacherListPageComponent } from './pages/teacher-list-page/teacher-list-page.component';
 import { RoutingModule } from './routing.module';
 import { UpdateClassModalComponent } from './components/update-class-modal/update-class-modal.component';
+import { StudentFitnessTestListComponent } from './components/student-fitness-test-list/student-fitness-test-list.component';
 
 
 
@@ -59,6 +60,7 @@ import { UpdateClassModalComponent } from './components/update-class-modal/updat
     StudentListPageComponent,
     TeacherListPageComponent,
     UpdateClassModalComponent,
+    StudentFitnessTestListComponent,
   ],
   imports: [
     CommonModule,

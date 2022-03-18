@@ -22,10 +22,14 @@
       <th>性别</th>
       <th>身高</th>
       <th>体重</th>
-      <th>BMI指数</th>
-      <th>血红蛋白(Hb)</th>
-      <th>谷丙转氨酶(ALT)</th>
-      <th>视力(左/右)</th>
+      <th [nzFilters]="bmiFilters" [nzFilterFn]="true"
+      (nzFilterChange)="onBMIFilterChanged($event)">BMI指数</th>
+      <th [nzFilters]="healthFilters" [nzFilterFn]="true"
+      (nzFilterChange)="onHemoglobinFilterChanged($event)">血红蛋白(Hb)</th>
+      <th [nzFilters]="healthFilters" [nzFilterFn]="true"
+      (nzFilterChange)="onALTFilterChanged($event)">谷丙转氨酶(ALT)</th>
+      <th [nzFilters]="sightFilters" [nzFilterFn]="true"
+      (nzFilterChange)="onSightFilterChanged($event)">视力(左/右)</th>
       <th>牙齿/龋齿</th>
       <th>创建时间</th>
       <th>操作</th>
@@ -103,7 +107,7 @@
         </a>
         <nz-dropdown-menu #menu="nzDropdownMenu">
           <ul nz-menu nzSelectable>
-            <li nz-menu-item (click)="showExamFormModal(data)">表格</li>
+            <li nz-menu-item (click)="showExamFormModal(data)">报告单</li>
           </ul>
         </nz-dropdown-menu>
       </td>
