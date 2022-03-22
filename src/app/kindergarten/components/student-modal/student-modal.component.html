@@ -45,6 +45,9 @@
         [studentID]="data.id"
       ></app-student-fitness-test-list>
       </nz-tab>
+      <nz-tab nzTitle="体测统计">
+        <app-student-fitness-test-vision-tab [studentID]="data.id"></app-student-fitness-test-vision-tab>
+      </nz-tab>
     </nz-tabset>
   </ng-container>
   <ng-container *nzModalFooter>

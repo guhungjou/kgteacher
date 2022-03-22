@@ -1,0 +1,26 @@
+<nz-spin nzTip="加载中..." [nzSpinning]="loading">
+    <div nz-row>
+        <div nz-col [nzSpan]="12">
+            <app-student-health-line yField="shuttle_run_10" yText="10米折返跑(秒)" [yMin]="shuttleRun10Data.length>0?(shuttleRun10Data[shuttleRun10Data.length-1].shuttle_run_10-1):0" [data]="shuttleRun10Data"></app-student-health-line>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <app-student-health-line yField="standing_long_jump" yText="立定跳远(厘米)" [yMin]="standingLongJumpData.length>0?(shuttleRun10Data[0].standing_long_jump-1):0" [data]="standingLongJumpData"></app-student-health-line>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col [nzSpan]="12">
+            <app-student-health-line yField="baseball_throw" yText="网球掷远(米)" [yMin]="baseballThrowData.length>0?(baseballThrowData[0].baseball_throw-1):0" [data]="baseballThrowData"></app-student-health-line>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <app-student-health-line yField="bunny_hopping" yText="双脚连续跳(秒)" [yMin]="bunnyHoppingData.length>0?(bunnyHoppingData[bunnyHoppingData.length-1].bunny_hopping-1):0" [data]="bunnyHoppingData"></app-student-health-line>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col [nzSpan]="12">
+            <app-student-health-line yField="sit_and_reach" yText="坐位体前屈(厘米)" [yMin]="sitAndReachData.length>0?(sitAndReachData[0].sit_and_reach-1):0" [data]="sitAndReachData"></app-student-health-line>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <app-student-health-line yField="balance_beam" yText="走平衡木(秒)" [yMin]="balanceBeamData.length>0?(balanceBeamData[balanceBeamData.length-1].balance_beam-1):0" [data]="balanceBeamData"></app-student-health-line>
+        </div>
+    </div>
+</nz-spin>

@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Annotation, Line, LineOptions } from '@antv/g2plot';
+import { Annotation, Datum, Line, LineOptions } from '@antv/g2plot';
 
 @Component({
   selector: 'app-student-health-line',
@@ -95,6 +95,11 @@ export class StudentHealthLineComponent implements OnInit, OnChanges {
       yField: this.yField,
       seriesField: this.sField,
       smooth: true,
+      tooltip: {
+        formatter: (datum: Datum) => {
+          return { name: this.yText, value: datum[this.yField] };
+        },
+      },
       xAxis: {
         title: {
           text: '日期',
