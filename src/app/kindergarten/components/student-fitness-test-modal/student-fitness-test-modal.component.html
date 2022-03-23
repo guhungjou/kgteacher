@@ -1,0 +1,20 @@
+<nz-modal
+  nzTitle="体测详情"
+  [(nzVisible)]="isVisible"
+  (nzOnCancel)="close()"
+  [nzOkLoading]="loading"
+  [nzCancelLoading]="loading"
+  [nzMaskClosable]="true"
+  [nzStyle]="{width:'600px'}"
+>
+  <ng-container *nzModalContent>
+    <nz-descriptions nzTitle="">
+        <nz-descriptions-item nzTitle="总分">{{data.total_score}}</nz-descriptions-item>
+    </nz-descriptions>
+      <app-radar [data]="radarData"></app-radar>
+  </ng-container>
+
+  <ng-container *nzModalFooter>
+    <button nz-button (click)="close()">关闭</button>
+  </ng-container>
+</nz-modal>

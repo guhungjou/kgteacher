@@ -106,4 +106,11 @@ export class StudentFitnessTestListComponent implements OnInit, OnChanges {
     this.queryBalanceBeamFilters = d;
     this.findStudentFitnessTests();
   }
+
+  isFitnessTestModalVisible = false;
+  fitnessTestData: any = {};
+  showFitnessTestModal(data: any) {
+    this.isFitnessTestModalVisible = true;
+    this.fitnessTestData = Object.assign({}, data);
+  }
 }

@@ -67,6 +67,7 @@ import { WeightLabelComponent } from './components/weight-label/weight-label.com
 import { HeightLabelComponent } from './components/height-label/height-label.component';
 import { TemperatureLabelComponent } from './components/temperature-label/temperature-label.component';
 import { ScoreLabelComponent } from './components/score-label/score-label.component';
+import { RadarComponent } from './components/radar/radar.component';
 
 registerLocaleData(zh);
 
@@ -142,6 +143,7 @@ const modules = [
     HeightLabelComponent,
     TemperatureLabelComponent,
     ScoreLabelComponent,
+    RadarComponent,
   ],
   imports: [
     ...modules,
@@ -167,6 +169,7 @@ const modules = [
     HeightLabelComponent,
     TemperatureLabelComponent,
     ScoreLabelComponent,
+    RadarComponent,
   ],
   providers: [
     { provide: NZ_I18N, useValue: zh_CN },

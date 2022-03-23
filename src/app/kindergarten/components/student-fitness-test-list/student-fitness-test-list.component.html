@@ -26,8 +26,9 @@ nzShowSizeChanger
     <th [nzFilters]="scoreFilters" [nzFilterFn]="true" (nzFilterChange)="onBunnyHoppingFiltersChanged($event)">双脚连续跳(秒)</th>
     <th [nzFilters]="scoreFilters" [nzFilterFn]="true" (nzFilterChange)="onSitAndReachFiltersChanged($event)">坐位体前屈(厘米)</th>
     <th [nzFilters]="scoreFilters" [nzFilterFn]="true" (nzFilterChange)="onBalanceBeamFiltersChanged($event)">走平衡木(秒)</th>
+    <th>总分</th>
     <th>更新时间</th>
-    <!-- <th>操作</th> -->
+    <th>操作</th>
   </tr>
 </thead>
 <tbody>
@@ -59,22 +60,25 @@ nzShowSizeChanger
     <td>
       <app-score-label [value]="data.balance_beam" [score]="data.balance_beam_score" [updatedAt]="data.balance_beam_updated_at"></app-score-label>
     </td>
+    <td style="font-weight: bold;">{{data.total_score}}</td>
     <td>
       <app-datetime-label [text]="data.updated_at"></app-datetime-label>
     </td>
-    <!-- <td>
+    <td>
       <a nz-dropdown [nzDropdownMenu]="menu">
         <i nz-icon nzType="menu"></i>
       </a>
       <nz-dropdown-menu #menu="nzDropdownMenu">
         <ul nz-menu nzSelectable>
-          <li nz-menu-item >详情</li>
+          <li nz-menu-item (click)="showFitnessTestModal(data)">详情</li>
         </ul>
       </nz-dropdown-menu>
-    </td> -->
+    </td>
   </tr>
 </tbody>
 </nz-table>
 <ng-template #totalTemplate let-range="range" let-total>
 总计：{{ total }}
 </ng-template>
+
+<app-student-fitness-test-modal [(isVisible)]="isFitnessTestModalVisible" [data]="fitnessTestData"></app-student-fitness-test-modal>
