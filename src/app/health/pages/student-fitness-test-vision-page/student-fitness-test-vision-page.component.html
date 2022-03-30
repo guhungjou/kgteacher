@@ -11,4 +11,40 @@
 
         <app-search-button style="margin-left: 10px;" (search)="search()" [disabled]="!queryDate"></app-search-button>
     </div>
+    
+    <div nz-row>
+        <div nz-col [nzSpan]="8">
+            <nz-spin nzTip="加载中..." [nzSpinning]="shuttlerun10loading">
+                <div id="shuttlerun10pie" style="padding: 20px;"></div>
+            </nz-spin>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <nz-spin nzTip="加载中..." [nzSpinning]="standinglongjumploading">
+                <div id="standinglongjumppie" style="padding: 20px;"></div>
+            </nz-spin>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <nz-spin nzTip="加载中..." [nzSpinning]="baseballthrowloading">
+                <div id="baseballthrowpie" style="padding: 20px;"></div>
+            </nz-spin>
+        </div>
+    </div>
+
+    <div nz-row>
+        <div nz-col [nzSpan]="8">
+            <nz-spin nzTip="加载中..." [nzSpinning]="bunnyhoppingloading">
+                <div id="bunnyhoppingpie" style="padding: 20px;"></div>
+            </nz-spin>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <nz-spin nzTip="加载中..." [nzSpinning]="sitandreachloading">
+                <div id="sitandreachpie" style="padding: 20px;"></div>
+            </nz-spin>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <nz-spin nzTip="加载中..." [nzSpinning]="balancebeamloading">
+                <div id="balancebeampie" style="padding: 20px;"></div>
+            </nz-spin>
+        </div>
+    </div>
 </div>

@@ -250,4 +250,34 @@ export class HealthApiService {
     const url = this.http.buildurl('/student/fitness/test/dates');
     return this.http.fget(url);
   }
+
+  findKindergartenStudentFitnessTestScoreShuttleRun10Vision(classID: number, date: any) {
+    const url = this.http.buildurl('/student/fitness/test/shuttle_run_10/vision', { class_id: classID, date });
+    return this.http.fget(url);
+  }
+
+  findKindergartenStudentFitnessTestScoreStandingLongJumpVision(classID: number, date: any) {
+    const url = this.http.buildurl('/student/fitness/test/standing_long_jump/vision', { class_id: classID, date });
+    return this.http.fget(url);
+  }
+
+  findKindergartenStudentFitnessTestScoreBaseballThrowVision(classID: number, date: any) {
+    const url = this.http.buildurl('/student/fitness/test/baseball_throw/vision', { class_id: classID, date });
+    return this.http.fget(url);
+  }
+
+  findKindergartenStudentFitnessTestScoreBunnyHoppingVision(classID: number, date: any) {
+    const url = this.http.buildurl('/student/fitness/test/bunny_hopping/vision', { class_id: classID, date });
+    return this.http.fget(url);
+  }
+
+  findKindergartenStudentFitnessTestScoreSitAndReachVision(classID: number, date: any) {
+    const url = this.http.buildurl('/student/fitness/test/sit_and_reach/vision', { class_id: classID, date });
+    return this.http.fget(url);
+  }
+
+  findKindergartenStudentFitnessTestScoreBalanceBeamVision(classID: number, date: any) {
+    const url = this.http.buildurl('/student/fitness/test/balance_beam/vision', { class_id: classID, date });
+    return this.http.fget(url);
+  }
 }
