@@ -69,7 +69,7 @@ export class StudentFitnessTestListPageComponent implements OnInit {
         this.queryHeightWeightFilters,
         this.queryShuttleRunFilters, this.queryStandingLongJumpFilters, this.queryBaseballThrowFilters,
         this.queryBunnyHoppingFilters, this.querySitAndReachFilters, this.queryBalanceBeamFilters,
-        this.page, this.pageSize);
+        this.queryTotalStatusFilters, this.page, this.pageSize);
       const data = r.data;
       this.page = data.page;
       this.pageSize = data.page_size;
@@ -141,5 +141,12 @@ export class StudentFitnessTestListPageComponent implements OnInit {
   showFitnessTestModal(data: any) {
     this.isFitnessTestModalVisible = true;
     this.fitnessTestData = Object.assign({}, data);
+  }
+
+  queryTotalStatusFilters: string[] = [];
+  statusFilters = [{ text: '优秀', value: 'excellent' }, { text: '良好', value: 'good' }, { text: '合格', value: 'okay' }, { text: '不合格', value: 'fail' },];
+  onTotalStatusChanged(d: string[]) {
+    this.queryTotalStatusFilters = d;
+    this.findStudentFitnessTests();
   }
 }

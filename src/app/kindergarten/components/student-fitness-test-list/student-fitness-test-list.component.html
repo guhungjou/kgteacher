@@ -27,7 +27,7 @@ nzShowSizeChanger
     <th [nzFilters]="scoreFilters" [nzFilterFn]="true" (nzFilterChange)="onBunnyHoppingFiltersChanged($event)">双脚连续跳(秒)</th>
     <th [nzFilters]="scoreFilters" [nzFilterFn]="true" (nzFilterChange)="onSitAndReachFiltersChanged($event)">坐位体前屈(厘米)</th>
     <th [nzFilters]="scoreFilters" [nzFilterFn]="true" (nzFilterChange)="onBalanceBeamFiltersChanged($event)">走平衡木(秒)</th>
-    <th>总分</th>
+    <th [nzFilters]="statusFilters" [nzFilterFn]="true" (nzFilterChange)="onTotalStatusChanged($event)">总分</th>
     <th>更新时间</th>
     <th>操作</th>
   </tr>

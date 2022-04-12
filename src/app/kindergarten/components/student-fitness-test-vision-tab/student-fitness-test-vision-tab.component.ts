@@ -32,7 +32,7 @@ export class StudentFitnessTestVisionTabComponent implements OnInit, OnChanges {
         this.studentID,
         null,
         null,
-        [], [], [], [], [], [], [],
+        [], [], [], [], [], [], [], [],
         1,
         50,
       );

@@ -56,6 +56,7 @@ export class StudentFitnessTestListComponent implements OnInit, OnChanges {
         this.queryBunnyHoppingFilters,
         this.querySitAndReachFilters,
         this.queryBalanceBeamFilters,
+        this.queryTotalStatusFilters,
         this.page,
         this.pageSize
       );
@@ -118,6 +119,13 @@ export class StudentFitnessTestListComponent implements OnInit, OnChanges {
   queryHeightWeightFilters: number[] = [];
   onHeightWeightChanged(d: number[]) {
     this.queryHeightWeightFilters = d;
+    this.findStudentFitnessTests();
+  }
+
+  queryTotalStatusFilters: string[] = [];
+  statusFilters = [{ text: '优秀', value: 'excellent' }, { text: '良好', value: 'good' }, { text: '合格', value: 'okay' }, { text: '不合格', value: 'fail' },];
+  onTotalStatusChanged(d: string[]) {
+    this.queryTotalStatusFilters = d;
     this.findStudentFitnessTests();
   }
 }

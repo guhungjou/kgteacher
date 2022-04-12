@@ -196,6 +196,7 @@ export class HealthApiService {
     bunnyHoppingFilters: number[],
     sitAndReachFilters: number[],
     balanceBeamFilters: number[],
+    totalStatusFilters: string[],
     page: number,
     pageSize: number
   ) {
@@ -209,6 +210,7 @@ export class HealthApiService {
       bunny_hopping_filters: bunnyHoppingFilters,
       sit_and_reach_filters: sitAndReachFilters,
       balance_beam_filters: balanceBeamFilters,
+      total_status_filters: totalStatusFilters,
       page,
       page_size: pageSize,
       student_id: studentID,
