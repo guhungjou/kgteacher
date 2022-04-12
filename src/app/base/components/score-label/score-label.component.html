@@ -1,2 +1,2 @@
-<span *ngIf="updated" style="font-weight: bold"> {{ value |number:'.1' }} ({{score|number}}) </span>
+<span *ngIf="updated" style="font-weight: bold"> {{ value |number:'.1' }} <ng-container *ngIf="score>=0">({{score|number}})</ng-container></span>
 <nz-tag nzColor="warning" *ngIf="!updated">未检测</nz-tag>

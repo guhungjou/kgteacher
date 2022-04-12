@@ -189,6 +189,7 @@ export class HealthApiService {
     studentID: number,
     startTime: any,
     endTime: any,
+    heightWeightFilters: number[],
     shuttleRun10Filters: number[],
     standingLongJumpFilters: number[],
     baseballThrowFilters: number[],
@@ -201,6 +202,7 @@ export class HealthApiService {
     const q: any = {
       query,
       class_id: classID,
+      height_weight_filters: heightWeightFilters,
       shuttle_run_10_filters: shuttleRun10Filters,
       standing_long_jump_filters: standingLongJumpFilters,
       baseball_throw_filters: baseballThrowFilters,

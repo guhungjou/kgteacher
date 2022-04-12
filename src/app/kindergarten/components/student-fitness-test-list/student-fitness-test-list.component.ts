@@ -49,6 +49,7 @@ export class StudentFitnessTestListComponent implements OnInit, OnChanges {
         this.studentID,
         ranges[0],
         ranges[1],
+        this.queryHeightWeightFilters,
         this.queryShuttleRunFilters,
         this.queryStandingLongJumpFilters,
         this.queryBaseballThrowFilters,
@@ -112,5 +113,11 @@ export class StudentFitnessTestListComponent implements OnInit, OnChanges {
   showFitnessTestModal(data: any) {
     this.isFitnessTestModalVisible = true;
     this.fitnessTestData = Object.assign({}, data);
+  }
+
+  queryHeightWeightFilters: number[] = [];
+  onHeightWeightChanged(d: number[]) {
+    this.queryHeightWeightFilters = d;
+    this.findStudentFitnessTests();
   }
 }

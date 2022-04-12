@@ -66,6 +66,7 @@ export class StudentFitnessTestListPageComponent implements OnInit {
       const ranges = formatRangeDate(this.queryDate);
       const r = await this.api.findStudentFitnessTests(
         this.query, this.queryClassID, this.queryStudentID, ranges[0], ranges[1],
+        this.queryHeightWeightFilters,
         this.queryShuttleRunFilters, this.queryStandingLongJumpFilters, this.queryBaseballThrowFilters,
         this.queryBunnyHoppingFilters, this.querySitAndReachFilters, this.queryBalanceBeamFilters,
         this.page, this.pageSize);
@@ -127,6 +128,13 @@ export class StudentFitnessTestListPageComponent implements OnInit {
     this.queryBalanceBeamFilters = d;
     this.findStudentFitnessTests();
   }
+
+  queryHeightWeightFilters: number[] = [];
+  onHeightWeightChanged(d: number[]) {
+    this.queryHeightWeightFilters = d;
+    this.findStudentFitnessTests();
+  }
+
 
   isFitnessTestModalVisible = false;
   fitnessTestData: any = {};

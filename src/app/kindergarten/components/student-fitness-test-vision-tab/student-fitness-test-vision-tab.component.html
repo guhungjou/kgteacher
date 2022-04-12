@@ -1,6 +1,14 @@
 <nz-spin nzTip="加载中..." [nzSpinning]="loading">
     <div nz-row>
         <div nz-col [nzSpan]="12">
+            <app-student-health-line yField="height" yText="身高(厘米)" [yMin]="heightData.length>0?(heightData[0].height-10):0" [data]="heightData"></app-student-health-line>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <app-student-health-line yField="weight" yText="体重(千克)" [yMin]="weightData.length>0?(weightData[0].weight-2):0" [data]="weightData"></app-student-health-line>
+        </div>
+    </div>
+    <div nz-row>
+        <div nz-col [nzSpan]="12">
             <app-student-health-line yField="shuttle_run_10" yText="10米折返跑(秒)" [yMin]="shuttleRun10Data.length>0?(shuttleRun10Data[shuttleRun10Data.length-1].shuttle_run_10-1):0" [data]="shuttleRun10Data"></app-student-health-line>
         </div>
         <div nz-col [nzSpan]="12">

@@ -61,6 +61,7 @@
               <th>班级</th>
               <th>学生</th>
               <th>性别</th>
+              <th [nzFilters]="scoreFilters" [nzFilterFn]="true" (nzFilterChange)="onHeightWeightChanged($event)">身高(厘米)/体重(千克)</th>
               <th [nzFilters]="scoreFilters" [nzFilterFn]="true" (nzFilterChange)="onShuttleRunFiltersChanged($event)">10米折返跑(秒)</th>
               <th [nzFilters]="scoreFilters" [nzFilterFn]="true" (nzFilterChange)="onStandingLongJumpFiltersChanged($event)">立定跳远(厘米)</th>
               <th [nzFilters]="scoreFilters" [nzFilterFn]="true" (nzFilterChange)="onBaseballThrowFiltersChanged($event)">网球掷远(米)</th>
@@ -84,6 +85,11 @@
                 <app-gender [gender]="data.student?.gender"></app-gender>
               </td>
               <td>
+                <app-score-label [value]="data.height" [score]="-1" [updatedAt]="data.height_updated_at"></app-score-label>
+                /
+                <app-score-label [value]="data.weight" [score]="data.height_and_weight_score" [updatedAt]="data.weight_updated_at"></app-score-label>
+              </td>
+              <td>
                 <app-score-label [value]="data.shuttle_run_10" [score]="data.shuttle_run_10_score" [updatedAt]="data.shuttle_run_10_updated_at"></app-score-label>
               </td>
               <td>
@@ -101,7 +107,10 @@
               <td>
                 <app-score-label [value]="data.balance_beam" [score]="data.balance_beam_score" [updatedAt]="data.balance_beam_updated_at"></app-score-label>
               </td>
-              <td style="font-weight: bold;">{{data.total_score}}</td>
+              <td>
+                {{data.total_score}}
+                <app-student-fitness-test-total-status [status]="data.total_status"></app-student-fitness-test-total-status>
+              </td>
               <td>
                 <app-datetime-label [text]="data.updated_at"></app-datetime-label>
               </td>

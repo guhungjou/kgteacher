@@ -32,7 +32,7 @@ export class StudentFitnessTestVisionTabComponent implements OnInit, OnChanges {
         this.studentID,
         null,
         null,
-        [], [], [], [], [], [],
+        [], [], [], [], [], [], [],
         1,
         50,
       );
@@ -47,10 +47,34 @@ export class StudentFitnessTestVisionTabComponent implements OnInit, OnChanges {
       this.updateBunnyHopping(list);
       this.updateSitAndReach(list);
       this.updateBalanceBeam(list);
+      this.updateHeight(list);
+      this.updateWeight(list);
     } catch (error) {
       this.message.error('网络错误');
     } finally {
       this.loading = false;
+    }
+  }
+
+  heightData: any[] = [];
+  updateHeight(data: any) {
+    this.heightData = [];
+    for (const d of data) {
+      const dt = new Date(d.height_updated_at);
+      if (dt.getTime() > 0) {
+        this.heightData.push(Object.assign({}, d));
+      }
+    }
+  }
+
+  weightData: any[] = [];
+  updateWeight(data: any) {
+    this.weightData = [];
+    for (const d of data) {
+      const dt = new Date(d.weight_updated_at);
+      if (dt.getTime() > 0) {
+        this.weightData.push(Object.assign({}, d));
+      }
     }
   }
 

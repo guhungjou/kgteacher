@@ -34,6 +34,10 @@ export class StudentFitnessTestModalComponent implements OnInit, OnChanges {
   update() {
     this.radarData = [];
     this.radarData.push({
+      name: '身高/体重(厘米/千克)',
+      value: this.data.height_and_weight_score,
+    });
+    this.radarData.push({
       name: '10米折返跑(秒)',
       value: this.data.shuttle_run_10_score,
     });

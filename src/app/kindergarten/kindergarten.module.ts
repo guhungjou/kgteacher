@@ -31,6 +31,7 @@ import { UpdateClassModalComponent } from './components/update-class-modal/updat
 import { StudentFitnessTestListComponent } from './components/student-fitness-test-list/student-fitness-test-list.component';
 import { StudentFitnessTestVisionTabComponent } from './components/student-fitness-test-vision-tab/student-fitness-test-vision-tab.component';
 import { StudentFitnessTestModalComponent } from './components/student-fitness-test-modal/student-fitness-test-modal.component';
+import { StudentFitnessTestTotalStatusComponent } from './components/student-fitness-test-total-status/student-fitness-test-total-status.component';
 
 
 
@@ -65,6 +66,7 @@ import { StudentFitnessTestModalComponent } from './components/student-fitness-t
     StudentFitnessTestListComponent,
     StudentFitnessTestVisionTabComponent,
     StudentFitnessTestModalComponent,
+    StudentFitnessTestTotalStatusComponent,
   ],
   imports: [
     CommonModule,
@@ -96,6 +98,7 @@ import { StudentFitnessTestModalComponent } from './components/student-fitness-t
     StudentMorningCheckListComponent,
     UpdateClassModalComponent,
     StudentFitnessTestModalComponent,
+    StudentFitnessTestTotalStatusComponent,
   ]
 })
 export class KindergartenModule { }
