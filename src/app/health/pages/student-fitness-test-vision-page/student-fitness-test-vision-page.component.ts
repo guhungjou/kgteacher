@@ -253,6 +253,16 @@ export class StudentFitnessTestVisionPageComponent implements OnInit {
       autoFit: true,
       angleField: 'count',
       colorField: 'status',
+      color: (n: any) => {
+        if (n.status === '优秀') {
+          return '#52c41a';
+        } else if (n.status === '良好') {
+          return '#1890ff'
+        } else if (n.status === '合格') {
+          return '#faad14';
+        }
+        return '#ff4d4f';
+      },
       radius: 1,
       innerRadius: 0.5,
       label: {
