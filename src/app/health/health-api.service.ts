@@ -284,4 +284,19 @@ export class HealthApiService {
     const url = this.http.buildurl('/student/fitness/test/balance_beam/vision', { class_id: classID, date });
     return this.http.fget(url);
   }
+
+  findKindergartenStudentFitnessTestStatusVision(classID: number, date: any) {
+    const url = this.http.buildurl('/student/fitness/test/status/vision', { class_id: classID, date });
+    return this.http.fget(url);
+  }
+
+  findStudentFitnessTestHeightVision(date: any, classID: number) {
+    const url = this.http.buildurl('/student/fitness/test/height/vision', { date, class_id: classID });
+    return this.http.fget(url);
+  }
+
+  findStudentFitnessTestWeightVision(date: any, classID: number) {
+    const url = this.http.buildurl('/student/fitness/test/weight/vision', { date, class_id: classID });
+    return this.http.fget(url);
+  }
 }

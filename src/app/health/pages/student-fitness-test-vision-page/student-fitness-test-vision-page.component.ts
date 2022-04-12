@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Pie, PieOptions } from '@antv/g2plot';
+import { Column, ColumnOptions, Pie, PieOptions } from '@antv/g2plot';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { HealthApiService } from '../../health-api.service';
 
@@ -24,12 +24,15 @@ export class StudentFitnessTestVisionPageComponent implements OnInit {
 
 
   search() {
+    this.findStudentFitnessTestHeightVision();
+    this.findStudentFitnessTestWeightVision();
     this.findKindergartenStudentFitnessTestScoreShuttleRun10Vision();
     this.findKindergartenStudentFitnessTestScoreStandingLongJumpVision();
     this.findKindergartenStudentFitnessTestScoreBaseballThrowVision();
     this.findKindergartenStudentFitnessTestScoreBunnyHoppingVision();
     this.findKindergartenStudentFitnessTestScoreSitAndReachVision();
     this.findKindergartenStudentFitnessTestScoreBalanceBeamVision();
+    this.findKindergartenStudentFitnessTestStatusVision();
   }
 
   shuttlerun10loading = false;
@@ -57,14 +60,6 @@ export class StudentFitnessTestVisionPageComponent implements OnInit {
       autoFit: true,
       angleField: 'count',
       colorField: 'score',
-      // color: (n: any) => {
-      //   if (n.name === '偏高') {
-      //     return '#f44336';
-      //   } else if (n.name === '偏低') {
-      //     return '#8bc34a'
-      //   }
-      //   return '#2196f3';
-      // },
       radius: 1,
       innerRadius: 0.5,
       label: {
@@ -230,4 +225,258 @@ export class StudentFitnessTestVisionPageComponent implements OnInit {
       this.balancebeamloading = false;
     }
   }
+
+  statuspie: null | Pie = null;
+  renderStatus(data: any) {
+    if (data.length === 0) {
+      if (this.statuspie) {
+        this.statuspie.destroy();
+      }
+      return;
+    }
+    let total = 0;
+    for (const d of data) {
+      if (d.status === 'okay') {
+        d.status = '合格';
+      } else if (d.status === 'excellent') {
+        d.status = '优秀';
+      } else if (d.status === 'fail') {
+        d.status = '不合格';
+      } else if (d.status === 'good') {
+        d.status = '良好';
+      }
+      total += d.count;
+    }
+    const cfg: PieOptions = {
+      appendPadding: 10,
+      data,
+      autoFit: true,
+      angleField: 'count',
+      colorField: 'status',
+      radius: 1,
+      innerRadius: 0.5,
+      label: {
+        type: 'inner',
+        offset: '-50%',
+        content: '{name} {value}人',
+        style: {
+          textAlign: 'center',
+          fontSize: 14,
+        },
+        autoRotate: false,
+      },
+      interactions: [{ type: 'element-selected' }, { type: 'element-active' }],
+      statistic: {
+        title: {
+          content: '总评',
+        },
+        content: {
+          style: {
+            whiteSpace: 'pre-wrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            fontSize: '22px',
+            fontWeight: 'normal',
+            marginTop: '10px'
+          },
+          content: '总数 ' + total,
+        },
+      },
+    };
+    if (this.statuspie) {
+      this.statuspie.update(cfg);
+    } else {
+      this.statuspie = new Pie(this.el.nativeElement.querySelector('#statuspie'), cfg);
+    }
+
+    this.statuspie.render();
+  }
+
+  async findKindergartenStudentFitnessTestStatusVision() {
+    if (!this.queryDate) {
+      return;
+    }
+    try {
+      this.statusLoading = true;
+      const r = await this.api.findKindergartenStudentFitnessTestStatusVision(this.queryClassID, this.queryDate.toISOString());
+      const data = r.data;
+      this.renderStatus(data);
+    } catch (error) {
+
+    } finally {
+      this.statusLoading = false;
+    }
+  }
+
+  heightColumn: null | Column = null;
+  heightLoading = false;
+  async findStudentFitnessTestHeightVision() {
+    if (!this.queryDate || this.heightLoading) {
+      return;
+    }
+    try {
+      this.heightLoading = true;
+      const r = await this.api.findStudentFitnessTestHeightVision(this.queryDate.toISOString(), this.queryClassID);
+      const data = r.data;
+      if (data.length === 0) {
+        if (this.heightColumn) {
+          this.heightColumn.destroy();
+          this.heightColumn = null;
+        }
+      } else {
+        let total = 0;
+        for (const d of data) {
+          d.name = (d.height * 10) + ' - ' + (d.height * 10 + 9);
+          d.gender = d.gender == 'male' ? '男' : '女';
+          total += d.count;
+        }
+        this.renderHeight(data, total);
+      }
+    } catch (error) {
+      this.message.error('网络错误');
+    } finally {
+      this.heightLoading = false;
+    }
+  }
+
+  renderHeight(data: any, total: number) {
+    const cfg: ColumnOptions = {
+      data,
+      xField: 'name',
+      yField: 'count',
+      seriesField: 'gender',
+      isGroup: true,
+      autoFit: true,
+      columnStyle: {
+        radius: [5, 5, 0, 0],
+      },
+      xAxis: {
+        title: {
+          text: '身高区间(cm)'
+        },
+      },
+      yAxis: {
+        title: {
+          text: '人数',
+          autoRotate: false,
+        },
+        tickInterval: 1,
+      },
+      legend: {
+        title: {
+          text: '学生身高 总数:' + total,
+          style: {
+            fontSize: 18,
+          }
+        }
+      },
+      label: {
+        // 可手动配置 label 数据标签位置
+        position: 'top', // 'top', 'bottom', 'middle'
+        // 可配置附加的布局方法
+        layout: [
+          // 柱形图数据标签位置自动调整
+          { type: 'interval-adjust-position' },
+          // 数据标签防遮挡
+          { type: 'interval-hide-overlap' },
+          // 数据标签文颜色自动调整
+          { type: 'adjust-color' },
+        ],
+      },
+    };
+    if (!this.heightColumn) {
+      this.heightColumn = new Column(this.el.nativeElement.querySelector('#heightcolumn'), cfg);
+    } else {
+      this.heightColumn.update(cfg);
+    }
+
+    this.heightColumn.render();
+  }
+
+  weightLoading = false;
+  weightColumn: null | Column = null;
+  async findStudentFitnessTestWeightVision() {
+    if (!this.queryDate || this.weightLoading) {
+      return;
+    }
+    try {
+      this.weightLoading = true;
+      const r = await this.api.findStudentFitnessTestWeightVision(this.queryDate.toISOString(), this.queryClassID);
+      const data = r.data;
+      if (data.length === 0) {
+        if (this.weightColumn) {
+          this.weightColumn.destroy();
+          this.weightColumn = null;
+        }
+      } else {
+        let total = 0;
+        for (const d of data) {
+          d.name = (d.weight * 5) + ' - ' + (d.weight * 5 + 4);
+          d.gender = d.gender == 'male' ? '男' : '女';
+          total += d.count;
+        }
+        this.renderWeight(data, total);
+      }
+    } catch (error) {
+      this.message.error('网络错误');
+    } finally {
+      this.weightLoading = false;
+    }
+  }
+
+  renderWeight(data: any, total: number) {
+    const cfg: ColumnOptions = {
+      data,
+      xField: 'name',
+      yField: 'count',
+      seriesField: 'gender',
+      isGroup: true,
+      autoFit: true,
+      columnStyle: {
+        radius: [5, 5, 0, 0],
+      },
+      xAxis: {
+        title: {
+          text: '体重区间(kg)'
+        },
+      },
+      yAxis: {
+        title: {
+          text: '人数',
+          autoRotate: false,
+        },
+        tickInterval: 1,
+      },
+      legend: {
+        title: {
+          text: '学生体重 总数:' + total,
+          style: {
+            fontSize: 18,
+          }
+        }
+      },
+      label: {
+        // 可手动配置 label 数据标签位置
+        position: 'top', // 'top', 'bottom', 'middle'
+        // 可配置附加的布局方法
+        layout: [
+          // 柱形图数据标签位置自动调整
+          { type: 'interval-adjust-position' },
+          // 数据标签防遮挡
+          { type: 'interval-hide-overlap' },
+          // 数据标签文颜色自动调整
+          { type: 'adjust-color' },
+        ],
+      },
+    };
+    if (!this.weightColumn) {
+      this.weightColumn = new Column(this.el.nativeElement.querySelector('#weightcolumn'), cfg);
+    } else {
+      this.weightColumn.update(cfg);
+    }
+
+    this.weightColumn.render();
+  }
+
+  statusLoading = false;
 }
