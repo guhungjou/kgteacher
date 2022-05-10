@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { Column, ColumnOptions, Pie, PieOptions } from '@antv/g2plot';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { HealthApiService } from '../../health-api.service';
@@ -15,7 +16,8 @@ export class StudentFitnessTestVisionPageComponent implements OnInit {
   queryClassID = 0;
 
   constructor(private title: Title, private el: ElementRef,
-    private api: HealthApiService, private message: NzMessageService) {
+    private api: HealthApiService, private message: NzMessageService,
+    private router: Router) {
     this.title.setTitle('健康管理 - 体测统计');
   }
 
@@ -236,6 +238,7 @@ export class StudentFitnessTestVisionPageComponent implements OnInit {
     }
     let total = 0;
     for (const d of data) {
+      d.ostatus = d.status;
       if (d.status === 'okay') {
         d.status = '合格';
       } else if (d.status === 'excellent') {
@@ -297,6 +300,14 @@ export class StudentFitnessTestVisionPageComponent implements OnInit {
       this.statuspie.update(cfg);
     } else {
       this.statuspie = new Pie(this.el.nativeElement.querySelector('#statuspie'), cfg);
+      this.statuspie.on('plot:click', (args: any) => {
+        if (!args?.data || !args?.data?.data) {
+          return;
+        }
+        const data = args.data.data;
+        console.log(data, this.queryDate, this.queryClassID);
+        this.router.navigate(['/health/student/fitness/tests'], { queryParams: { _date: this.queryDate, _class_id: this.queryClassID, _status: data.ostatus } })
+      });
     }
 
     this.statuspie.render();

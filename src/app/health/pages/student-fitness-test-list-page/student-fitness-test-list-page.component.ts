@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { defaultRanges, formatRangeDate } from 'src/app/x/datetime';
@@ -15,7 +15,7 @@ export class StudentFitnessTestListPageComponent implements OnInit {
   query = '';
   queryClassID = 0;
   queryStudentID = 0;
-  queryDate = [];
+  queryDate: any[] = [];
   page = 1;
   pageSize = 10;
   total = 0;
@@ -26,13 +26,33 @@ export class StudentFitnessTestListPageComponent implements OnInit {
 
   constructor(private api: HealthApiService, private message: NzMessageService,
     private router: Router, private route: ActivatedRoute) {
+  }
+
+  ngOnInit(): void {
+    const status = this.route.snapshot.queryParamMap.get('_status');
+    if (status) {
+      for (const s of this.statusFilters) {
+        if (s.value === status) {
+          s.byDefault = true;
+          this.queryTotalStatusFilters = [s.value];
+        }
+      }
+    }
+    const date = this.route.snapshot.queryParamMap.get('_date');
+    if (date) {
+      const n = new Date(date);
+      this.queryDate = [n, n];
+    }
+    const classID = this.route.snapshot.queryParamMap.get('_class_id');
+    if (classID) {
+      this.queryClassID = parseInt(classID);
+    }
+    this.mergeRouter();
+
     this.route.queryParams.subscribe(() => {
       this.loadRouter();
       this.findStudentFitnessTests();
     });
-  }
-
-  ngOnInit(): void {
   }
 
   loadRouter() {
@@ -144,7 +164,7 @@ export class StudentFitnessTestListPageComponent implements OnInit {
   }
 
   queryTotalStatusFilters: string[] = [];
-  statusFilters = [{ text: '优秀', value: 'excellent' }, { text: '良好', value: 'good' }, { text: '合格', value: 'okay' }, { text: '不合格', value: 'fail' },];
+  statusFilters = [{ text: '优秀', value: 'excellent', byDefault: false }, { text: '良好', value: 'good' }, { text: '合格', value: 'okay' }, { text: '不合格', value: 'fail' },];
   onTotalStatusChanged(d: string[]) {
     this.queryTotalStatusFilters = d;
     this.findStudentFitnessTests();
