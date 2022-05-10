@@ -305,7 +305,6 @@ export class StudentFitnessTestVisionPageComponent implements OnInit {
           return;
         }
         const data = args.data.data;
-        console.log(data, this.queryDate, this.queryClassID);
         this.router.navigate(['/health/student/fitness/tests'], { queryParams: { _date: this.queryDate, _class_id: this.queryClassID, _status: data.ostatus } })
       });
     }
