@@ -1,6 +1,6 @@
 - hosts: localhost
   tasks:
-    - name: build teacher
+    - name: build kgteacher
       command: "{{item}}"
       with_items:
         - git checkout master
@@ -10,9 +10,9 @@
 - hosts: ykwell.cn
   user: ubuntu
   tasks:
-    - name: deploy teacher
+    - name: deploy kgteacher
       synchronize:
-        src: "{{playbook_dir}}/../dist/teacher/"
-        dest: /var/www/ykgk/teacher/
+        src: "{{playbook_dir}}/../dist/kgteacher/"
+        dest: /var/www/ykgk/kgteacher/
         #rsync_opts:
         #  - "--exclude=assets/"
