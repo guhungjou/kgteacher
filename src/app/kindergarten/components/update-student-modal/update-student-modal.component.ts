@@ -40,7 +40,7 @@ export class UpdateStudentModalComponent implements OnInit, OnChanges {
       name: [null, [Validators.required]],
       remark: [null, []],
       gender: [null, [Validators.required]],
-      device: [null, [Validators.required, this.validateDevice]],
+      device: [null, [Validators.required]],
       birthday: [null, [Validators.required]]
     });
   }
