@@ -10,6 +10,18 @@
   <ng-container *nzModalContent>
     <form nz-form [formGroup]="formGroup">
       <nz-form-item style="margin-bottom: 12px">
+        <nz-form-control nzErrorTip="">
+          <nz-input-group nzAddOnBefore="学 号">
+            <input
+              type="text"
+              nz-input
+              formControlName="no"
+              placeholder="可以为空，否则须唯一"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item style="margin-bottom: 12px">
         <nz-form-control nzErrorTip="请输入学生姓名">
           <nz-input-group nzAddOnBefore="姓 名">
             <input

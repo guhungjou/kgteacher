@@ -94,6 +94,7 @@ export class KindergartenApiService {
 
   createStudent(
     name: string,
+    no: string,
     gender: string,
     birthday: any,
     remark: string,
@@ -101,13 +102,14 @@ export class KindergartenApiService {
     classID: number
   ) {
     const url = this.http.buildurl('/student');
-    const body = { name, gender, remark, birthday, device, class_id: classID };
+    const body = { name, gender, remark, birthday, device, class_id: classID, no };
     return this.http.post(url, body);
   }
 
   updateStudent(
     id: number,
     name: string,
+    no: string,
     gender: string,
     birthday: any,
     remark: string,
@@ -115,7 +117,7 @@ export class KindergartenApiService {
     classID: number
   ) {
     const url = this.http.buildurl('/student/' + id);
-    const body = { name, gender, remark, device, birthday, class_id: classID };
+    const body = { name, gender, remark, device, birthday, class_id: classID, no };
     return this.http.put(url, body);
   }
 

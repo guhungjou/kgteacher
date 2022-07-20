@@ -76,7 +76,9 @@
             <app-date-label [text]="data.date"></app-date-label>
           </td>
           <td>{{ data.student?.class?.name }}</td>
-          <td class="b">{{ data.student?.name }}</td>
+          <td class="b">
+            <app-student-name [name]="data.student?.name" [no]="data.student?.no"></app-student-name>
+          </td>
           <td>
             <app-gender [gender]="data.student?.gender"></app-gender>
           </td>

@@ -32,6 +32,7 @@ import { StudentFitnessTestListComponent } from './components/student-fitness-te
 import { StudentFitnessTestVisionTabComponent } from './components/student-fitness-test-vision-tab/student-fitness-test-vision-tab.component';
 import { StudentFitnessTestModalComponent } from './components/student-fitness-test-modal/student-fitness-test-modal.component';
 import { StudentFitnessTestTotalStatusComponent } from './components/student-fitness-test-total-status/student-fitness-test-total-status.component';
+import { StudentNameComponent } from './components/student-name/student-name.component';
 
 
 
@@ -67,6 +68,7 @@ import { StudentFitnessTestTotalStatusComponent } from './components/student-fit
     StudentFitnessTestVisionTabComponent,
     StudentFitnessTestModalComponent,
     StudentFitnessTestTotalStatusComponent,
+    StudentNameComponent,
   ],
   imports: [
     CommonModule,
@@ -99,6 +101,7 @@ import { StudentFitnessTestTotalStatusComponent } from './components/student-fit
     UpdateClassModalComponent,
     StudentFitnessTestModalComponent,
     StudentFitnessTestTotalStatusComponent,
+    StudentNameComponent,
   ]
 })
 export class KindergartenModule { }

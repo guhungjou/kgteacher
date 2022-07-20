@@ -32,6 +32,7 @@ export class NewStudentModalComponent implements OnInit {
   ngOnInit(): void {
     this.getSelf();
     this.formGroup = this.formBuilder.group({
+      no: [null, []],
       name: [null, [Validators.required]],
       remark: [null, []],
       gender: [null, [Validators.required]],
@@ -74,16 +75,18 @@ export class NewStudentModalComponent implements OnInit {
     }
 
     const value = this.formGroup.value;
+    const no = value.no;
     const name = value.name;
     const gender = value.gender;
     const remark = value.remark;
     const device = value.device;
     const birthday = value.birthday;
-    this.createStudent(name, gender, remark, birthday, device, this.classID);
+    this.createStudent(name, no, gender, remark, birthday, device, this.classID);
   }
 
   async createStudent(
     name: string,
+    no: string,
     gender: string,
     remark: string,
     birthday: any,
@@ -94,6 +97,7 @@ export class NewStudentModalComponent implements OnInit {
       this.loading = true;
       const r = await this.api.createStudent(
         name,
+        no,
         gender,
         birthday,
         remark,
@@ -104,6 +108,8 @@ export class NewStudentModalComponent implements OnInit {
         this.message.warning('设备已使用');
       } else if (r.status === 21002) {
         this.message.warning('设备格式错误');
+      } else if (r.status === 21003) {
+        this.message.warning('学号重复');
       } else if (r.status !== 0) {
         this.message.warning('未知错误');
       } else {

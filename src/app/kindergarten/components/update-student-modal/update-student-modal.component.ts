@@ -37,6 +37,7 @@ export class UpdateStudentModalComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
+      no: [null, []],
       name: [null, [Validators.required]],
       remark: [null, []],
       gender: [null, [Validators.required]],
@@ -48,13 +49,7 @@ export class UpdateStudentModalComponent implements OnInit, OnChanges {
   classID = 0;
   ngOnChanges() {
     if (this.isVisible && this.data?.id) {
-      this.formGroup.setValue({
-        name: this.data.name,
-        remark: this.data.remark,
-        gender: this.data.gender,
-        device: this.data.device,
-        birthday: this.data.birthday,
-      });
+      this.formGroup.patchValue(this.data);
       this.classID = this.data.class_id;
     }
   }
@@ -81,6 +76,7 @@ export class UpdateStudentModalComponent implements OnInit, OnChanges {
     }
 
     const value = this.formGroup.value;
+    const no = value.no;
     const name = value.name;
     const gender = value.gender;
     const remark = value.remark;
@@ -89,6 +85,7 @@ export class UpdateStudentModalComponent implements OnInit, OnChanges {
     this.updateStudent(
       this.data.id,
       name,
+      no,
       gender,
       birthday,
       remark,
@@ -100,6 +97,7 @@ export class UpdateStudentModalComponent implements OnInit, OnChanges {
   async updateStudent(
     id: number,
     name: string,
+    no: string,
     gender: string,
     birthday: any,
     remark: string,
@@ -111,6 +109,7 @@ export class UpdateStudentModalComponent implements OnInit, OnChanges {
       const r = await this.api.updateStudent(
         id,
         name,
+        no,
         gender,
         birthday,
         remark,
@@ -121,6 +120,8 @@ export class UpdateStudentModalComponent implements OnInit, OnChanges {
         this.message.warning('设备已使用');
       } else if (r.status === 21002) {
         this.message.warning('设备格式错误');
+      } else if (r.status === 21003) {
+        this.message.warning('学号重复');
       } else if (r.status !== 0) {
         this.message.warning('未知错误');
       } else {

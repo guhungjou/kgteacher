@@ -9,7 +9,9 @@
 >
   <ng-container *nzModalContent>
     <nz-descriptions nzTitle="">
-      <nz-descriptions-item nzTitle="学生">{{data.student?.name}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="学生">
+        <app-student-name [name]="data.student?.name" [no]="data.student?.no"></app-student-name>
+      </nz-descriptions-item>
       <nz-descriptions-item nzTitle="班级">{{data.student?.class?.name}}</nz-descriptions-item>
       <nz-descriptions-item nzTitle="年龄">
         <app-student-age [birthday]="data.student?.birthday"></app-student-age>
