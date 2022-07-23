@@ -172,4 +172,9 @@ export class StudentMedicalExaminationListPageComponent implements OnInit {
     this.queryBMIFilters = d;
     this.findStudentMedicalExaminations();
   }
+
+  isBatchModalVisible = false;
+  showBatchModal() {
+    this.isBatchModalVisible = true;
+  }
 }

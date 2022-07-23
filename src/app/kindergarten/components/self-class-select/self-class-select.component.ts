@@ -7,7 +7,6 @@ import {
   Output,
 } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { ApiService } from 'src/app/services/api.service';
 import { KindergartenApiService } from '../../kindergarten-api.service';
 
 @Component({

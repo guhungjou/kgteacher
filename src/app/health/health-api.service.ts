@@ -299,4 +299,12 @@ export class HealthApiService {
     const url = this.http.buildurl('/student/fitness/test/weight/vision', { date, class_id: classID });
     return this.http.fget(url);
   }
+
+  batchCreateKindergartenStudentMedicalExaminationALT(classID: number, file: any) {
+    const url = this.http.buildurl('/student/medical/examination/alt/batch');
+    const form = new FormData();
+    form.append('class_id', classID.toString());
+    form.append('file', file);
+    return this.http.post(url, form);
+  }
 }

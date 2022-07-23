@@ -36,6 +36,10 @@
         <i nz-icon nzType="export" nzTheme="outline"></i>导出
       </button>
     </nz-button-group>
+
+    <div style="float: right;">
+      <button nz-button (click)="showBatchModal()">批量上传</button>
+    </div>
   </div>
   <div class="table">
     <nz-table
@@ -165,3 +169,5 @@
     </ng-template>
   </div>
 </div>
+
+<app-batch-new-student-medical-examination-modal [(isVisible)]="isBatchModalVisible" (update)="search()"></app-batch-new-student-medical-examination-modal>

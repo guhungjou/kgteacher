@@ -11,6 +11,7 @@ import { BaseModule } from '../base/base.module';
 import { StudentFitnessTestListPageComponent } from './pages/student-fitness-test-list-page/student-fitness-test-list-page.component';
 import { StudentFitnessTestVisionPageComponent } from './pages/student-fitness-test-vision-page/student-fitness-test-vision-page.component';
 import { StudentFitnessTestDateSelectComponent } from './components/student-fitness-test-date-select/student-fitness-test-date-select.component';
+import { BatchNewStudentMedicalExaminationModalComponent } from './components/batch-new-student-medical-examination-modal/batch-new-student-medical-examination-modal.component';
 
 
 
@@ -25,6 +26,7 @@ import { StudentFitnessTestDateSelectComponent } from './components/student-fitn
     StudentFitnessTestListPageComponent,
     StudentFitnessTestVisionPageComponent,
     StudentFitnessTestDateSelectComponent,
+    BatchNewStudentMedicalExaminationModalComponent,
   ],
   imports: [
     CommonModule,

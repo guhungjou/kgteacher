@@ -1,0 +1,11 @@
+<nz-modal nzTitle="批量上传谷丙转氨酶(ALT)" [(nzVisible)]="isVisible" (nzOnOk)="onOk()" (nzOnCancel)="close()">
+    <ng-container *nzModalContent>
+        <div>
+            <app-self-class-select [(value)]="classID"></app-self-class-select>
+        </div>
+
+        <div style="margin-top: 20px">
+            <app-file-select accept=".xlsx" label="文件" [(file)]="file"></app-file-select>
+        </div>
+    </ng-container>
+</nz-modal>
