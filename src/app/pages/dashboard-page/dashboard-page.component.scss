@@ -7,5 +7,12 @@
     padding: 24px;
     background: #fff;
     height: 100%;
+    position: relative;
+
+    button.fullscreen{
+      position: absolute;
+      right: 4px;
+      top:4px;
+    }
   }
 }

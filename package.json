@@ -23,6 +23,7 @@
     "moment": "^2.29.1",
     "ng-zorro-antd": "^13.1.0",
     "rxjs": "~7.4.0",
+    "screenfull": "^6.0.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
