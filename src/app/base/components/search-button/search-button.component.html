@@ -1,3 +1,8 @@
-<button nz-button (click)="click()" [nzLoading]="loading" [disabled]="disabled">
-  <i nz-icon nzType="search"></i>
-</button>
+<nz-button-group>
+  <button nz-button (click)="click()" [nzLoading]="loading" [disabled]="disabled">
+    <i nz-icon nzType="search"></i>
+  </button>
+  <button nz-button *ngIf="export.observed" (click)="eclick()" [nzLoading]="loading" [disabled]="disabled">
+    <i nz-icon nzType="export" nzTheme="outline"></i>导出
+  </button>
+</nz-button-group>

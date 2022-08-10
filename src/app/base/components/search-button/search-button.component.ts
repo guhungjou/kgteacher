@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class SearchButtonComponent implements OnInit {
   @Input() loading = false;
   @Output() search = new EventEmitter<any>();
+  @Output() export = new EventEmitter<any>();
   @Input() disabled = false;
 
   constructor() { }
@@ -16,5 +17,11 @@ export class SearchButtonComponent implements OnInit {
 
   click() {
     this.search.emit(null);
+  }
+
+  eclick() {
+    if (this.export.observed) {
+      this.export.emit(null);
+    }
   }
 }

@@ -88,6 +88,15 @@ export class StudentListPageComponent implements OnInit {
     }
   }
 
+  async export() {
+    this.search();
+    this.api.exportStudents(
+      this.query,
+      this.queryClassID,
+      this.queryGender,
+    );
+  }
+
   isNewStudentModalVisible = false;
   new() {
     this.isNewStudentModalVisible = true;

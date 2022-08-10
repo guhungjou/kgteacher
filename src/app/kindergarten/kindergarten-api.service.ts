@@ -92,6 +92,16 @@ export class KindergartenApiService {
     return this.http.get(url);
   }
 
+  exportStudents(
+    query: string,
+    classID: number,
+    gender: string,
+  ) {
+    const q = { query, class_id: classID, gender };
+    const url = this.http.buildurl('/students/export', q);
+    window.open(url, '_blank');
+  }
+
   createStudent(
     name: string,
     no: string,
