@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import screenfull from 'screenfull';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -9,7 +10,9 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class DashboardPageComponent implements OnInit {
   self: any = {};
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private title: Title) {
+    this.title.setTitle('童角健康站 - 总览');
+  }
 
   ngOnInit(): void {
     this.getSelf();
