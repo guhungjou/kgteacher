@@ -131,14 +131,18 @@
           </td>
           <td>
             <app-sight-label
-              [left]="data.sight_l"
-              [right]="data.sight_r"
-              [leftRemark]="data.sight_l_remark"
-              [rightRemark]="data.sight_r_remark"
-              [updatedAt]="data.sight_updated_at"
-              [lstatus]="data.sight_l_status"
-              [rstatus]="data.sight_r_status"
-            ></app-sight-label>
+            [ls]="data.sight_l_s"
+            [lc]="data.sight_l_c"
+            [rs]="data.sight_r_s"
+            [rc]="data.sight_r_c"
+            [leftRemark]="data.sight_l_remark"
+            [rightRemark]="data.sight_r_remark"
+            [updatedAt]="data.sight_updated_at"
+            [lsstatus]="data.sight_l_s_status"
+            [rsstatus]="data.sight_r_s_status"
+            [lcstatus]="data.sight_l_c_status"
+            [rcstatus]="data.sight_r_c_status"
+          ></app-sight-label>
           </td>
           <td>
             <app-tooth-label

@@ -368,15 +368,30 @@ export class StudentMedicalExaminationVisionPageComponent implements OnInit {
     }
     let total = 0;
     for (const d of data) {
-      if (d.lstatus === 'low' && d.rstatus === 'low') {
-        d.name = '近视';
-      } else if (d.lstatus === 'low' && d.rstatus !== 'low') {
-        d.name = '左眼近视';
-      } else if (d.lstatus !== 'low' && d.rstatus === 'low') {
-        d.name = '右眼近视';
-      } else {
-        d.name = '正常'
+      let names = [];
+      if (d.lsstatus === 'low' || d.rsstatus === 'low') {
+        names.push('近视');
       }
+      if (d.lsstatus === 'high' || d.rsstatus === 'high') {
+        names.push('远视');
+      }
+      if (d.lcstatus !== 'normal' || d.rcstatus !== 'normal') {
+        names.push('散光');
+      }
+      if (names.length > 0) {
+        d.name = names.join(' ');
+      } else {
+        d.name = '正常';
+      }
+      // if (d.lstatus === 'low' && d.rstatus === 'low') {
+      //   d.name = '近视';
+      // } else if (d.lstatus === 'low' && d.rstatus !== 'low') {
+      //   d.name = '左眼近视';
+      // } else if (d.lstatus !== 'low' && d.rstatus === 'low') {
+      //   d.name = '右眼近视';
+      // } else {
+      //   d.name = '正常'
+      // }
       total += d.count;
     }
     const cfg: PieOptions = {
@@ -385,16 +400,16 @@ export class StudentMedicalExaminationVisionPageComponent implements OnInit {
       autoFit: true,
       angleField: 'count',
       colorField: 'name',
-      color: (n: any) => {
-        if (n.name === '近视') {
-          return '#f44336';
-        } else if (n.name === '左眼近视') {
-          return '#4CAF50';
-        } else if (n.name === '右眼近视') {
-          return '#FFC107';
-        }
-        return '#2196f3';
-      },
+      // color: (n: any) => {
+      //   if (n.name === '近视') {
+      //     return '#f44336';
+      //   } else if (n.name === '左眼近视') {
+      //     return '#4CAF50';
+      //   } else if (n.name === '右眼近视') {
+      //     return '#FFC107';
+      //   }
+      //   return '#2196f3';
+      // },
       radius: 1,
       innerRadius: 0.5,
       label: {

@@ -78,8 +78,11 @@
       <td rowspan="2" colspan="2">眼</td>
       <td>左</td>
       <td colspan="2">
-        {{ data.sight_l | number: "1.1-1" }}
-        <app-up-or-down [status]="data.sight_l_status"></app-up-or-down>
+        {{ data.sight_l_s }}
+        <app-up-or-down [status]="data.sight_l_s_status"></app-up-or-down>
+        /
+        {{ data.sight_l_c }}
+        <app-up-or-down [status]="data.sight_l_c_status"></app-up-or-down>
       </td>
       <!-- <td colspan="1">{{ data.sight_l_remark }}</td> -->
       <td rowspan="2" colspan="2">口腔</td>
@@ -90,8 +93,11 @@
     <tr>
       <td>右</td>
       <td colspan="2">
-        {{ data.sight_r | number: "1.1-1" }}
-        <app-up-or-down [status]="data.sight_r_status"></app-up-or-down>
+        {{ data.sight_r_s }}
+        <app-up-or-down [status]="data.sight_r_s_status"></app-up-or-down>
+        /
+        {{ data.sight_r_c }}
+        <app-up-or-down [status]="data.sight_r_c_status"></app-up-or-down>
       </td>
       <!-- <td colspan="1">{{ data.sight_r_remark }}</td> -->
       <td>龋齿数</td>

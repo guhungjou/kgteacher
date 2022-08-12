@@ -6,13 +6,17 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
   styleUrls: ['./sight-label.component.scss'],
 })
 export class SightLabelComponent implements OnInit, OnChanges {
-  @Input() left = 0;
-  @Input() right = 0;
+  @Input() ls = '';
+  @Input() lc = '';
+  @Input() rs = '';
+  @Input() rc = '';
   @Input() updatedAt = '';
   @Input() leftRemark = '';
   @Input() rightRemark = '';
-  @Input() lstatus = '';
-  @Input() rstatus = '';
+  @Input() lsstatus = '';
+  @Input() rsstatus = '';
+  @Input() lcstatus = '';
+  @Input() rcstatus = '';
   updated = false;
 
   constructor() { }
