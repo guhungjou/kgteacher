@@ -72,6 +72,7 @@ import { RadarComponent } from './components/radar/radar.component';
 import { DistrictLabelComponent } from './components/district-label/district-label.component';
 import { DistrictSelectComponent } from './components/district-select/district-select.component';
 import { FullscreenComponent } from './components/fullscreen/fullscreen.component';
+import { LiquidComponent } from './components/liquid/liquid.component';
 
 registerLocaleData(zh);
 
@@ -152,6 +153,7 @@ const modules = [
     DistrictLabelComponent,
     DistrictSelectComponent,
     FullscreenComponent,
+    LiquidComponent,
   ],
   imports: [
     ...modules,
@@ -181,6 +183,7 @@ const modules = [
     DistrictLabelComponent,
     DistrictSelectComponent,
     FullscreenComponent,
+    LiquidComponent,
   ],
   providers: [
     { provide: NZ_I18N, useValue: zh_CN },

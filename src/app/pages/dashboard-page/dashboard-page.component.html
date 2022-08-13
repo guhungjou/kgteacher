@@ -4,9 +4,31 @@
 
 <app-fullscreen>
   <div class="content">
-    <div>
+    <div class="location">
       <app-district-label [id]="self?.kindergarten?.district_id"></app-district-label>
       - {{self.kindergarten?.name}}
+    </div>
+    <div class="infos">
+      <nz-card style="width:500px;">
+        <nz-row>
+          <nz-col [nzSpan]="12">
+            <nz-statistic [nzValue]="(self?.kindergarten?.number_of_student| number)!" nzTitle="学生数"></nz-statistic>
+          </nz-col>
+          <nz-col [nzSpan]="12">
+            <nz-statistic [nzValue]="(self?.kindergarten?.number_of_teacher| number)!" nzTitle="老师数"></nz-statistic>
+          </nz-col>
+        </nz-row>
+        <nz-divider></nz-divider>
+        <nz-row>
+          <nz-col [nzSpan]="12">
+            <nz-statistic [nzValue]="(self?.kindergarten?.number_of_student| number)!" nzTitle="今日出勤数"></nz-statistic>
+          </nz-col>
+          <nz-col [nzSpan]="12">
+            <app-liquid [percent]="0.25" [width]="0" [height]="0" style="height:200px;"></app-liquid>
+            <!-- <nz-statistic [nzValue]="(self?.kindergarten?.number_of_teacher| number)!" nzTitle="缺勤数"></nz-statistic> -->
+          </nz-col>
+        </nz-row>
+      </nz-card>
     </div>
   </div>
 </app-fullscreen>
