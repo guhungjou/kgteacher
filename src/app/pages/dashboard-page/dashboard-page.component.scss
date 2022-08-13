@@ -3,16 +3,14 @@
     margin: 16px 0;
   }
 
-  div.content {
-    padding: 24px;
-    background: #fff;
+  app-fullscreen{
     height: 100%;
-    position: relative;
-
-    button.fullscreen{
-      position: absolute;
-      right: 4px;
-      top:4px;
+    display: block;
+    div.content {
+      padding: 24px;
+      background: #fff;
+      height: 100%;
+      width: 100%;
     }
   }
 }

@@ -1,0 +1,4 @@
+<nz-input-group [nzAddOnBefore]="label">
+    <nz-cascader style="width: 204px" nzChangeOnSelect nzExpandTrigger="hover"
+    [(ngModel)]="values" [nzLoadData]="loadData" (ngModelChange)="onChanges()"></nz-cascader>
+</nz-input-group>

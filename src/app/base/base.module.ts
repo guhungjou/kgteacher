@@ -40,6 +40,7 @@ import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 import { NzTagModule } from 'ng-zorro-antd/tag';
+import { NzCascaderModule } from 'ng-zorro-antd/cascader';
 import { NzTimelineModule } from 'ng-zorro-antd/timeline';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzNotificationServiceModule } from 'ng-zorro-antd/notification';
@@ -68,6 +69,9 @@ import { HeightLabelComponent } from './components/height-label/height-label.com
 import { TemperatureLabelComponent } from './components/temperature-label/temperature-label.component';
 import { ScoreLabelComponent } from './components/score-label/score-label.component';
 import { RadarComponent } from './components/radar/radar.component';
+import { DistrictLabelComponent } from './components/district-label/district-label.component';
+import { DistrictSelectComponent } from './components/district-select/district-select.component';
+import { FullscreenComponent } from './components/fullscreen/fullscreen.component';
 
 registerLocaleData(zh);
 
@@ -121,6 +125,7 @@ const modules = [
   NzNotificationServiceModule,
   NzCardModule,
   NzEmptyModule,
+  NzCascaderModule,
 ];
 
 @NgModule({
@@ -144,6 +149,9 @@ const modules = [
     TemperatureLabelComponent,
     ScoreLabelComponent,
     RadarComponent,
+    DistrictLabelComponent,
+    DistrictSelectComponent,
+    FullscreenComponent,
   ],
   imports: [
     ...modules,
@@ -170,6 +178,9 @@ const modules = [
     TemperatureLabelComponent,
     ScoreLabelComponent,
     RadarComponent,
+    DistrictLabelComponent,
+    DistrictSelectComponent,
+    FullscreenComponent,
   ],
   providers: [
     { provide: NZ_I18N, useValue: zh_CN },

@@ -34,4 +34,15 @@ export class ApiService {
     const body = { old, new: n };
     return this.http.put(url, body);
   }
+
+
+  getDistrict(id: string) {
+    const url = this.http.buildurl('/district/' + id);
+    return this.http.fget(url);
+  }
+
+  findDistricts(query: string, parentID: string = '') {
+    const url = this.http.buildurl('/districts', { query, parent_id: parentID });
+    return this.http.fget(url);
+  }
 }

@@ -1,0 +1,9 @@
+<ng-container *ngIf="data">
+    <ng-container *ngIf="data?.parent?.parent">
+        {{data?.parent?.parent?.name}} /
+    </ng-container>
+    <ng-container *ngIf="data?.parent">
+        {{data?.parent?.name}} /
+    </ng-container>
+    {{data?.name}} 
+</ng-container>

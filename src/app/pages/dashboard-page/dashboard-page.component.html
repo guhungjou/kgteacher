@@ -2,8 +2,21 @@
   <nz-breadcrumb-item>总览</nz-breadcrumb-item>
 </nz-breadcrumb>
 
-<div class="content" #content>
-  <button class="fullscreen" nz-button nzSize="large" nzType="link" (click)="fullscreen()"><i nz-icon [nzType]="isFullscreen()?'fullscreen-exit':'fullscreen'" nzTheme="outline"></i></button>
+<app-fullscreen>
+  <div class="content">
+    <div>
+      <app-district-label [id]="self?.kindergarten?.district_id"></app-district-label>
+      - {{self.kindergarten?.name}}
+    </div>
+  </div>
+</app-fullscreen>
+
+<!-- <div class="content">
+
+  <div>
+    <app-district-label [id]="self?.kindergarten?.district_id"></app-district-label>
+    - {{self.kindergarten?.name}}
+  </div>
 
   <nz-row>
     <nz-col [nzSpan]="8">
@@ -19,4 +32,4 @@
       ></nz-statistic>
     </nz-col>
   </nz-row>
-</div>
+</div> -->
