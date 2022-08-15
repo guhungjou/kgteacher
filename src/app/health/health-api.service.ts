@@ -312,4 +312,9 @@ export class HealthApiService {
     const url = this.http.buildurl('/student/morning/check/stat', { date, class_id: classID });
     return this.http.fget(url);
   }
+
+  findKindergartenStudentMorningCheckStats(startDate: any, endDate: any, classID: number = 0) {
+    const url = this.http.buildurl('/student/morning/check/stats', { start_date: startDate, end_date: endDate, class_id: classID });
+    return this.http.fget(url);
+  }
 }

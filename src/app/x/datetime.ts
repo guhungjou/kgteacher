@@ -68,3 +68,9 @@ export function parseDateWithDefault(s: string, def: any) {
   }
   return d;
 }
+
+export function getToday(): Date {
+  const now = new Date();
+  const today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);
+  return new Date(today);
+}

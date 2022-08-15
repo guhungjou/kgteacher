@@ -37,7 +37,7 @@
       </nz-card>
 
       <nz-card class="class" [nzTitle]="class?.name" [nzExtra]="classExtra">
-
+        <app-g2-line [data]="classStats" xfield="date" yfield="count" ylabel="出勤人数"></app-g2-line>
       </nz-card>
 
       <ng-template #classExtra>
@@ -46,6 +46,14 @@
         <span style="margin-left: 50px">出勤数：{{class?.cstat|number}}</span>
 
       </ng-template>
+    </div>
+
+    <div class="graph">
+      <div nz-row>
+        <div nz-col [nzSpan]="12">
+          <app-g2-line [data]="kStats" xfield="date" yfield="count" ylabel="出勤人数"></app-g2-line>
+        </div>
+      </div>
     </div>
   </div>
 </app-fullscreen>
