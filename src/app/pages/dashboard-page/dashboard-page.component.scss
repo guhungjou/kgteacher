@@ -18,6 +18,32 @@
 
       div.infos{
         margin-top: 20px;
+        display: flex;
+        flex-direction:row;
+        height: 400px;
+
+        nz-card.basic{
+          width: 400px;
+        }
+
+        nz-card.classes{
+          min-width: 160px;
+          margin-left: 10px;
+          margin-right: 10px;
+          overflow-y: scroll;
+          // height: 400px;
+          nz-radio-group{
+            text-align: left;
+            label{
+              display: block;
+              margin-bottom: 10px;
+            }
+          }
+        }
+
+        nz-card.class{
+          flex:1;
+        }
       }
     }
   }

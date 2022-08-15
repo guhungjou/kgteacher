@@ -307,4 +307,9 @@ export class HealthApiService {
     form.append('file', file);
     return this.http.post(url, form);
   }
+
+  getKindergartenStudentMorningCheckStat(date: any, classID: number = 0) {
+    const url = this.http.buildurl('/student/morning/check/stat', { date, class_id: classID });
+    return this.http.fget(url);
+  }
 }

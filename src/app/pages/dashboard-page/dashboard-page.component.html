@@ -6,10 +6,10 @@
   <div class="content">
     <div class="location">
       <app-district-label [id]="self?.kindergarten?.district_id"></app-district-label>
-      - {{self.kindergarten?.name}}
+      - {{self?.kindergarten?.name}}
     </div>
     <div class="infos">
-      <nz-card style="width:500px;">
+      <nz-card class="basic">
         <nz-row>
           <nz-col [nzSpan]="12">
             <nz-statistic [nzValue]="(self?.kindergarten?.number_of_student| number)!" nzTitle="学生数"></nz-statistic>
@@ -21,14 +21,31 @@
         <nz-divider></nz-divider>
         <nz-row>
           <nz-col [nzSpan]="12">
-            <nz-statistic [nzValue]="(self?.kindergarten?.number_of_student| number)!" nzTitle="今日出勤数"></nz-statistic>
+            <nz-statistic [nzValue]="(checkStat?.count| number)!" nzTitle="今日出勤数"></nz-statistic>
           </nz-col>
           <nz-col [nzSpan]="12">
-            <app-liquid [percent]="0.25" [width]="0" [height]="0" style="height:200px;"></app-liquid>
+            <app-liquid *ngIf="checkStat && self" [percent]="checkStat?.count/self?.kindergarten?.number_of_student" [width]="0" [height]="0" style="height:160px;"></app-liquid>
             <!-- <nz-statistic [nzValue]="(self?.kindergarten?.number_of_teacher| number)!" nzTitle="缺勤数"></nz-statistic> -->
           </nz-col>
         </nz-row>
       </nz-card>
+
+      <nz-card class="classes">
+        <nz-radio-group nzButtonStyle="solid" [ngModel]="class?.id" (ngModelChange)="onClassChange($event)">
+          <label nz-radio-button [nzValue]="c.id" *ngFor="let c of classes">{{c.name}}</label>
+        </nz-radio-group>
+      </nz-card>
+
+      <nz-card class="class" [nzTitle]="class?.name" [nzExtra]="classExtra">
+
+      </nz-card>
+
+      <ng-template #classExtra>
+        <span>老师数：{{class?.number_of_teacher|number}}</span>
+        <span style="margin-left: 50px">学生数：{{class?.number_of_student|number}}</span>
+        <span style="margin-left: 50px">出勤数：{{class?.cstat|number}}</span>
+
+      </ng-template>
     </div>
   </div>
 </app-fullscreen>
