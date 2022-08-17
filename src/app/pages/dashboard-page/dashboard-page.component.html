@@ -4,38 +4,99 @@
 
 <app-fullscreen>
   <div class="content">
-    <div class="location">
-      <app-district-label [id]="self?.kindergarten?.district_id"></app-district-label>
-      - {{self?.kindergarten?.name}}
+    <div class="header">
+      <div class="location">
+        <app-district-label [id]="self?.kindergarten?.district_id"></app-district-label>
+        - {{self?.kindergarten?.name}}
+      </div>
+
+      <nz-input-group nzAddOnBefore="选择日期">
+        <nz-date-picker  [(ngModel)]="date" nzSize="small" (ngModelChange)="onDateChange()" [nzAllowClear]="false"></nz-date-picker>
+      </nz-input-group>
     </div>
     <div class="infos">
-      <nz-card class="basic">
-        <nz-row>
-          <nz-col [nzSpan]="12">
-            <nz-statistic [nzValue]="(self?.kindergarten?.number_of_student| number)!" nzTitle="学生数"></nz-statistic>
-          </nz-col>
-          <nz-col [nzSpan]="12">
-            <nz-statistic [nzValue]="(self?.kindergarten?.number_of_teacher| number)!" nzTitle="老师数"></nz-statistic>
-          </nz-col>
-        </nz-row>
-        <nz-divider></nz-divider>
-        <nz-row>
-          <nz-col [nzSpan]="12">
-            <nz-statistic [nzValue]="(checkStat?.count| number)!" nzTitle="今日出勤数"></nz-statistic>
-          </nz-col>
-          <nz-col [nzSpan]="12">
-            <app-liquid *ngIf="checkStat && self" [percent]="checkStat?.count/self?.kindergarten?.number_of_student" [width]="0" [height]="0" style="height:160px;"></app-liquid>
-            <!-- <nz-statistic [nzValue]="(self?.kindergarten?.number_of_teacher| number)!" nzTitle="缺勤数"></nz-statistic> -->
-          </nz-col>
-        </nz-row>
-      </nz-card>
+      <div class="basic card">
+        <div>
+          学生数：{{self?.kindergarten?.number_of_student| number}}
+        </div>
+        <nz-divider style="background-color: white"></nz-divider>
+        <div style="display: flex;">
+          <div>
+            <div>
+              出勤数：{{checkStat?.count| number}}
+            </div>
+            <div>
+              缺勤数：{{self?.kindergarten?.number_of_student-checkStat?.count| number}}
+            </div>  
+          </div>
+          <div style="flex:1"></div>
+          <app-liquid *ngIf="checkStat && self" [percent]="checkStat?.count/self?.kindergarten?.number_of_student" [width]="0" [height]="0" style="text-align:right;width:100px;height:100px;"></app-liquid>
 
-      <nz-card class="classes">
+        </div>
+        <nz-divider style="background-color: white"></nz-divider>
+        <div style="display: flex;">
+          <div>
+            <div>
+              晨检人数：{{checkStat?.count| number}}
+            </div>
+            <div>
+              未晨检人数：{{self?.kindergarten?.number_of_student-checkStat?.count| number}}
+            </div>  
+          </div>
+          <div style="flex:1"></div>
+          <app-liquid *ngIf="checkStat && self" [percent]="checkStat?.count/self?.kindergarten?.number_of_student" [width]="0" [height]="0" style="text-align:right;width:100px;height:100px;"></app-liquid>
+
+        </div>
+      </div>
+
+      <div class="classes card">
         <nz-radio-group nzButtonStyle="solid" [ngModel]="class?.id" (ngModelChange)="onClassChange($event)">
           <label nz-radio-button [nzValue]="c.id" *ngFor="let c of classes">{{c.name}}</label>
         </nz-radio-group>
-      </nz-card>
+      </div>
 
+      <div class="class card">
+        <div nz-row>
+          <div nz-col [nzSpan]="8">
+            学生数：{{class?.number_of_student|number}}
+          </div>
+          <div nz-col [nzSpan]="8">
+            出勤数：{{class?.cstat?.count|number}}
+          </div>
+          <div nz-col [nzSpan]="8">
+            出勤率：{{class?.cstat?.count/class?.number_of_student|percent}}
+          </div>
+        </div>
+        <div nz-row style="margin-top: 10px;">
+          <div nz-col [nzSpan]="8">
+            晨检人数：{{class?.cstat?.count|number}}
+          </div>
+          <div nz-col [nzSpan]="8">
+            体温正常人数：{{class?.cstat?.temperature_ok|number}}
+          </div>
+          <div nz-col [nzSpan]="8">
+            体温异常人数：{{class?.cstat?.temperature_unusual|number}}
+          </div>
+        </div>
+        <div nz-row style="margin-top: 10px;">
+          <div nz-col [nzSpan]="8">
+            手部异常人数：{{0|number}}
+          </div>
+          <div nz-col [nzSpan]="8">
+            口部异常人数：{{0|number}}
+          </div>
+          <div nz-col [nzSpan]="8">
+            眼部异常人数：{{0|number}}
+          </div>
+        </div>
+
+        <div nz-row>
+          <div nz-col [nzSpan]="8">
+            <app-g2-pie title="体温检测比例" [data]="tempeatureData" style="width: 275;height:275px;"></app-g2-pie>
+          </div>
+        </div>
+      </div>
+<!-- 
       <nz-card class="class" [nzTitle]="class?.name" [nzExtra]="classExtra">
         <app-g2-line [data]="classStats" xfield="date" yfield="count" ylabel="出勤人数"></app-g2-line>
       </nz-card>
@@ -45,13 +106,14 @@
         <span style="margin-left: 50px">学生数：{{class?.number_of_student|number}}</span>
         <span style="margin-left: 50px">出勤数：{{class?.cstat|number}}</span>
 
-      </ng-template>
+      </ng-template> -->
     </div>
 
     <div class="graph">
       <div nz-row>
-        <div nz-col [nzSpan]="12">
-          <app-g2-line [data]="kStats" xfield="date" yfield="count" ylabel="出勤人数"></app-g2-line>
+        <div nz-col [nzSpan]="8">
+          <div style="font-size: 20px">体温检测比例</div>
+          <app-g2-column title="体温检测比例" [data]="allTempeatureData"></app-g2-column>
         </div>
       </div>
     </div>

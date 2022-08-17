@@ -16,6 +16,7 @@ export class DashboardPageComponent implements OnInit {
   checkStat: any = null;
   classes: any[] = [];
   class: any = null;
+  date: any = getToday();
   constructor(private api: ApiService, private title: Title,
     private healthApi: HealthApiService, private kindergartenApi: KindergartenApiService) {
     this.title.setTitle('童角健康站 - 总览');
@@ -24,8 +25,19 @@ export class DashboardPageComponent implements OnInit {
   ngOnInit(): void {
     this.getSelf();
     this.getKindergartenStudentMorningCheckStat();
-    this.findKindergartenStudentMorningCheckStatsAll();
     this.findClasses();
+    this.findStudentMorningCheckTemperatureVisionAll();
+  }
+
+  onDateChange() {
+    if (!this.date) {
+      return;
+    }
+    this.getKindergartenStudentMorningCheckStat();
+    if (this.class) {
+      this.getKindergartenStudentMorningCheckStatClass(this.class.id);
+      this.findStudentMorningCheckTemperatureVision(this.class.id);
+    }
   }
 
   async getSelf() {
@@ -37,9 +49,7 @@ export class DashboardPageComponent implements OnInit {
 
   async getKindergartenStudentMorningCheckStat() {
     try {
-      const now = new Date();
-      const today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);
-      const r = await this.healthApi.getKindergartenStudentMorningCheckStat(new Date(today).toISOString());
+      const r = await this.healthApi.getKindergartenStudentMorningCheckStat(this.date.toISOString());
       this.checkStat = r.data;
     } catch (error) {
 
@@ -48,10 +58,10 @@ export class DashboardPageComponent implements OnInit {
 
   async getKindergartenStudentMorningCheckStatClass(classID: number) {
     try {
-      const today = getToday();
+      const today = this.date;
       const r = await this.healthApi.getKindergartenStudentMorningCheckStat(today.toISOString(), classID);
       if (this.class) {
-        this.class.cstat = r.data.count;
+        this.class.cstat = r.data;
       }
     } catch (error) {
 
@@ -63,7 +73,7 @@ export class DashboardPageComponent implements OnInit {
       if (c.id === id) {
         this.class = c;
         this.getKindergartenStudentMorningCheckStatClass(this.class.id);
-        this.findKindergartenStudentMorningCheckStats(this.class.id);
+        this.findStudentMorningCheckTemperatureVision(this.class.id);
         return;
       }
     }
@@ -77,40 +87,66 @@ export class DashboardPageComponent implements OnInit {
       if (this.classes.length > 0) {
         this.class = this.classes[0];
         this.getKindergartenStudentMorningCheckStatClass(this.class.id);
-        this.findKindergartenStudentMorningCheckStats(this.class.id);
+        this.findStudentMorningCheckTemperatureVision(this.class.id);
+
       }
     } catch (error) {
 
     }
   }
 
-  classStats: any[] = [];
-  async findKindergartenStudentMorningCheckStats(classID: number) {
+  tempeatureData: any = [];
+  allTempeatureData: any = [];
+  async findStudentMorningCheckTemperatureVisionAll() {
+    if (!this.date) {
+      return;
+    }
     try {
-      const today = getToday();
-      const sdate = addDays(today, -7);
-      const r = await this.healthApi.findKindergartenStudentMorningCheckStats(sdate.toISOString(), today.toISOString(), classID);
-      // console.log(r.data);
-      this.classStats = r.data;
-      for (const c of this.classStats) {
-        c.date = c.date.substr(0, 10);
+      const r = await this.healthApi.findStudentMorningCheckTemperatureVision(this.date.toISOString(), 0);
+      const data = r.data;
+      if (data.length === 0) {
+        this.allTempeatureData = [];
+      } else {
+        this.allTempeatureData = data;
+      }
+      for (const d of this.allTempeatureData) {
+        if (d.status === 'high') {
+          d.name = '偏高';
+        } else if (d.status === 'low') {
+          d.name = '偏低'
+        } else {
+          d.name = '正常'
+        }
       }
     } catch (error) {
-
+      // this.message.error('网络错误');
+    } finally {
     }
   }
-  kStats: any[] = [];
-  async findKindergartenStudentMorningCheckStatsAll() {
+  async findStudentMorningCheckTemperatureVision(classID: number) {
+    if (!this.date) {
+      return;
+    }
     try {
-      const today = getToday();
-      const sdate = addDays(today, -7);
-      const r = await this.healthApi.findKindergartenStudentMorningCheckStats(sdate.toISOString(), today.toISOString(), 0);
-      this.kStats = r.data;
-      for (const c of this.kStats) {
-        c.date = c.date.substr(0, 10);
+      const r = await this.healthApi.findStudentMorningCheckTemperatureVision(this.date.toISOString(), classID);
+      const data = r.data;
+      if (data.length === 0) {
+        this.tempeatureData = [];
+      } else {
+        this.tempeatureData = data;
+      }
+      for (const d of this.tempeatureData) {
+        if (d.status === 'high') {
+          d.name = '偏高';
+        } else if (d.status === 'low') {
+          d.name = '偏低'
+        } else {
+          d.name = '正常'
+        }
       }
     } catch (error) {
-
+      // this.message.error('网络错误');
+    } finally {
     }
   }
 }

@@ -74,6 +74,8 @@ import { DistrictSelectComponent } from './components/district-select/district-s
 import { FullscreenComponent } from './components/fullscreen/fullscreen.component';
 import { LiquidComponent } from './components/liquid/liquid.component';
 import { G2LineComponent } from './components/g2-line/g2-line.component';
+import { G2PieComponent } from './components/g2-pie/g2-pie.component';
+import { G2ColumnComponent } from './components/g2-column/g2-column.component';
 
 registerLocaleData(zh);
 
@@ -156,6 +158,8 @@ const modules = [
     FullscreenComponent,
     LiquidComponent,
     G2LineComponent,
+    G2PieComponent,
+    G2ColumnComponent,
   ],
   imports: [
     ...modules,
@@ -187,6 +191,8 @@ const modules = [
     FullscreenComponent,
     LiquidComponent,
     G2LineComponent,
+    G2PieComponent,
+    G2ColumnComponent,
   ],
   providers: [
     { provide: NZ_I18N, useValue: zh_CN },

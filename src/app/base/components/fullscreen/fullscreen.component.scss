@@ -7,5 +7,13 @@
           right: 4px;
           top:4px;
         }
+
+        &.fullscreen{
+          position: fixed;
+          height: 100%;
+          width: 100%;
+          left:0px;
+          top:0px;
+        }
     }
 }

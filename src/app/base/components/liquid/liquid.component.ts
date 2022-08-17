@@ -11,6 +11,7 @@ export class LiquidComponent implements OnInit, OnChanges {
   @Input() width: number = 400;
   @Input() height: number = 400;
   @Input() percent: number = 0;
+  @Input() backgroundColor = '';
   constructor(private el: ElementRef) { }
 
   ngOnInit(): void {
@@ -34,6 +35,16 @@ export class LiquidComponent implements OnInit, OnChanges {
       wave: {
         length: 128,
       },
+      theme: {
+        styleSheet: {
+          backgroundColor: this.backgroundColor,
+        },
+      },
+      statistic: {
+        content: {
+          style: 'font-size:20px;'
+        }
+      }
     };
     if (this.liquidPlot) {
       this.liquidPlot.update(cfg);

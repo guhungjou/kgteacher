@@ -20,6 +20,6 @@ export class FullscreenComponent implements OnInit {
   }
 
   fullscreen() {
-    screenfull.toggle(this.content.nativeElement);
+    screenfull.toggle();
   }
 }

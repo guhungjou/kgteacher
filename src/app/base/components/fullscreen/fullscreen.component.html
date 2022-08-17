@@ -1,4 +1,4 @@
-<div #content class="content">
+<div #content class="content" [ngClass]="{'fullscreen':isFullscreen()}">
     <button class="fullscreen" nz-button nzSize="large" nzType="link" (click)="fullscreen()"><i nz-icon [nzType]="isFullscreen()?'fullscreen-exit':'fullscreen'" nzTheme="outline"></i></button>
     <ng-content></ng-content>
 </div>

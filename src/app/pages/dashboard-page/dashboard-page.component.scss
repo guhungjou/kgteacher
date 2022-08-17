@@ -8,12 +8,27 @@
     display: block;
     div.content {
       padding: 24px;
-      background: #fff;
+      // background:#546e7a;
+      background-image: url(../../../assets/bigpicture.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      color:white;
       height: 100%;
       width: 100%;
 
-      div.location{
-
+      div.header{
+        text-align: center;
+        position: relative;
+        div.location{
+          position:absolute;
+          left:0px;
+          top:0px;
+        }
+        nz-input-group{
+          margin-left: auto;
+          margin-right: auto;
+        }
       }
 
       div.infos{
@@ -22,11 +37,18 @@
         flex-direction:row;
         height: 400px;
 
-        nz-card.basic{
-          min-width: 400px;
+        div.card{
+          border: solid 1px white;
+          border-radius: 2px;
+          padding: 20px;
         }
 
-        nz-card.classes{
+        div.basic{
+          min-width: 400px;
+          font-size: 20px;
+        }
+
+        div.classes{
           min-width: 160px;
           margin-left: 10px;
           margin-right: 10px;
@@ -41,9 +63,10 @@
           }
         }
 
-        nz-card.class{
+        div.class{
           flex:1;
           width: 0px;
+          font-size: 20px;
           app-g2-line{
             width: 100%;
             height: 300px;
