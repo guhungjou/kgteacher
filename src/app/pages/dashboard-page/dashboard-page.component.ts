@@ -37,6 +37,7 @@ export class DashboardPageComponent implements OnInit {
     if (this.class) {
       this.getKindergartenStudentMorningCheckStatClass(this.class.id);
       this.findStudentMorningCheckTemperatureVision(this.class.id);
+      this.findStudentMorningCheckTemperatureVisionAll();
     }
   }
 
@@ -109,14 +110,29 @@ export class DashboardPageComponent implements OnInit {
       } else {
         this.allTempeatureData = data;
       }
+      let h = false;
+      let l = false;
+      let n = false;
       for (const d of this.allTempeatureData) {
         if (d.status === 'high') {
           d.name = '偏高';
+          h = true;
         } else if (d.status === 'low') {
           d.name = '偏低'
+          l = true;
         } else {
           d.name = '正常'
+          n = true;
         }
+      }
+      if (!h) {
+        this.allTempeatureData.push({ name: '偏高', count: 0 });
+      }
+      if (!l) {
+        this.allTempeatureData.push({ name: '偏低', count: 0 });
+      }
+      if (!n) {
+        this.allTempeatureData.push({ name: '正常', count: 0 });
       }
     } catch (error) {
       // this.message.error('网络错误');

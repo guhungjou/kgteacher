@@ -28,7 +28,7 @@ export class G2PieComponent implements OnInit, OnChanges {
     }
 
     const cfg: PieOptions = {
-      appendPadding: 10,
+      appendPadding: 5,
       data: this.data,
       autoFit: true,
       angleField: 'count',
@@ -46,20 +46,22 @@ export class G2PieComponent implements OnInit, OnChanges {
       label: {
         type: 'inner',
         offset: '-50%',
-        content: '{name}',
+        content: '{name} {value}',
         style: {
           textAlign: 'center',
           fontSize: 14,
         },
         autoRotate: false,
       },
-      interactions: [{ type: 'element-selected' }, { type: 'element-active' }],
+      legend: false,
+      // interactions: [{ type: 'element-selected' }, { type: 'element-active' }],
       statistic: {
         title: {
           content: this.title,
           style: {
             fontSize: '16px',
             color: 'white',
+            zIndex: '9999',
           }
         },
         content: {
@@ -72,7 +74,7 @@ export class G2PieComponent implements OnInit, OnChanges {
             marginTop: '10px',
             color: '#90caf9'
           },
-          content: '总数 ' + total,
+          content: `总数 ${total}`,
         },
       },
     };

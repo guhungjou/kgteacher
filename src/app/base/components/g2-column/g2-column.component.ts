@@ -11,7 +11,7 @@ export class G2ColumnComponent implements OnInit, OnChanges {
   @Input() title = '';
   @Input() data: any = [];
 
-  columnPolot: Column | null = null;
+  columnPlot: Column | null = null;
 
   constructor(private el: ElementRef) { }
 
@@ -24,6 +24,7 @@ export class G2ColumnComponent implements OnInit, OnChanges {
 
   render() {
     const cfg: ColumnOptions = {
+      appendPadding: 4,
       data: this.data,
       xField: 'name',
       yField: 'count',
@@ -36,24 +37,40 @@ export class G2ColumnComponent implements OnInit, OnChanges {
         }
         return '#2196f3';
       },
-      meta: {
-        name: {
-          alias: '类别',
-        },
-        count: {
-          alias: '人数',
-        },
-      },
+      // meta: {
+      //   name: {
+      //     alias: '类别',
+      //   },
+      //   count: {
+      //     alias: '人数',
+      //   },
+      // },
       yAxis: {
         // tickCount:1,
         tickInterval: 1,
+      },
+      label: {
+        position: 'middle', // 'top', 'bottom', 'middle',
+      },
+      xAxis: {
+        label: {
+          autoHide: true,
+          autoRotate: false,
+        },
+        title: {
+          text: this.title,
+          style: {
+            fontSize: 18,
+            fill: 'white'
+          }
+        }
       }
     };
-    if (!this.columnPolot) {
-      this.columnPolot = new Column(this.el.nativeElement.querySelector('#column'), cfg);
+    if (!this.columnPlot) {
+      this.columnPlot = new Column(this.el.nativeElement.querySelector('#column'), cfg);
     } else {
-      this.columnPolot.update(cfg);
+      this.columnPlot.update(cfg);
     }
-    this.columnPolot.render();
+    this.columnPlot.render();
   }
 }

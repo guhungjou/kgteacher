@@ -4,6 +4,9 @@
 
 <app-fullscreen>
   <div class="content">
+    <div class="title">
+      <h2>儿童健康管理系统</h2>
+    </div>
     <div class="header">
       <div class="location">
         <app-district-label [id]="self?.kindergarten?.district_id"></app-district-label>
@@ -91,32 +94,22 @@
         </div>
 
         <div nz-row>
-          <div nz-col [nzSpan]="8">
-            <app-g2-pie title="体温检测比例" [data]="tempeatureData" style="width: 275;height:275px;"></app-g2-pie>
+          <div nz-col [nzSpan]="6">
+            <app-g2-pie title="体温检测" [data]="tempeatureData" style="height: 280px;"></app-g2-pie>
           </div>
         </div>
       </div>
-<!-- 
-      <nz-card class="class" [nzTitle]="class?.name" [nzExtra]="classExtra">
-        <app-g2-line [data]="classStats" xfield="date" yfield="count" ylabel="出勤人数"></app-g2-line>
-      </nz-card>
 
-      <ng-template #classExtra>
-        <span>老师数：{{class?.number_of_teacher|number}}</span>
-        <span style="margin-left: 50px">学生数：{{class?.number_of_student|number}}</span>
-        <span style="margin-left: 50px">出勤数：{{class?.cstat|number}}</span>
-
-      </ng-template> -->
     </div>
 
     <div class="graph">
-      <div nz-row>
-        <div nz-col [nzSpan]="8">
-          <div style="font-size: 20px">体温检测比例</div>
-          <app-g2-column title="体温检测比例" [data]="allTempeatureData"></app-g2-column>
+      <div nz-row style="height: 100%;">
+        <div nz-col [nzSpan]="6" style="height: 100%;">
+          <app-g2-column title="体温检测" [data]="allTempeatureData" style="height:100%;"></app-g2-column>
         </div>
       </div>
     </div>
+
   </div>
 </app-fullscreen>
 
