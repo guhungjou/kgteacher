@@ -15,6 +15,7 @@ export class FullscreenComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
   isFullscreen() {
     return screenfull.isFullscreen;
   }

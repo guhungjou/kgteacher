@@ -1,21 +1,39 @@
-import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Column, ColumnOptions } from '@antv/g2plot';
+import { fromEvent, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-g2-column',
   templateUrl: './g2-column.component.html',
   styleUrls: ['./g2-column.component.scss']
 })
-export class G2ColumnComponent implements OnInit, OnChanges {
+export class G2ColumnComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() title = '';
   @Input() data: any = [];
 
   columnPlot: Column | null = null;
 
-  constructor(private el: ElementRef) { }
+  constructor(private el: ElementRef) {
+    this.resizeObservable$ = fromEvent(window, 'resize')
+    this.resizeSubscription$ = this.resizeObservable$.subscribe(evt => {
+      console.log('event: ', evt)
+      if (this.columnPlot) {
+        this.columnPlot.destroy();
+        this.columnPlot = null;
+      }
+      this.render();
+    })
+  }
+
+  resizeObservable$: Observable<Event>
+  resizeSubscription$: Subscription
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    this.resizeSubscription$.unsubscribe();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -23,6 +41,7 @@ export class G2ColumnComponent implements OnInit, OnChanges {
   }
 
   render() {
+    console.log('render');
     const cfg: ColumnOptions = {
       appendPadding: 4,
       data: this.data,
