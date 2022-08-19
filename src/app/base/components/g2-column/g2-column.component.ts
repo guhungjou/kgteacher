@@ -67,6 +67,13 @@ export class G2ColumnComponent implements OnInit, OnChanges, OnDestroy {
       yAxis: {
         // tickCount:1,
         tickInterval: 1,
+        line: {
+          style: {
+            stroke: '#97a2b1',
+            lineWidth: 2,
+          }
+        },
+        grid: null,
       },
       label: {
         position: 'middle', // 'top', 'bottom', 'middle',

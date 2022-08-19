@@ -8,6 +8,7 @@
     display: block;
     div.content {
       padding: 24px;
+      background-color: gray;
       background-image: url(../../../assets/bigpicture.jpg);
       background-size: cover;
       background-repeat: no-repeat;
@@ -22,9 +23,17 @@
 
       div.title{
         text-align: center;
+        background-image: url(../../../assets/bigpicture/title.jpg);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-top: -20px;
+        margin-bottom: 10px;
         h2{
           color:white;
           user-select: none;
+          margin-top: 4px;
+          margin-bottom: 4px;
         }
       }
 
@@ -49,21 +58,24 @@
         height: 420px;
 
         div.card{
-          border: solid 1px white;
-          border-radius: 2px;
+          border: solid 2px white;
+          // border-radius: 2px;
           padding: 20px;
+
+          border-image: url(../../../assets/login.jpg) 27 round;
+          border-image-width: 2px;
         }
 
         div.basic{
-          min-width: 340px;
-          font-size: 20px;
+          min-width: 350px;
+          font-size: 1.25rem;
         }
 
         div.classes{
           min-width: 140px;
           margin-left: 10px;
           margin-right: 10px;
-          overflow-y: scroll;
+          overflow-y: auto;
           // height: 400px;
           nz-radio-group{
             text-align: left;
@@ -77,7 +89,7 @@
         div.class{
           flex:1;
           width: 0px;
-          font-size: 20px;
+          font-size: 1.25rem;
         }
       }
 

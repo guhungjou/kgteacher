@@ -20,16 +20,16 @@
     <div class="infos">
       <div class="basic card">
         <div>
-          学生数：{{self?.kindergarten?.number_of_student| number}}
+          <img src="../../../assets/icon/学生数.svg" height="28px"> 学生数：{{self?.kindergarten?.number_of_student| number}}
         </div>
         <nz-divider style="background-color: white"></nz-divider>
         <div style="display: flex;">
           <div>
             <div>
-              出勤数：{{checkStat?.count| number}}
+              <img src="../../../assets/icon/出勤.svg" height="28px"> 出勤数：{{checkStat?.count| number}}
             </div>
             <div>
-              缺勤数：{{self?.kindergarten?.number_of_student-checkStat?.count| number}}
+              <img src="../../../assets/icon/未晨检 未出勤.svg" height="28px"> 缺勤数：{{self?.kindergarten?.number_of_student-checkStat?.count| number}}
             </div>  
           </div>
           <div style="flex:1"></div>
@@ -40,10 +40,10 @@
         <div style="display: flex;">
           <div>
             <div>
-              晨检人数：{{checkStat?.count| number}}
+              <img src="../../../assets/icon/晨检.svg" height="28px"> 晨检人数：{{checkStat?.count| number}}
             </div>
             <div>
-              未晨检人数：{{self?.kindergarten?.number_of_student-checkStat?.count| number}}
+              <img src="../../../assets/icon/未晨检 未出勤.svg" height="28px"> 未晨检人数：{{self?.kindergarten?.number_of_student-checkStat?.count| number}}
             </div>  
           </div>
           <div style="flex:1"></div>
@@ -61,35 +61,35 @@
       <div class="class card">
         <div nz-row>
           <div nz-col [nzSpan]="8">
-            学生数：{{class?.number_of_student|number}}
+            <img src="../../../assets/icon/学生数.svg" height="28px"> 学生数：{{class?.number_of_student|number}}
           </div>
           <div nz-col [nzSpan]="8">
-            出勤数：{{class?.cstat?.count|number}}
+            <img src="../../../assets/icon/出勤.svg" height="28px"> 出勤数：{{class?.cstat?.count|number}}
           </div>
           <div nz-col [nzSpan]="8">
-            出勤率：{{class?.cstat?.count/class?.number_of_student|percent}}
-          </div>
-        </div>
-        <div nz-row style="margin-top: 10px;">
-          <div nz-col [nzSpan]="8">
-            晨检人数：{{class?.cstat?.count|number}}
-          </div>
-          <div nz-col [nzSpan]="8">
-            体温正常人数：{{class?.cstat?.temperature_ok|number}}
-          </div>
-          <div nz-col [nzSpan]="8">
-            体温异常人数：{{class?.cstat?.temperature_unusual|number}}
+            <img src="../../../assets/icon/出勤率.svg" height="28px"> 出勤率：{{class?.cstat?.count/class?.number_of_student|percent}}
           </div>
         </div>
         <div nz-row style="margin-top: 10px;">
           <div nz-col [nzSpan]="8">
-            手部异常人数：{{0|number}}
+            <img src="../../../assets/icon/晨检.svg" height="28px"> 晨检人数：{{class?.cstat?.count|number}}
           </div>
           <div nz-col [nzSpan]="8">
-            口部异常人数：{{0|number}}
+            <img src="../../../assets/icon/体温正常.svg" height="28px"> 体温正常人数：{{class?.cstat?.temperature_ok|number}}
           </div>
           <div nz-col [nzSpan]="8">
-            眼部异常人数：{{0|number}}
+            <img src="../../../assets/icon/体温异常.svg" height="28px"> 体温异常人数：{{class?.cstat?.temperature_unusual|number}}
+          </div>
+        </div>
+        <div nz-row style="margin-top: 10px;">
+          <div nz-col [nzSpan]="8">
+            <img src="../../../assets/icon/手部正常.svg" height="28px"> 手部异常人数：{{0|number}}
+          </div>
+          <div nz-col [nzSpan]="8">
+            <img src="../../../assets/icon/口部正常.svg" height="28px"> 口部异常人数：{{0|number}}
+          </div>
+          <div nz-col [nzSpan]="8">
+            <img src="../../../assets/icon/眼部正常.svg" height="28px"> 眼部异常人数：{{0|number}}
           </div>
         </div>
 
