@@ -9,7 +9,7 @@
     div.content {
       padding: 24px;
       background-color: gray;
-      background-image: url(../../../assets/bigpicture.jpg);
+      background-image: url(../../../assets/bigpicture/bigpicture.jpg);
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
@@ -58,12 +58,13 @@
         height: 420px;
 
         div.card{
-          border: solid 2px white;
+          border: solid 2px transparent;
           // border-radius: 2px;
           padding: 20px;
 
-          border-image: url(../../../assets/login.jpg) 27 round;
-          border-image-width: 2px;
+          border-image: url(../../../assets/bigpicture/card.jpg) 27 stretch;
+          border-image-width: 8px;
+          border-image-outset: 4px;
         }
 
         div.basic{
