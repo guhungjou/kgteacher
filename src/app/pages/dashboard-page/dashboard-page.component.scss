@@ -6,6 +6,7 @@
   app-fullscreen{
     // height: 100%;
     display: block;
+    overflow-x: auto;
     div.content {
       padding: 24px;
       background-color: gray;
@@ -18,6 +19,7 @@
       // height: 800px;
       // max-height: 100vh;
       width: 100%;
+      min-width: 1200px;
       display: flex;
       flex-direction: column;
 
@@ -44,6 +46,8 @@
           position:absolute;
           left:0px;
           top:0px;
+          color:#75F9FD;
+          font-size:16px;
         }
         nz-input-group{
           margin-left: auto;
@@ -57,23 +61,51 @@
         flex-direction:row;
         height: 420px;
 
+        div.divider{
+          height: 4px;
+          width: 100%;
+          background:linear-gradient(to right , #2AF1F8, #00000000);
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+
         div.card{
           border: solid 2px transparent;
           // border-radius: 2px;
-          padding: 20px;
+          padding: 15px;
 
           border-image: url(../../../assets/bigpicture/card.jpg) 27 stretch;
           border-image-width: 8px;
           border-image-outset: 4px;
+
+          svg.icon{
+            height :24px;
+            vertical-align:middle;
+            margin-top:-4px;
+            fill:black;
+            path{
+              fill:#75F9FD;
+            }
+          }
+          span.student{
+            color:#FFF38F;
+          }
+          span.check{
+            color:#D32480;
+          }
+          span.unusual{
+            color:#24D36E;
+          }
         }
 
         div.basic{
-          min-width: 350px;
-          font-size: 1.25rem;
+          // min-width: 350px;
+          font-size: 1.375rem;;
+          width: 420px;
         }
 
         div.classes{
-          min-width: 140px;
+          width: 130px;
           margin-left: 10px;
           margin-right: 10px;
           overflow-y: auto;
@@ -83,6 +115,11 @@
             label{
               display: block;
               margin-bottom: 10px;
+
+              &.ant-radio-button-wrapper.ant-radio-button-wrapper-checked{
+                background: #0C40F4;
+                border-color: #0C40F4;
+              }
             }
           }
         }
@@ -90,7 +127,7 @@
         div.class{
           flex:1;
           width: 0px;
-          font-size: 1.25rem;
+          font-size: 1.375rem;
         }
       }
 

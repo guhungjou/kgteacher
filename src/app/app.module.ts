@@ -12,6 +12,7 @@ import { BaseModule } from './base/base.module';
 import { AppRoutingModule } from './app-routing.module';
 import { KindergartenModule } from './kindergarten/kindergarten.module';
 import { HealthModule } from './health/health.module';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { HealthModule } from './health/health.module';
     AppRoutingModule,
     KindergartenModule,
     HealthModule,
+    AngularSvgIconModule.forRoot(),
   ],
   bootstrap: [AppComponent],
 })

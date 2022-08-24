@@ -20,82 +20,110 @@
     <div class="infos">
       <div class="basic card">
         <div>
-          <img src="../../../assets/icon/学生数.svg" height="28px"> 学生数：{{self?.kindergarten?.number_of_student| number}}
+          <svg-icon src="../../../assets/icon/学生数.svg" svgClass="icon"></svg-icon>
+          <span> 学生数：<span class="student">{{self?.kindergarten?.number_of_student| number}}</span></span>
         </div>
-        <nz-divider style="background-color: white"></nz-divider>
+        <!-- <nz-divider style="background-color: white"></nz-divider>
         <div style="display: flex;">
           <div>
             <div>
-              <img src="../../../assets/icon/出勤.svg" height="28px"> 出勤数：{{checkStat?.count| number}}
+              <svg-icon src="../../../assets/icon/出勤.svg" svgClass="icon"></svg-icon>
+              <span> 出勤数：{{checkStat?.count| number}}</span>
             </div>
             <div>
-              <img src="../../../assets/icon/未晨检 未出勤.svg" height="28px"> 缺勤数：{{self?.kindergarten?.number_of_student-checkStat?.count| number}}
+              <svg-icon src="../../../assets/icon/未晨检 未出勤.svg" svgClass="icon"></svg-icon>
+              <span> 缺勤数：{{self?.kindergarten?.number_of_student-checkStat?.count| number}}</span>
             </div>  
           </div>
           <div style="flex:1"></div>
           <app-liquid *ngIf="checkStat && self" [percent]="checkStat?.count/self?.kindergarten?.number_of_student" [width]="0" [height]="0" style="text-align:right;width:100px;height:100px;"></app-liquid>
 
-        </div>
-        <nz-divider style="background-color: white"></nz-divider>
-        <div style="display: flex;">
-          <div>
-            <div>
-              <img src="../../../assets/icon/晨检.svg" height="28px"> 晨检人数：{{checkStat?.count| number}}
-            </div>
-            <div>
-              <img src="../../../assets/icon/未晨检 未出勤.svg" height="28px"> 未晨检人数：{{self?.kindergarten?.number_of_student-checkStat?.count| number}}
-            </div>  
+        </div> -->
+        <div class="divider"></div>
+        <!-- <nz-divider style="background-color: white"></nz-divider> -->
+        <div nz-row [nzGutter]="[0,25]">
+          <div nz-col [nzSpan]="11">
+            <svg-icon src="../../../assets/icon/晨检.svg" svgClass="icon"></svg-icon>
+            <span> 晨检数：<span class="check">{{checkStat?.count| number}}</span></span>
           </div>
-          <div style="flex:1"></div>
-          <app-liquid *ngIf="checkStat && self" [percent]="checkStat?.count/self?.kindergarten?.number_of_student" [width]="0" [height]="0" style="text-align:right;width:100px;height:100px;"></app-liquid>
-
+          <div nz-col [nzSpan]="13">
+            <svg-icon src="../../../assets/icon/未晨检 未出勤.svg" svgClass="icon"></svg-icon>
+            <span> 体温异常数：<span class="unusual">{{checkStat?.temperature_unusual| number}}</span></span>
+          </div>
+          <div nz-col [nzSpan]="11">
+            <svg-icon src="../../../assets/icon/未晨检 未出勤.svg" svgClass="icon"></svg-icon>
+            <span> 未晨检数：<span class="check">{{self?.kindergarten?.number_of_student-checkStat?.count| number}}</span></span>
+          </div>
+          <div nz-col [nzSpan]="13">
+            <svg-icon src="../../../assets/icon/未晨检 未出勤.svg" svgClass="icon"></svg-icon>
+            <span> 手口眼异常：<span class="unusual">{{checkStat?.hand_unusual+checkStat?.eye_unusual+checkStat?.mouth_unusual| number}}</span></span>
+          </div>
+          <div nz-col [nzSpan]="12">
+            <app-liquid title="晨检率" [width]="170" [height]="170" [percent]="checkStat?.count/self?.kindergarten?.number_of_student" ></app-liquid> 
+          </div>
+          <div nz-col [nzSpan]="12">
+            <app-liquid title="异常率" [width]="170" [height]="170" *ngIf="checkStat && self" [percent]="checkStat?.unusual/self?.kindergarten?.number_of_student" ></app-liquid> 
+          </div>
         </div>
       </div>
 
       <div class="classes card">
-        <nz-radio-group nzButtonStyle="solid" [ngModel]="class?.id" (ngModelChange)="onClassChange($event)">
-          <label nz-radio-button [nzValue]="c.id" *ngFor="let c of classes">{{c.name}}</label>
+        <nz-radio-group nzButtonStyle="solid" nzSize="large" [ngModel]="class?.id" (ngModelChange)="onClassChange($event)">
+          <div nz-row  [nzGutter]="5">
+            <div nz-col [nzSpan]="24" *ngFor="let c of classes">
+              <label nz-radio-button  [nzValue]="c.id" >{{c.name}}</label>
+            </div>
+          </div>
         </nz-radio-group>
       </div>
 
       <div class="class card">
         <div nz-row>
           <div nz-col [nzSpan]="8">
-            <img src="../../../assets/icon/学生数.svg" height="28px"> 学生数：{{class?.number_of_student|number}}
+            <svg-icon src="../../../assets/icon/学生数.svg" svgClass="icon"></svg-icon>
+            <span> 学生数：<span class="student">{{class?.number_of_student|number}}</span></span>
           </div>
           <div nz-col [nzSpan]="8">
-            <img src="../../../assets/icon/出勤.svg" height="28px"> 出勤数：{{class?.cstat?.count|number}}
+            <svg-icon src="../../../assets/icon/出勤.svg" svgClass="icon"></svg-icon>
+            <span> 出勤数：<span class="student">{{class?.cstat?.count|number}}</span></span>
           </div>
           <div nz-col [nzSpan]="8">
-            <img src="../../../assets/icon/出勤率.svg" height="28px"> 出勤率：{{class?.cstat?.count/class?.number_of_student|percent}}
-          </div>
-        </div>
-        <div nz-row style="margin-top: 10px;">
-          <div nz-col [nzSpan]="8">
-            <img src="../../../assets/icon/晨检.svg" height="28px"> 晨检人数：{{class?.cstat?.count|number}}
-          </div>
-          <div nz-col [nzSpan]="8">
-            <img src="../../../assets/icon/体温正常.svg" height="28px"> 体温正常人数：{{class?.cstat?.temperature_ok|number}}
-          </div>
-          <div nz-col [nzSpan]="8">
-            <img src="../../../assets/icon/体温异常.svg" height="28px"> 体温异常人数：{{class?.cstat?.temperature_unusual|number}}
+            <svg-icon src="../../../assets/icon/出勤率.svg" svgClass="icon"></svg-icon>
+            <span> 出勤率：<span class="student">{{class?.cstat?.count/class?.number_of_student|percent}}</span></span>
           </div>
         </div>
         <div nz-row style="margin-top: 10px;">
           <div nz-col [nzSpan]="8">
-            <img src="../../../assets/icon/手部正常.svg" height="28px"> 手部异常人数：{{0|number}}
+            <svg-icon src="../../../assets/icon/晨检.svg" svgClass="icon"></svg-icon>
+            <span> 晨检数：<span class="check">{{class?.cstat?.count|number}}</span></span>
           </div>
           <div nz-col [nzSpan]="8">
-            <img src="../../../assets/icon/口部正常.svg" height="28px"> 口部异常人数：{{0|number}}
+            <svg-icon src="../../../assets/icon/体温正常.svg" svgClass="icon"></svg-icon>
+            <span> 体温正常数：<span class="check">{{class?.cstat?.temperature_ok|number}}</span></span>
           </div>
           <div nz-col [nzSpan]="8">
-            <img src="../../../assets/icon/眼部正常.svg" height="28px"> 眼部异常人数：{{0|number}}
+            <svg-icon src="../../../assets/icon/体温异常.svg" svgClass="icon"></svg-icon>
+            <span> 体温异常数：<span class="check">{{class?.cstat?.temperature_unusual|number}}</span></span>
+          </div>
+        </div>
+        <div nz-row style="margin-top: 10px;">
+          <div nz-col [nzSpan]="8">
+            <svg-icon src="../../../assets/icon/手部正常.svg" svgClass="icon"></svg-icon>
+            <span> 手部异常数：<span class="unusual">{{class?.cstat?.hand_unusual|number}}</span></span>
+          </div>
+          <div nz-col [nzSpan]="8">
+            <svg-icon src="../../../assets/icon/口部正常.svg" svgClass="icon"></svg-icon>
+            <span> 口部异常数：<span class="unusual">{{class?.cstat?.mouth_unusual|number}}</span></span>
+          </div>
+          <div nz-col [nzSpan]="8">
+            <svg-icon src="../../../assets/icon/眼部正常.svg" svgClass="icon"></svg-icon>
+            <span> 眼部异常数：<span class="unusual">{{class?.cstat?.eye_unusual|number}}</span></span>
           </div>
         </div>
 
         <div nz-row>
           <div nz-col [nzSpan]="6">
-            <app-g2-pie title="体温检测" [data]="tempeatureData" style="height: 280px;"></app-g2-pie>
+            <app-g2-pie title="体温" [data]="tempeatureData" style="height: 280px;"></app-g2-pie>
           </div>
         </div>
       </div>
@@ -105,7 +133,7 @@
     <div class="graph">
       <div nz-row style="height: 100%;">
         <div nz-col [nzSpan]="6" style="height: 100%;">
-          <app-g2-column title="体温检测" [data]="allTempeatureData" style="height:100%;"></app-g2-column>
+          <app-g2-column title="体温" [data]="allTempeatureData" style="height:100%;"></app-g2-column>
         </div>
       </div>
     </div>

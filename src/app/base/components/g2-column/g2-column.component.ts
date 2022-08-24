@@ -52,7 +52,11 @@ export class G2ColumnComponent implements OnInit, OnChanges, OnDestroy {
         if (n.name === '偏高') {
           return '#e91e63';
         } else if (n.name === '偏低') {
-          return '#8bc34a'
+          return '#8bc34a';
+        } else if (n.name === '未检') {
+          return '#D7C215';
+        } else if (n.name === '异常') {
+          return '#e91e63';
         }
         return '#2196f3';
       },
@@ -86,7 +90,7 @@ export class G2ColumnComponent implements OnInit, OnChanges, OnDestroy {
         title: {
           text: this.title,
           style: {
-            fontSize: 18,
+            fontSize: 20,
             fill: 'white'
           }
         }

@@ -12,6 +12,7 @@ export class LiquidComponent implements OnInit, OnChanges {
   @Input() height: number = 400;
   @Input() percent: number = 0;
   @Input() backgroundColor = '';
+  @Input() title = '';
   constructor(private el: ElementRef) { }
 
   ngOnInit(): void {
@@ -41,8 +42,12 @@ export class LiquidComponent implements OnInit, OnChanges {
         },
       },
       statistic: {
-        content: {
-          style: 'font-size:20px;'
+        // content: {
+        //   style: 'font-size:20px;'
+        // },
+        title: {
+          content: this.title,
+          style: 'font-size:16px;'
         }
       }
     };

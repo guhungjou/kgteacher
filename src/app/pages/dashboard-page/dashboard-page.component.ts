@@ -23,10 +23,11 @@ export class DashboardPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getSelf();
-    this.getKindergartenStudentMorningCheckStat();
-    this.findClasses();
-    this.findStudentMorningCheckTemperatureVisionAll();
+    this.getSelf().then(() => {
+      this.getKindergartenStudentMorningCheckStat();
+      this.findClasses();
+      this.findStudentMorningCheckTemperatureVisionAll();
+    });
   }
 
   onDateChange() {
@@ -85,12 +86,13 @@ export class DashboardPageComponent implements OnInit {
     try {
       const r = await this.kindergartenApi.findClasses('', 1, 99);
       this.classes = r.data.list;
+      this.classes = this.classes.reverse();
       if (this.classes.length > 0) {
         this.class = this.classes[0];
         this.getKindergartenStudentMorningCheckStatClass(this.class.id);
         this.findStudentMorningCheckTemperatureVision(this.class.id);
-
       }
+
     } catch (error) {
 
     }
@@ -105,35 +107,49 @@ export class DashboardPageComponent implements OnInit {
     try {
       const r = await this.healthApi.findStudentMorningCheckTemperatureVision(this.date.toISOString(), 0);
       const data = r.data;
-      if (data.length === 0) {
-        this.allTempeatureData = [];
-      } else {
-        this.allTempeatureData = data;
-      }
-      let h = false;
-      let l = false;
-      let n = false;
-      for (const d of this.allTempeatureData) {
-        if (d.status === 'high') {
-          d.name = '偏高';
-          h = true;
-        } else if (d.status === 'low') {
-          d.name = '偏低'
-          l = true;
+      this.allTempeatureData = [];
+      let x = 0;
+      let n = 0;
+      for (const d of data) {
+        if (d.status !== 'normal') {
+          x += d.count;
         } else {
-          d.name = '正常'
-          n = true;
+          n += d.count;
         }
       }
-      if (!h) {
-        this.allTempeatureData.push({ name: '偏高', count: 0 });
+      this.allTempeatureData.push({ name: '异常', count: x });
+      this.allTempeatureData.push({ name: '正常', count: n });
+      if (x + n < this.self?.kindergarten?.number_of_student) {
+        this.allTempeatureData.push({ name: '未检', count: this.self?.kindergarten?.number_of_student - (x + n) });
       }
-      if (!l) {
-        this.allTempeatureData.push({ name: '偏低', count: 0 });
-      }
-      if (!n) {
-        this.allTempeatureData.push({ name: '正常', count: 0 });
-      }
+
+      // if (data.length === 0) {
+      //   this.allTempeatureData = [];
+      // } else {
+      //   this.allTempeatureData = data;
+      // }
+      // let h = false;
+      // let n = false;
+      // let total = 0;
+      // for (const d of this.allTempeatureData) {
+      //   if (d.status === 'high' || d.status === 'low') {
+      //     d.name = '异常';
+      //     h = true;
+      //   } else {
+      //     d.name = '正常'
+      //     n = true;
+      //   }
+      //   total += d.count;
+      // }
+      // if (!h) {
+      //   this.allTempeatureData.push({ name: '异常', count: 0 });
+      // }
+      // if (!n) {
+      //   this.allTempeatureData.push({ name: '正常', count: 0 });
+      // }
+      // if (total < this.self?.kindergarten?.number_of_student) {
+      //   this.allTempeatureData.push({ name: '未检', count: this.self?.kindergarten?.number_of_student - total });
+      // }
     } catch (error) {
       // this.message.error('网络错误');
     } finally {
@@ -146,20 +162,47 @@ export class DashboardPageComponent implements OnInit {
     try {
       const r = await this.healthApi.findStudentMorningCheckTemperatureVision(this.date.toISOString(), classID);
       const data = r.data;
-      if (data.length === 0) {
-        this.tempeatureData = [];
-      } else {
-        this.tempeatureData = data;
-      }
-      for (const d of this.tempeatureData) {
-        if (d.status === 'high') {
-          d.name = '偏高';
-        } else if (d.status === 'low') {
-          d.name = '偏低'
+      this.tempeatureData = [];
+      let x = 0;
+      let n = 0;
+      for (const d of data) {
+        if (d.status !== 'normal') {
+          x += d.count;
         } else {
-          d.name = '正常'
+          n += d.count;
         }
       }
+      if (x > 0) {
+        this.tempeatureData.push({ name: '异常', count: x });
+      }
+      if (n > 0) {
+        this.tempeatureData.push({ name: '正常', count: n });
+      }
+      if (x + n < this.class?.number_of_student) {
+        this.tempeatureData.push({ name: '未检', count: this.class?.number_of_student - (x + n) });
+      }
+      // if (data.length === 0) {
+      //   this.tempeatureData = [];
+      // } else {
+      //   this.tempeatureData = data;
+      // }
+      // let total = 0;
+      // for (const d of this.tempeatureData) {
+      //   if (d.status === 'high' || d.status === 'low') {
+      //     d.name = '异常';
+      //   } else {
+      //     d.name = '正常'
+      //   }
+      //   total += d.count;
+      // }
+      // for (const c of this.classes) {
+      //   if (c.id === classID) {
+      //     if (total < c.number_of_student) {
+      //       this.tempeatureData.push({ name: '未检', count: c.number_of_student - total });
+      //     }
+      //     break;
+      //   }
+      // }
     } catch (error) {
       // this.message.error('网络错误');
     } finally {
