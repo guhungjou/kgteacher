@@ -1,0 +1,6 @@
+<div *ngFor="let form of forms; let i = index">
+  <div class="pagebreak" *ngIf="i !== 0"></div>
+  <app-student-medical-examination-form
+    [data]="form"
+  ></app-student-medical-examination-form>
+</div>

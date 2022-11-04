@@ -1,0 +1,10 @@
+:host {
+  text-align: center;
+
+  @media print {
+    .pagebreak {
+      clear: both;
+      page-break-after: always;
+    }
+  }
+}

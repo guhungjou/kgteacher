@@ -12,6 +12,8 @@ import { StudentFitnessTestListPageComponent } from './pages/student-fitness-tes
 import { StudentFitnessTestVisionPageComponent } from './pages/student-fitness-test-vision-page/student-fitness-test-vision-page.component';
 import { StudentFitnessTestDateSelectComponent } from './components/student-fitness-test-date-select/student-fitness-test-date-select.component';
 import { BatchNewStudentMedicalExaminationModalComponent } from './components/batch-new-student-medical-examination-modal/batch-new-student-medical-examination-modal.component';
+import { StudentMedicalExaminationFormListPageComponent } from './pages/student-medical-examination-form-list-page/student-medical-examination-form-list-page.component';
+import { StudentMedicalExaminationFormComponent } from './components/student-medical-examination-form/student-medical-examination-form.component';
 
 
 
@@ -27,6 +29,8 @@ import { BatchNewStudentMedicalExaminationModalComponent } from './components/ba
     StudentFitnessTestVisionPageComponent,
     StudentFitnessTestDateSelectComponent,
     BatchNewStudentMedicalExaminationModalComponent,
+    StudentMedicalExaminationFormListPageComponent,
+    StudentMedicalExaminationFormComponent,
   ],
   imports: [
     CommonModule,

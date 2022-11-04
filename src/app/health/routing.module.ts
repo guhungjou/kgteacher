@@ -8,32 +8,34 @@ import { StudentMorningCheckListPageComponent } from './pages/student-morning-ch
 import { StudentMorningCheckVisionPageComponent } from './pages/student-morning-check-vision-page/student-morning-check-vision-page.component';
 
 const routes: Routes = [
-    {
-        path: 'student/morning/checks',
-        component: StudentMorningCheckListPageComponent,
-    },
-    {
-        path: 'student/morning/check/vision',
-        component: StudentMorningCheckVisionPageComponent,
-    },
-    {
-        path: 'student/medical/exams',
-        component: StudentMedicalExaminationListPageComponent,
-    },
-    {
-        path: 'student/medical/exam/vision',
-        component: StudentMedicalExaminationVisionPageComponent,
-    }, {
-        path: 'student/fitness/tests',
-        component: StudentFitnessTestListPageComponent,
-    }, {
-        path: 'student/fitness/test/vision',
-        component: StudentFitnessTestVisionPageComponent,
-    }
+  {
+    path: 'student/morning/checks',
+    component: StudentMorningCheckListPageComponent,
+  },
+  {
+    path: 'student/morning/check/vision',
+    component: StudentMorningCheckVisionPageComponent,
+  },
+  {
+    path: 'student/medical/exams',
+    component: StudentMedicalExaminationListPageComponent,
+  },
+  {
+    path: 'student/medical/exam/vision',
+    component: StudentMedicalExaminationVisionPageComponent,
+  },
+  {
+    path: 'student/fitness/tests',
+    component: StudentFitnessTestListPageComponent,
+  },
+  {
+    path: 'student/fitness/test/vision',
+    component: StudentFitnessTestVisionPageComponent,
+  },
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule],
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class RoutingModule { }
+export class RoutingModule {}

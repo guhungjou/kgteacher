@@ -1,38 +1,3 @@
 :host {
   text-align: center;
-
-  div.form {
-    width: 612px;
-    padding-top: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    // font-family: Menlo, Monaco, 'Courier New', monospace;
-    font-weight: 500;
-
-    h2 {
-      font-family: Menlo, Monaco, "Courier New", monospace;
-    }
-
-    table {
-      width: 100%;
-      border-color: grey;
-      table-layout: fixed;
-
-      tr.header {
-        visibility: collapse;
-      }
-
-      td {
-        padding-top: 8px;
-        padding-bottom: 8px;
-      }
-
-      td.bottom {
-        text-align: left;
-        padding-left: 10px;
-        padding-top: 20px;
-        padding-bottom: 40px;
-      }
-    }
-  }
 }

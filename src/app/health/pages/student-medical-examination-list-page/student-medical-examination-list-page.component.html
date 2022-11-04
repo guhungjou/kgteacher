@@ -35,9 +35,17 @@
       >
         <i nz-icon nzType="export" nzTheme="outline"></i>导出
       </button>
+      <button
+        nz-button
+        (click)="multiPrint()"
+        nz-tooltip
+        nzTooltipTitle="一次最多打印一百条数据，如果需要，请分次打印"
+      >
+        <i nz-icon nzType="export" nzTheme="outline"></i>批量打印
+      </button>
     </nz-button-group>
 
-    <div style="float: right;">
+    <div style="float: right">
       <button nz-button (click)="showBatchModal()">批量上传</button>
     </div>
   </div>
@@ -70,14 +78,34 @@
           (nzFilterChange)="onWeightFilterChanged($event)">体重</th> -->
           <th>身高</th>
           <th>体重</th>
-          <th [nzFilters]="bmiFilters" [nzFilterFn]="true"
-          (nzFilterChange)="onBMIFilterChanged($event)">BMI指数</th>
-          <th [nzFilters]="healthFilters" [nzFilterFn]="true"
-          (nzFilterChange)="onHemoglobinFilterChanged($event)">血红蛋白(Hb)</th>
-          <th [nzFilters]="healthFilters" [nzFilterFn]="true"
-          (nzFilterChange)="onALTFilterChanged($event)">谷丙转氨酶(ALT)</th>
-          <th [nzFilters]="sightFilters" [nzFilterFn]="true"
-          (nzFilterChange)="onSightFilterChanged($event)">视力(左球柱|右球柱)</th>
+          <th
+            [nzFilters]="bmiFilters"
+            [nzFilterFn]="true"
+            (nzFilterChange)="onBMIFilterChanged($event)"
+          >
+            BMI指数
+          </th>
+          <th
+            [nzFilters]="healthFilters"
+            [nzFilterFn]="true"
+            (nzFilterChange)="onHemoglobinFilterChanged($event)"
+          >
+            血红蛋白(Hb)
+          </th>
+          <th
+            [nzFilters]="healthFilters"
+            [nzFilterFn]="true"
+            (nzFilterChange)="onALTFilterChanged($event)"
+          >
+            谷丙转氨酶(ALT)
+          </th>
+          <th
+            [nzFilters]="sightFilters"
+            [nzFilterFn]="true"
+            (nzFilterChange)="onSightFilterChanged($event)"
+          >
+            视力(左球柱|右球柱)
+          </th>
           <th>牙齿/龋齿</th>
           <th>更新时间</th>
           <th>操作</th>
@@ -91,7 +119,10 @@
           </td>
           <td>{{ data.student?.class?.name }}</td>
           <td class="b">
-            <app-student-name [name]="data.student?.name" [no]="data.student?.no"></app-student-name>
+            <app-student-name
+              [name]="data.student?.name"
+              [no]="data.student?.no"
+            ></app-student-name>
           </td>
           <td>
             <app-gender [gender]="data.student?.gender"></app-gender>
@@ -111,7 +142,11 @@
             ></app-weight-label>
           </td>
           <td>
-            <app-bmi-label [bmi]="data.bmi" [updatedAt]="data.bmi_updated_at" [status]="data.bmi_status"></app-bmi-label>
+            <app-bmi-label
+              [bmi]="data.bmi"
+              [updatedAt]="data.bmi_updated_at"
+              [status]="data.bmi_status"
+            ></app-bmi-label>
           </td>
           <td>
             <app-hemoglobin-label
@@ -131,18 +166,18 @@
           </td>
           <td>
             <app-sight-label
-            [ls]="data.sight_l_s"
-            [lc]="data.sight_l_c"
-            [rs]="data.sight_r_s"
-            [rc]="data.sight_r_c"
-            [leftRemark]="data.sight_l_remark"
-            [rightRemark]="data.sight_r_remark"
-            [updatedAt]="data.sight_updated_at"
-            [lsstatus]="data.sight_l_s_status"
-            [rsstatus]="data.sight_r_s_status"
-            [lcstatus]="data.sight_l_c_status"
-            [rcstatus]="data.sight_r_c_status"
-          ></app-sight-label>
+              [ls]="data.sight_l_s"
+              [lc]="data.sight_l_c"
+              [rs]="data.sight_r_s"
+              [rc]="data.sight_r_c"
+              [leftRemark]="data.sight_l_remark"
+              [rightRemark]="data.sight_r_remark"
+              [updatedAt]="data.sight_updated_at"
+              [lsstatus]="data.sight_l_s_status"
+              [rsstatus]="data.sight_r_s_status"
+              [lcstatus]="data.sight_l_c_status"
+              [rcstatus]="data.sight_r_c_status"
+            ></app-sight-label>
           </td>
           <td>
             <app-tooth-label
@@ -174,4 +209,7 @@
   </div>
 </div>
 
-<app-batch-new-student-medical-examination-modal [(isVisible)]="isBatchModalVisible" (update)="search()"></app-batch-new-student-medical-examination-modal>
+<app-batch-new-student-medical-examination-modal
+  [(isVisible)]="isBatchModalVisible"
+  (update)="search()"
+></app-batch-new-student-medical-examination-modal>
